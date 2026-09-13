@@ -103,22 +103,102 @@ const completeRitual: Product = {
 };
 
 const ingredientCards = [
-  { name: 'Rice Water', image: '/ingredients/rice-water.jpg', description: "We use over 65% real rice water in this Duo. Rich in naturally occurring antioxidants, vitamins and minerals like magnesium and zinc, it's a centuries-old beauty secret for better hair." },
-  { name: 'Citrus Peel Extract', image: '/ingredients/citrus-peel.jpg', description: 'A refreshing botanical extract, naturally rich in antioxidant compounds.' },
-  { name: 'Caffeine', image: '/ingredients/caffeine.jpg', description: 'A natural stimulant, best known for waking you up in the morning.' },
-  { name: 'Rosemary Oil', image: '/ingredients/rosemary-oil.jpg', description: 'A traditional scalp oil, used for centuries in hair care rituals and commonly known for hair growth.' },
-  { name: 'Orchid', image: '/ingredients/orchid.jpg', description: 'A delicate botanical extract, prized in traditional Chinese herbalism.' },
-  { name: 'Keratin', image: '/ingredients/keratin.jpg', description: "The protein that naturally makes up hair's structure." },
-  { name: 'Aloe', image: '/ingredients/aloe.jpg', description: 'A succulent plant, valued in skin and hair care for centuries.' },
-  { name: 'Goji Berry', image: '/ingredients/goji-berry.jpg', description: 'A nutrient-rich superfruit, naturally packed with protective antioxidants.' },
-  { name: 'Amino acid cleansers', image: '/ingredients/amino-acid-cleansers.jpg', description: 'Our gentle alternative to sulfates.' },
-  { name: 'Coconut oil', image: '/ingredients/coconut-oil.jpg', description: 'A nourishing oil, rich in fatty acids.' },
-  { name: 'Ginger Root', image: '/ingredients/ginger-root.jpg', description: 'A warming root, known for its anti-inflammatory properties.' },
-  { name: 'Coneflower', image: '/ingredients/coneflower.jpg', description: 'A botanical extract prized for its soothing and antioxidant properties.' },
-  { name: 'Biotin', image: '/ingredients/biotin.jpg', description: "A B-vitamin, naturally involved in the body's keratin production." },
-  { name: 'Gardenia Flower', image: '/ingredients/gardenia-flower.jpg', description: 'A fragrant botanical extract, prized in traditional Asian beauty rituals.' },
-  { name: 'Sophora Root', image: '/ingredients/sophora-root.jpg', description: 'A botanical extract traditionally used to care for and soothe the scalp.' },
-  { name: 'Pro-Vitamin B5', image: '/ingredients/pro-vitamin-b5.jpg', description: 'A moisture-binding vitamin that helps keep hair soft and hydrated.' },
+  {
+    name: 'Rice Water', image: '/ingredients/rice-water.jpg',
+    description: "We use over 65% real rice water in this Duo. Rich in naturally occurring antioxidants, vitamins and minerals like magnesium and zinc, it's a centuries-old beauty secret for better hair.",
+    helps: 'Strengthening strands and reducing breakage.',
+    science: 'Rice water contains inositol, a compound that penetrates the hair and stays active even after rinsing, smoothing the cuticle and protecting against damage from styling and everyday wear.',
+  },
+  {
+    name: 'Citrus Peel Extract', image: '/ingredients/citrus-peel.jpg',
+    description: 'A refreshing botanical extract, naturally rich in antioxidant compounds.',
+    helps: 'Shine & vitality',
+    science: 'Citrus Peel Extract helps condition the hair and protect against oxidative stress, supporting smoother, healthier-looking strands.',
+  },
+  {
+    name: 'Caffeine', image: '/ingredients/caffeine.jpg',
+    description: 'A natural stimulant, best known for waking you up in the morning.',
+    helps: 'Promoting healthy growth',
+    science: 'Caffeine is well-studied in scalp care, helping to stimulate dormant hair follicles and encourage the hair growth cycle.',
+  },
+  {
+    name: 'Rosemary Oil', image: '/ingredients/rosemary-oil.jpg',
+    description: 'A traditional scalp oil, used for centuries in hair care rituals and commonly known for hair growth.',
+    helps: 'Reducing hair fall',
+    science: 'Rosemary is believed to help limit the enzyme that converts testosterone into DHT, the hormone linked to thinning at DHT-sensitive follicles, while also supporting scalp circulation.',
+  },
+  {
+    name: 'Orchid', image: '/ingredients/orchid.jpg',
+    description: 'A delicate botanical extract, prized in traditional Chinese herbalism.',
+    helps: 'Deep hydration',
+    science: 'Orchid extract is rich in moisture-binding polysaccharides, known to help skin and hair retain hydration over time.',
+  },
+  {
+    name: 'Keratin', image: '/ingredients/keratin.jpg',
+    description: "The protein that naturally makes up hair's structure.",
+    helps: 'Reducing frizz',
+    science: "Keratin helps fill in microscopic gaps in the hair's outer cuticle, smoothing the surface so moisture can't get in unevenly, the cause of humidity-driven frizz.",
+  },
+  {
+    name: 'Aloe', image: '/ingredients/aloe.jpg',
+    description: 'A succulent plant, valued in skin and hair care for centuries.',
+    helps: 'Enhancing curl definition and smoothing straight strands, whatever your texture.',
+    science: 'Aloe forms a light, moisture-sealing film on the strand, aiding detangling and helping curls hold their shape without weighing hair down.',
+  },
+  {
+    name: 'Goji Berry', image: '/ingredients/goji-berry.jpg',
+    description: 'A nutrient-rich superfruit, naturally packed with protective antioxidants.',
+    helps: 'Strength & vitality',
+    science: 'Goji Berry Extract helps condition and protect the hair, supporting stronger, healthier-looking strands.',
+  },
+  {
+    name: 'Amino acid cleansers', image: '/ingredients/amino-acid-cleansers.jpg',
+    description: 'Our gentle alternative to sulfates.',
+    helps: 'Cleansing without stripping natural oils.',
+    science: "Amino acid-based cleansers are milder than sulfates, lifting dirt and buildup while leaving the scalp's natural barrier intact. Sulfates strip the scalp, causing it to produce excess oil to overcompensate, that's why your hair gets greasy on day 2 or 3!",
+  },
+  {
+    name: 'Coconut oil', image: '/ingredients/coconut-oil.jpg',
+    description: 'A nourishing oil, rich in fatty acids.',
+    helps: 'Boosting shine',
+    science: "Coconut oil's fatty acids penetrate the hair shaft rather than sitting on the surface, helping strands reflect light more evenly.",
+  },
+  {
+    name: 'Ginger Root', image: '/ingredients/ginger-root.jpg',
+    description: 'A warming root, known for its anti-inflammatory properties.',
+    helps: 'Balancing scalp oils to fix a dry, flaky or oily scalp.',
+    science: "Ginger's natural antioxidant and anti-inflammatory compounds help soothe irritation and regulate sebum, creating a healthier scalp environment.",
+  },
+  {
+    name: 'Coneflower', image: '/ingredients/coneflower.jpg',
+    description: 'A botanical extract prized for its soothing and antioxidant properties.',
+    helps: 'Scalp care & protection',
+    science: 'Coneflower contains naturally occurring antioxidants and plant compounds that help condition and soothe the scalp, supporting a healthy scalp environment.',
+  },
+  {
+    name: 'Biotin', image: '/ingredients/biotin.jpg',
+    description: "A B-vitamin, naturally involved in the body's keratin production.",
+    helps: 'Reducing brittle strands.',
+    science: "Biotin plays a role in keratin production, hair's core structural protein, helping support stronger, less brittle strands over time.",
+  },
+  {
+    name: 'Gardenia Flower', image: '/ingredients/gardenia-flower.jpg',
+    description: 'A fragrant botanical extract, prized in traditional Asian beauty rituals.',
+    helps: 'Softness & shine',
+    science: 'Gardenia Flower Extract helps condition the hair, supporting smoother, softer strands and enhancing hair’s natural-looking shine.',
+  },
+  {
+    name: 'Sophora Root', image: '/ingredients/sophora-root.jpg',
+    description: 'A botanical extract traditionally used to care for and soothe the scalp.',
+    helps: 'Scalp health & balance',
+    science: 'Sophora Root contains naturally occurring plant compounds that can help soothe and condition the scalp, supporting a healthier environment for hair.',
+  },
+  {
+    name: 'Pro-Vitamin B5', image: '/ingredients/pro-vitamin-b5.jpg',
+    description: 'A moisture-binding vitamin that helps keep hair soft and hydrated.',
+    helps: 'Dryness & softness',
+    science: 'Pro-Vitamin B5 helps attract and retain moisture in the hair, improving softness and flexibility while helping reduce dryness.',
+  },
 ];
 
 const ingredientIcons = [
@@ -653,7 +733,17 @@ function IngredientGallery() {
                   <SheetTitle className="font-heading text-[clamp(3.2rem,7vw,5.4rem)] leading-[0.9] tracking-[-0.04em]">{selectedIngredient.name}</SheetTitle>
                   <SheetDescription className="mt-6 text-base leading-7 text-[#40534f]">{selectedIngredient.description}</SheetDescription>
                 </SheetHeader>
-                <div className="mt-10 border-t border-primary/15 pt-6">
+                <div className="mt-10 border-y border-primary/15">
+                  <div className="grid gap-2 py-6 sm:grid-cols-[140px_1fr] sm:gap-6">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">What it helps with</p>
+                    <p className="text-base font-semibold leading-7 text-primary">{selectedIngredient.helps}</p>
+                  </div>
+                  <div className="grid gap-2 border-t border-primary/15 py-6 sm:grid-cols-[140px_1fr] sm:gap-6">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">The Science</p>
+                    <p className="text-base leading-7 text-[#40534f]">{selectedIngredient.science}</p>
+                  </div>
+                </div>
+                <div className="mt-8">
                   <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Found in</p>
                   <a href="/products/rice-water-revive-duo" className="mt-3 inline-flex items-center gap-3 font-heading text-2xl">The Rice Water Revive Duo <ArrowRight className="size-4" /></a>
                 </div>
