@@ -93,7 +93,7 @@
   .cta-light { @apply border-white bg-white text-[#163f38] hover:bg-[#dbece7]; }
   .cta-ghost { @apply border-white/50 text-white hover:border-white hover:bg-white/10; }
   .cta-dark { @apply border-primary bg-primary text-white hover:bg-[#24554c]; }
-  .section-kicker { @apply text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground; }
+  .section-kicker { @apply text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground sm:text-[13px]; }
   .section-title { @apply font-heading text-[clamp(3rem,5.2vw,5.6rem)] leading-[0.92] tracking-[-0.045em]; }
   .social-button { @apply flex size-10 items-center justify-center rounded-full border border-white/25 transition-colors hover:bg-white hover:text-primary; }
   .social-button svg { @apply size-4; }
