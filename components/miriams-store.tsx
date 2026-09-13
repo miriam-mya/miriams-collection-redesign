@@ -1350,8 +1350,7 @@ export function ProductDetail() {
 
       <section className="mx-auto grid max-w-[1320px] gap-8 px-5 pb-20 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:px-12">
         <div className="lg:hidden">
-          <p className="section-kicker">Bestselling hair ritual</p>
-          <h1 className="mt-3 max-w-lg font-heading text-[clamp(2.15rem,9vw,3rem)] leading-[0.94] tracking-[-0.035em]">The Rice Water Revive Duo (Sulfate Free)</h1>
+          <h1 className="max-w-lg font-heading text-[clamp(2.15rem,9vw,3rem)] leading-[0.94] tracking-[-0.035em]">The Rice Water Revive Duo (Sulfate Free)</h1>
         </div>
 
         <div className="min-w-0 lg:sticky lg:top-6 lg:self-start">
@@ -1381,8 +1380,7 @@ export function ProductDetail() {
         <div className="lg:pt-3">
           <div className="grid grid-cols-3 gap-4 border-b pb-5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground"><span><strong className="mb-1 block text-sm text-foreground">4.79 ★</strong>3,300 reviews</span><span><strong className="mb-1 block text-sm text-foreground">65%+</strong>rice water</span><span><strong className="mb-1 block text-sm text-foreground">65k+</strong>bottles sold</span></div>
           <div className="hidden lg:block">
-            <p className="section-kicker mt-7">Bestselling hair ritual</p>
-            <h1 className="mt-3 max-w-3xl font-heading text-[clamp(2.8rem,3.65vw,4.25rem)] leading-[0.92] tracking-[-0.04em]">The Rice Water Revive Duo (Sulfate Free)</h1>
+            <h1 className="mt-7 max-w-3xl font-heading text-[clamp(2.8rem,3.65vw,4.25rem)] leading-[0.92] tracking-[-0.04em]">The Rice Water Revive Duo (Sulfate Free)</h1>
           </div>
           <p className="mt-6 text-lg font-semibold leading-7">Repairs Damage, Fights Frizz and Promotes Healthy Growth.</p>
           <p className="body-copy mt-2 text-muted-foreground">Powered by 65%+ real Rice Water - rich in amino acids, vitamins and minerals.</p>
