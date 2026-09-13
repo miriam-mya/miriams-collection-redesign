@@ -113,8 +113,6 @@
   .press-marquee { display: flex; width: max-content; animation: press-marquee 32s linear infinite; }
   .press-logo-set { display: flex; align-items: center; gap: clamp(2.5rem, 5vw, 6.5rem); padding-right: clamp(2.5rem, 5vw, 6.5rem); }
   .press-marquee:hover { animation-play-state: paused; }
-  .timeline-time { @apply font-heading text-xl leading-5; }
-  .timeline-copy { @apply mt-2 text-xs leading-4 text-muted-foreground; }
   .ingredient-panel { @apply min-h-64 bg-primary p-7 sm:p-9; }
   .ingredient-panel span { @apply font-heading text-4xl text-[#b9d5ce]; }
   .ingredient-panel h3 { @apply mt-14 font-heading text-3xl; }

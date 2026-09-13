@@ -16,7 +16,6 @@ import {
   Plus,
   Search,
   ShoppingBag,
-  Sparkles,
   Star,
   Truck,
   X,
@@ -625,15 +624,16 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm"><span className="text-[#b78932]"><Stars /></span><strong>4.93</strong><span className="text-muted-foreground">Based on 1131 reviews</span></div>
             <p className="body-copy mt-4 max-w-xl">Upgrade your Rice Water Revive Duo for just £6 and get £53.99 worth of hair + skincare extras.</p>
 
-            <div className="mt-5 space-y-2.5">
+            <div className="mt-7 space-y-4">
               <button onClick={() => setChoice('duo')} className={`purchase-option border lg:py-3 ${choice === 'duo' ? 'purchase-option-active' : 'border-primary/15 bg-white'}`}>
                 <span className="purchase-radio"><i /></span>
                 <span className="flex-1 text-left font-semibold">Shampoo + Conditioner Only</span>
                 <span className="price-stack"><s>£50.00</s><strong>£39.95</strong></span>
               </button>
-              <button onClick={() => setChoice('ritual')} className={`purchase-option border lg:py-3 ${choice === 'ritual' ? 'purchase-option-active' : 'border-primary/15 bg-white'}`}>
+              <button onClick={() => setChoice('ritual')} className={`purchase-option relative border pt-5 lg:py-4 ${choice === 'ritual' ? 'purchase-option-active' : 'border-primary/15 bg-white'}`}>
+                <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary px-3 py-1.5 text-[8px] font-bold uppercase tracking-wider text-white shadow-sm">Best value</span>
                 <span className="purchase-radio"><i /></span>
-                <span className="flex-1 text-left"><strong className="block">Complete Hair &amp; Skin Ritual</strong><small><span className="mr-2 rounded-full bg-primary px-2 py-1 text-[8px] font-bold uppercase tracking-wider text-white">Best value</span>✦ Welcome kit worth £53.99 included</small></span>
+                <span className="flex-1 text-left"><strong className="block">Complete Hair &amp; Skin Ritual</strong><small>✦ Welcome kit worth £53.99 included</small></span>
                 <span className="price-stack"><s>£103.99</s><strong>£45.95</strong></span>
               </button>
             </div>
@@ -810,16 +810,16 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
           <CarouselContent className="-ml-5">
             {reviews.map((review) => (
               <CarouselItem key={review.tag} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                <article className="flex min-h-[540px] flex-col overflow-hidden rounded-2xl border bg-white">
-                  <div className="relative h-64 shrink-0 overflow-hidden sm:h-72">
+                <article className="overflow-hidden rounded-2xl border bg-white">
+                  <div className="relative aspect-square overflow-hidden bg-[#e7e2da]">
                     <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="h-full w-full object-cover object-top" />
-                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white via-white/70 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/55 to-transparent" />
                     <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
                   </div>
-                  <div className="relative -mt-10 flex flex-1 flex-col px-6 pb-7 sm:px-8 sm:pb-8">
+                  <div className="relative -mt-8 px-6 pb-7 sm:px-8 sm:pb-8">
                     <span className="mb-4 w-fit rounded-full bg-[#edf3f0] px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified review</span>
-                    <blockquote className="flex-1 font-heading text-[1.55rem] leading-[1.1] tracking-[-0.02em] sm:text-[1.7rem]">“{review.quote}”</blockquote>
-                    <div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-sm text-muted-foreground">For {review.tag.toLowerCase()}</p></div>
+                    <blockquote className="font-heading text-[1.55rem] leading-[1.1] tracking-[-0.02em] sm:text-[1.7rem]">“{review.quote}”</blockquote>
+                    <div className="mt-6 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-sm text-muted-foreground">For {review.tag.toLowerCase()}</p></div>
                   </div>
                 </article>
               </CarouselItem>
@@ -1453,7 +1453,6 @@ export function ProductDetail() {
           </div>
           <p className="mt-4 text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Free UK tracked shipping · 30-day returns · Secure checkout</p>
 
-          <div className="mt-8 rounded-2xl bg-[#dceae6] p-6"><div className="flex items-center gap-2"><Sparkles className="size-4" /><strong className="text-xs uppercase tracking-widest">What you’ll notice</strong></div><div className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-4"><div><strong className="timeline-time">First washes</strong><p className="timeline-copy">Softer, hydrated hair</p></div><div><strong className="timeline-time">2–4 weeks</strong><p className="timeline-copy">More shine, less frizz</p></div><div><strong className="timeline-time">Month 3</strong><p className="timeline-copy">Stronger-looking growth</p></div><div><strong className="timeline-time">Beyond</strong><p className="timeline-copy">A consistent ritual</p></div></div></div>
         </div>
       </section>
 
