@@ -532,7 +532,7 @@ function ProductCard({ product, addToCart }: { product: Product; addToCart: () =
 
 function PressStrip() {
   return (
-    <section className="flex h-[140px] flex-col justify-center overflow-hidden border-b border-border bg-white sm:h-[160px]" aria-label="As seen in">
+    <section className="flex h-[112px] flex-col justify-center overflow-hidden border-b border-border bg-white sm:h-[160px]" aria-label="As seen in">
       <p className="px-5 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-muted-foreground sm:px-8">As seen in</p>
       <div className="mt-4 overflow-hidden sm:mt-5">
         <div className="press-marquee">
@@ -997,12 +997,12 @@ export function HomeStorefront() {
       <Header cartCount={cartCount} openCart={() => setCartOpen(true)} transparent />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
 
-      <section id="top" className="relative h-[calc(100svh-188px)] max-h-[720px] overflow-hidden bg-[#0d2f29] sm:h-[calc(100svh-208px)]">
-        <img src="/hero-current.png" alt="Woman using Miriam's Rice Water Shampoo outdoors" className="absolute inset-0 h-full w-full object-cover object-[68%_48%] sm:object-[66%_48%] lg:object-[64%_46%]" />
+      <section id="top" className="relative h-[calc(100svh-164px)] max-h-[744px] overflow-hidden bg-[#0d2f29] sm:h-[calc(100svh-208px)] sm:max-h-[720px]">
+        <img src="/hero-current.png" alt="Woman using Miriam's Rice Water Shampoo outdoors" className="absolute inset-0 h-full w-full object-cover object-[68%_65%] sm:object-[66%_48%] lg:object-[64%_46%]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#102c26]/78 via-[#102c26]/22 to-transparent" />
         <div className="relative mx-auto flex h-full max-w-[1480px] items-end px-5 py-5 sm:items-center sm:px-8 sm:py-9 lg:px-14">
           <div className="home-hero-card max-w-[520px] rounded-[1.5rem] border border-white/30 bg-white/[0.16] p-4 text-white shadow-[0_28px_90px_rgb(0_0_0/28%)] backdrop-blur-[28px] sm:p-8 lg:p-9">
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">★ 4.79 from 3,300 reviews</p>
+            <p className="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-white/75 sm:block">★ 4.79 from 3,300 reviews</p>
             <h1 className="mt-3 font-heading text-[clamp(2.2rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em]">Your shampoo could be doing so much more.</h1>
             <p className="hero-support mt-4 max-w-md text-base leading-7 text-white/[0.86] sm:text-[17px]">Meet the shampoo and conditioner that do more than clean.</p>
             <a href="/products/rice-water-revive-duo" className="cta mt-5 border-[#dbe7df] bg-[#dbe7df] text-primary hover:bg-white sm:mt-6">Shop Now <ArrowRight /></a>
