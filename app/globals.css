@@ -95,6 +95,7 @@
   .cta-dark { @apply border-primary bg-primary text-white hover:bg-[#24554c]; }
   .section-kicker { @apply text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground sm:text-[13px]; }
   .section-title { @apply font-heading text-[clamp(3rem,5.2vw,5.6rem)] leading-[0.92] tracking-[-0.045em]; }
+  .body-copy { @apply text-base leading-7 sm:text-[17px]; }
   .social-button { @apply flex size-10 items-center justify-center rounded-full border border-white/25 transition-colors hover:bg-white hover:text-primary; }
   .social-button svg { @apply size-4; }
   .footer-heading { @apply mb-4 text-[10px] font-bold uppercase tracking-[0.18em] text-white/45; }
@@ -117,7 +118,7 @@
   .ingredient-panel { @apply min-h-64 bg-primary p-7 sm:p-9; }
   .ingredient-panel span { @apply font-heading text-4xl text-[#b9d5ce]; }
   .ingredient-panel h3 { @apply mt-14 font-heading text-3xl; }
-  .ingredient-panel p { @apply mt-3 text-sm leading-6 text-white/65; }
+  .ingredient-panel p { @apply mt-3 text-base leading-7 text-white/70; }
 }
 
 @keyframes press-marquee {

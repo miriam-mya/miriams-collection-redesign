@@ -579,7 +579,7 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
             <p className="section-kicker">September offer</p>
             <h2 className="mt-2 font-heading text-[clamp(2.8rem,3.6vw,4.3rem)] leading-[0.9] tracking-[-0.04em]">The Hair &amp; Skin Ritual</h2>
             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm"><span className="text-[#b78932]"><Stars /></span><strong>4.93</strong><span className="text-muted-foreground">Based on 1131 reviews</span></div>
-            <p className="mt-4 max-w-xl text-sm leading-6 sm:text-base">Upgrade your Rice Water Revive Duo for just £6 and get £53.99 worth of hair + skincare extras.</p>
+            <p className="body-copy mt-4 max-w-xl">Upgrade your Rice Water Revive Duo for just £6 and get £53.99 worth of hair + skincare extras.</p>
 
             <div className="mt-5 space-y-2.5">
               <button onClick={() => setChoice('duo')} className={`purchase-option border lg:py-3 ${choice === 'duo' ? 'purchase-option-active' : 'border-primary/15 bg-white'}`}>
@@ -676,7 +676,7 @@ function ComparisonSection() {
             <div className="flex flex-col justify-between px-7 py-9 sm:px-10 sm:py-12 lg:px-14">
               <div className="max-w-2xl">
                 <p className="text-lg font-semibold leading-7 sm:text-xl sm:leading-8">Pick up your current bottle... we bet it has 1 or 2 hero ingredients - Argan Oil, Keratin?</p>
-                <p className="mt-5 max-w-xl text-base leading-7 text-white/68">Plastered across the front to make you think you’re getting more of the good stuff than you actually are.</p>
+                <p className="body-copy mt-5 max-w-xl text-white/72">Plastered across the front to make you think you’re getting more of the good stuff than you actually are.</p>
               </div>
               <a href="/products/rice-water-revive-duo" className="group mt-9 inline-flex w-fit items-center gap-4 rounded-full bg-[#d4ae67] px-7 py-4 text-xs font-bold uppercase tracking-widest text-primary transition-transform hover:-translate-y-0.5">
                 Shop now
@@ -731,16 +731,16 @@ function IngredientGallery() {
                 <p className="section-kicker">Inside the formula</p>
                 <SheetHeader className="mt-4 p-0 text-left">
                   <SheetTitle className="font-heading text-[clamp(3.2rem,7vw,5.4rem)] leading-[0.9] tracking-[-0.04em]">{selectedIngredient.name}</SheetTitle>
-                  <SheetDescription className="mt-6 text-base leading-7 text-[#40534f]">{selectedIngredient.description}</SheetDescription>
+                  <SheetDescription className="body-copy mt-6 text-[#40534f]">{selectedIngredient.description}</SheetDescription>
                 </SheetHeader>
                 <div className="mt-10 border-y border-primary/15">
                   <div className="grid gap-2 py-6 sm:grid-cols-[140px_1fr] sm:gap-6">
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">What it helps with</p>
-                    <p className="text-base font-semibold leading-7 text-primary">{selectedIngredient.helps}</p>
+                    <p className="body-copy font-semibold text-primary">{selectedIngredient.helps}</p>
                   </div>
                   <div className="grid gap-2 border-t border-primary/15 py-6 sm:grid-cols-[140px_1fr] sm:gap-6">
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">The Science</p>
-                    <p className="text-base leading-7 text-[#40534f]">{selectedIngredient.science}</p>
+                    <p className="body-copy text-[#40534f]">{selectedIngredient.science}</p>
                   </div>
                 </div>
                 <div className="mt-8">
@@ -766,7 +766,7 @@ function Newsletter() {
           <h2 className="mt-3 font-heading text-[clamp(2.9rem,5vw,5.4rem)] leading-[0.95] tracking-[-0.04em]">Elevate your everyday.</h2>
         </div>
         <div>
-          <p className="max-w-xl leading-7 text-[#33514b]">Join for haircare tips, exclusive offers and insider access to the world of Miriam's Collection.</p>
+          <p className="body-copy max-w-xl text-[#33514b]">Join for haircare tips, exclusive offers and insider access to the world of Miriam's Collection.</p>
           {subscribed ? (
             <div className="mt-6 flex items-center gap-3 rounded-full border border-primary/20 bg-white/70 px-5 py-4 text-sm font-semibold"><Check className="size-4" /> Welcome to the circle — check your inbox.</div>
           ) : (
@@ -877,7 +877,7 @@ function LegacyHomeStorefront() {
         <div className="mx-auto max-w-[1340px]">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div><p className="section-kicker">The collection</p><h2 className="section-title mt-3">Start with your everyday.</h2></div>
-            <p className="max-w-md text-sm leading-6 text-muted-foreground">Hard-working hair and skincare for the steps you already take — now with subscribe & save across the routine.</p>
+            <p className="body-copy max-w-md text-muted-foreground">Hard-working hair and skincare for the steps you already take — now with subscribe & save across the routine.</p>
           </div>
           <div className="mt-12 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {products.map((product) => <ProductCard key={product.name} product={product} addToCart={addToCart} />)}
@@ -893,7 +893,7 @@ function LegacyHomeStorefront() {
           <div>
             <p className="section-kicker">One formula, every hair type</p>
             <h2 className="mt-4 font-heading text-[clamp(3rem,5.2vw,5.5rem)] leading-[0.93] tracking-[-0.045em]">Clean hair is only the beginning.</h2>
-            <p className="mt-7 max-w-xl leading-7 text-[#35544e]">Traditional shampoos are designed to clean. But shampoo is something you use again and again — so why waste the opportunity? Miriam’s turns every shower into a strengthening, scalp-caring ritual.</p>
+            <p className="body-copy mt-7 max-w-xl text-[#35544e]">Traditional shampoos are designed to clean. But shampoo is something you use again and again — so why waste the opportunity? Miriam’s turns every shower into a strengthening, scalp-caring ritual.</p>
             <div className="mt-8 grid grid-cols-2 gap-5 border-y border-primary/15 py-7 text-sm">
               <p><strong className="block font-heading text-3xl">65%+</strong> real rice water</p>
               <p><strong className="block font-heading text-3xl">16</strong> active botanicals</p>
@@ -907,7 +907,7 @@ function LegacyHomeStorefront() {
 
       <section id="why-rice-water" className="px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-[1200px]">
-          <div className="mx-auto max-w-3xl text-center"><p className="section-kicker">The art of rice water</p><h2 className="section-title mt-4">A centuries-old ritual, made effortless.</h2><p className="mx-auto mt-6 max-w-2xl leading-7 text-muted-foreground">Naturally rich in amino acids, vitamins and minerals, rice water has been used across Asia for generations. Miriam’s builds it into the products you already use every wash.</p></div>
+          <div className="mx-auto max-w-3xl text-center"><p className="section-kicker">The art of rice water</p><h2 className="section-title mt-4">A centuries-old ritual, made effortless.</h2><p className="body-copy mx-auto mt-6 max-w-2xl text-muted-foreground">Naturally rich in amino acids, vitamins and minerals, rice water has been used across Asia for generations. Miriam’s builds it into the products you already use every wash.</p></div>
           <div className="relative mt-16 grid gap-8 md:grid-cols-3">
             {[
               ['01', 'Steeped', 'Pure rice is carefully steeped so its naturally occurring nutrients infuse the water.'],
@@ -917,7 +917,7 @@ function LegacyHomeStorefront() {
               <article key={number} className="relative border-t border-primary/25 pt-7">
                 <span className="font-heading text-5xl text-[#8baaa2]">{number}</span>
                 <h3 className="mt-8 font-heading text-3xl">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">{body}</p>
+                <p className="body-copy mt-3 text-muted-foreground">{body}</p>
               </article>
             ))}
           </div>
@@ -926,7 +926,7 @@ function LegacyHomeStorefront() {
 
       <section className="bg-primary px-5 py-20 text-white sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div><p className="section-kicker text-[#b8d5cd]">More than a hero ingredient</p><h2 className="mt-4 font-heading text-[clamp(3.2rem,5.5vw,6rem)] leading-[0.9] tracking-[-0.045em]">Every ingredient earns its place.</h2><p className="mt-6 max-w-lg leading-7 text-white/68">No bulk fillers and no one-ingredient marketing story. Every formula combines the rice water base with carefully chosen actives and botanicals.</p></div>
+          <div><p className="section-kicker text-[#b8d5cd]">More than a hero ingredient</p><h2 className="mt-4 font-heading text-[clamp(3.2rem,5.5vw,6rem)] leading-[0.9] tracking-[-0.045em]">Every ingredient earns its place.</h2><p className="body-copy mt-6 max-w-lg text-white/72">No bulk fillers and no one-ingredient marketing story. Every formula combines the rice water base with carefully chosen actives and botanicals.</p></div>
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/18 sm:grid-cols-4">
             {['Rice water', 'Biotin', 'Keratin', 'Caffeine', 'Rosemary', 'Coconut oil', 'Aloe', 'Pro-vitamin B5'].map((ingredient, index) => (
               <div key={ingredient} className="flex min-h-32 flex-col justify-between bg-primary p-5 transition-colors hover:bg-[#1d4a42]"><span className="font-heading text-2xl text-[#cce1db]">{String(index + 1).padStart(2, '0')}</span><span className="text-xs font-bold uppercase tracking-widest">{ingredient}</span></div>
@@ -955,7 +955,7 @@ function LegacyHomeStorefront() {
       <section id="story" className="grid bg-[#e9e1d6] lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative min-h-[520px] overflow-hidden lg:min-h-[760px]"><img src="/editorial.png" alt="Miriam's rice water shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" /><span className="absolute bottom-7 left-7 rounded-full border border-white/30 bg-black/15 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">From one personal journey to thousands of wash days</span></div>
         <div className="flex items-center px-7 py-16 sm:px-16 lg:px-[7vw]">
-          <div><p className="section-kicker">A note from Miriam</p><h2 className="mt-4 font-heading text-[clamp(3.3rem,5.5vw,6.2rem)] leading-[0.88] tracking-[-0.045em]">I wanted everyday care to feel like real care.</h2><div className="mt-8 space-y-5 leading-7 text-[#40534f]"><p>Miriam’s Collection began with my own struggles with thinning, frizz, dryness and heat damage. After years of experimenting, I found my way back to rice water — a ritual trusted for generations.</p><p>We realised the simplest step to healthier-looking hair is a good shampoo. Oiling can help, but it asks for time and consistency. We all shower. So we made that familiar step work harder.</p></div><p className="mt-8 font-heading text-3xl italic">Miriam Ahmad</p><p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Founder, Miriam’s Collection</p><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Follow Miriam on TikTok <ArrowRight className="size-4" /></a></div>
+          <div><p className="section-kicker">A note from Miriam</p><h2 className="mt-4 font-heading text-[clamp(3.3rem,5.5vw,6.2rem)] leading-[0.88] tracking-[-0.045em]">I wanted everyday care to feel like real care.</h2><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection began with my own struggles with thinning, frizz, dryness and heat damage. After years of experimenting, I found my way back to rice water — a ritual trusted for generations.</p><p>We realised the simplest step to healthier-looking hair is a good shampoo. Oiling can help, but it asks for time and consistency. We all shower. So we made that familiar step work harder.</p></div><p className="mt-8 font-heading text-3xl italic">Miriam Ahmad</p><p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Founder, Miriam’s Collection</p><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Follow Miriam on TikTok <ArrowRight className="size-4" /></a></div>
         </div>
       </section>
 
@@ -972,9 +972,9 @@ function LegacyHomeStorefront() {
 
       <section id="faqs" className="border-t px-5 py-24 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.7fr_1.3fr]">
-          <div><p className="section-kicker">Need to know</p><h2 className="section-title mt-4">A little clarity goes a long way.</h2><p className="mt-5 text-sm leading-6 text-muted-foreground">Can’t find what you need? <a href="https://www.miriamscollection.co.uk/pages/contact" className="underline underline-offset-4">Contact us</a> and the team will help.</p></div>
+          <div><p className="section-kicker">Need to know</p><h2 className="section-title mt-4">A little clarity goes a long way.</h2><p className="mt-5 text-base leading-7 text-muted-foreground">Can’t find what you need? <a href="https://www.miriamscollection.co.uk/pages/contact" className="underline underline-offset-4">Contact us</a> and the team will help.</p></div>
           <Accordion className="border-t">
-            {faqs.map((faq) => <AccordionItem key={faq.q} value={faq.q} className="border-b"><AccordionTrigger className="rounded-none py-6 font-heading text-xl hover:no-underline sm:text-2xl">{faq.q}</AccordionTrigger><AccordionContent className="max-w-2xl pb-6 text-sm leading-6 text-muted-foreground">{faq.a}</AccordionContent></AccordionItem>)}
+            {faqs.map((faq) => <AccordionItem key={faq.q} value={faq.q} className="border-b"><AccordionTrigger className="rounded-none py-6 font-heading text-xl hover:no-underline sm:text-2xl">{faq.q}</AccordionTrigger><AccordionContent className="max-w-2xl pb-6 text-base leading-7 text-muted-foreground">{faq.a}</AccordionContent></AccordionItem>)}
           </Accordion>
         </div>
       </section>
@@ -1006,7 +1006,7 @@ export function HomeStorefront() {
           <div className="home-hero-card max-w-[520px] rounded-[1.5rem] border border-white/30 bg-white/[0.16] p-4 text-white shadow-[0_28px_90px_rgb(0_0_0/28%)] backdrop-blur-[28px] sm:p-8 lg:p-9">
             <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">★ 4.79 from 3,300 reviews</p>
             <h1 className="mt-3 font-heading text-[clamp(2.2rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em]">Your shampoo could be doing so much more.</h1>
-            <p className="hero-support mt-4 max-w-md text-sm leading-6 text-white/[0.86] sm:text-base sm:leading-7">Meet the shampoo and conditioner that do more than clean.</p>
+            <p className="hero-support mt-4 max-w-md text-base leading-7 text-white/[0.86] sm:text-[17px]">Meet the shampoo and conditioner that do more than clean.</p>
             <a href="/products/rice-water-revive-duo" className="cta mt-5 border-[#dbe7df] bg-[#dbe7df] text-primary hover:bg-white sm:mt-6">Shop Now <ArrowRight /></a>
           </div>
         </div>
@@ -1033,7 +1033,7 @@ export function HomeStorefront() {
           <div>
             <p className="section-kicker">Why Rice Water?</p>
             <h2 className="mt-4 font-heading text-[clamp(3.2rem,5.2vw,6rem)] leading-[0.9] tracking-[-0.045em]">Naturally rich in amino acids, vitamins and minerals.</h2>
-            <p className="mt-7 max-w-xl leading-7 text-[#35544e]">It’s been used for centuries across Asia for stronger, healthier hair. So we built it into the products you already use every wash.</p>
+            <p className="body-copy mt-7 max-w-xl text-[#35544e]">It’s been used for centuries across Asia for stronger, healthier hair. So we built it into the products you already use every wash.</p>
             <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8">Shop the Rice Water Shampoo &amp; Conditioner <ArrowRight /></a>
           </div>
         </div>
@@ -1059,21 +1059,30 @@ export function HomeStorefront() {
         </div>
       </section>
 
-      <section className="bg-primary px-5 py-20 text-white sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-[1250px]">
-          <div className="max-w-3xl"><p className="section-kicker text-[#b8d5cd]">Haircare, made differently.</p><h2 className="mt-4 font-heading text-[clamp(3.2rem,5.5vw,6rem)] leading-[0.9] tracking-[-0.045em]">We believe your wash day should do more than simply cleanse your hair.</h2><p className="mt-6 max-w-2xl leading-7 text-white/68">So we create formulas designed to turn everyday products into real haircare.</p></div>
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-white/18 md:grid-cols-3">
-            <article className="bg-primary p-7 sm:p-9"><h3 className="font-heading text-3xl">More than hero ingredients</h3><p className="mt-4 text-sm leading-6 text-white/65">We don’t formulate around one or two ingredients just so they can sit on the front of the bottle. We use carefully selected ingredients that actually do something.</p></article>
-            <article className="bg-primary p-7 sm:p-9"><h3 className="font-heading text-3xl">Inspired by generations</h3><p className="mt-4 text-sm leading-6 text-white/65">From rice water to rosemary, we take inspiration from ingredients and rituals that have been used in haircare for generations — and reimagine them for your routine today.</p></article>
-            <article className="bg-primary p-7 sm:p-9"><h3 className="font-heading text-3xl">Everyday care, elevated</h3><p className="mt-4 text-sm leading-6 text-white/65">Shampoo and conditioner are the two products almost everyone uses. We believe they should be some of the hardest-working formulas in your routine.</p></article>
+      <section className="bg-primary px-5 py-14 text-white sm:px-8 sm:py-20 lg:py-[88px]">
+        <div className="mx-auto grid max-w-[1380px] gap-10 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-12 lg:grid-cols-[1.35fr_repeat(3,minmax(0,1fr))] lg:gap-14">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h2 className="font-heading text-[clamp(3rem,4.1vw,4.7rem)] leading-[0.9] tracking-[-0.04em]">Haircare, made differently.</h2>
+            <p className="body-copy mt-7 max-w-md text-white/85">We believe your wash day should do more than simply cleanse your hair. So we create formulas designed to turn everyday products into <strong className="text-white">real haircare.</strong></p>
           </div>
+          {[
+            ['/haircare-value-ingredients.png', 'More than hero ingredients', 'We don’t formulate around one or two ingredients just so they can sit on the front of the bottle. We use carefully selected ingredients that actually do something.'],
+            ['/haircare-value-generations.png', 'Inspired by generations', 'From rice water to rosemary, we take inspiration from ingredients and rituals that have been used in haircare for generations — and reimagine them for your routine today.'],
+            ['/haircare-value-everyday.png', 'Everyday care, elevated', 'Shampoo and conditioner are the two products almost everyone uses. We believe they should be some of the hardest-working formulas in your routine.'],
+          ].map(([icon, title, body]) => (
+            <article key={title} className="border-t border-white/20 pt-7 lg:border-0 lg:pt-0">
+              <img src={icon} alt="" className="size-[58px] object-contain" />
+              <h3 className="mt-5 font-heading text-[1.8rem] leading-[1.08]">{title}</h3>
+              <p className="body-copy mt-4 text-white/75">{body}</p>
+            </article>
+          ))}
         </div>
       </section>
 
       <section id="story" className="grid bg-[#e9e1d6] lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative min-h-[520px] overflow-hidden lg:min-h-[760px]"><img src="/editorial.png" alt="Miriam's rice water shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" /></div>
         <div className="flex items-center px-7 py-16 sm:px-16 lg:px-[7vw]">
-          <div><p className="section-kicker">My journey</p><h2 className="mt-4 font-heading text-[clamp(3.3rem,5.5vw,6.2rem)] leading-[0.88] tracking-[-0.045em]">Miriam’s Collection.</h2><div className="mt-8 space-y-5 leading-7 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><a href="/our-story" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Continue my journey <ArrowRight className="size-4" /></a></div>
+          <div><p className="section-kicker">My journey</p><h2 className="mt-4 font-heading text-[clamp(3.3rem,5.5vw,6.2rem)] leading-[0.88] tracking-[-0.045em]">Miriam’s Collection.</h2><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><a href="/our-story" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Continue my journey <ArrowRight className="size-4" /></a></div>
         </div>
       </section>
 
@@ -1090,8 +1099,8 @@ export function HomeStorefront() {
 
       <section id="faqs" className="border-t px-5 py-24 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.7fr_1.3fr]">
-          <div><p className="section-kicker">FAQs</p><h2 className="section-title mt-4">Everything you need to know.</h2><p className="mt-5 text-sm leading-6 text-muted-foreground">Can’t find what you need? <a href="https://www.miriamscollection.co.uk/pages/contact" className="underline underline-offset-4">Contact us</a> and the team will help.</p></div>
-          <Accordion className="border-t">{faqs.map((faq) => <AccordionItem key={faq.q} value={faq.q} className="border-b"><AccordionTrigger className="rounded-none py-6 font-heading text-xl hover:no-underline sm:text-2xl">{faq.q}</AccordionTrigger><AccordionContent className="max-w-2xl pb-6 text-sm leading-6 text-muted-foreground">{faq.a}</AccordionContent></AccordionItem>)}</Accordion>
+          <div><p className="section-kicker">FAQs</p><h2 className="section-title mt-4">Everything you need to know.</h2><p className="mt-5 text-base leading-7 text-muted-foreground">Can’t find what you need? <a href="https://www.miriamscollection.co.uk/pages/contact" className="underline underline-offset-4">Contact us</a> and the team will help.</p></div>
+          <Accordion className="border-t">{faqs.map((faq) => <AccordionItem key={faq.q} value={faq.q} className="border-b"><AccordionTrigger className="rounded-none py-6 font-heading text-xl hover:no-underline sm:text-2xl">{faq.q}</AccordionTrigger><AccordionContent className="max-w-2xl pb-6 text-base leading-7 text-muted-foreground">{faq.a}</AccordionContent></AccordionItem>)}</Accordion>
         </div>
       </section>
 
@@ -1113,7 +1122,7 @@ export function CategoryStorefront({ category }: { category: CategoryKey }) {
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
       <section className="grid min-h-[600px] bg-[#dceae6] lg:grid-cols-[0.9fr_1.1fr]">
         <div className="order-2 flex items-center px-7 py-16 sm:px-14 lg:order-1 lg:px-[8vw]">
-          <div><p className="section-kicker">{content.eyebrow}</p><h1 className="mt-4 font-heading text-[clamp(4rem,7vw,8rem)] leading-[0.86] tracking-[-0.05em]">{content.title}</h1><p className="mt-7 max-w-xl text-base leading-7 text-[#35544e]">{content.copy}</p><a href="#collection" className="cta cta-dark mt-8">Shop the collection <ArrowRight /></a></div>
+          <div><p className="section-kicker">{content.eyebrow}</p><h1 className="mt-4 font-heading text-[clamp(4rem,7vw,8rem)] leading-[0.86] tracking-[-0.05em]">{content.title}</h1><p className="body-copy mt-7 max-w-xl text-[#35544e]">{content.copy}</p><a href="#collection" className="cta cta-dark mt-8">Shop the collection <ArrowRight /></a></div>
         </div>
         <div className="relative order-1 min-h-[460px] overflow-hidden lg:order-2"><img src={content.image} alt={`${category} collection`} className="absolute inset-0 h-full w-full object-cover" /></div>
       </section>
@@ -1137,7 +1146,7 @@ export function StoryStorefront() {
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
       <section className="grid bg-[#e9e1d6] lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative min-h-[560px] overflow-hidden lg:min-h-[820px]"><img src="/editorial.png" alt="Miriam’s Collection" className="absolute inset-0 h-full w-full object-cover" /></div>
-        <div className="flex items-center px-7 py-16 sm:px-16 lg:px-[7vw]"><div><p className="section-kicker">My journey</p><h1 className="mt-4 font-heading text-[clamp(4rem,6.5vw,7rem)] leading-[0.86] tracking-[-0.05em]">The story behind Miriam’s Collection.</h1><div className="mt-8 space-y-5 leading-7 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><div className="mt-8 flex flex-wrap gap-3"><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="social-pill"><Music2 /> Follow on TikTok</a><a href="https://www.instagram.com/miriamscollectionuk/" target="_blank" rel="noreferrer" className="social-pill"><Camera /> Follow on Instagram</a></div></div></div>
+        <div className="flex items-center px-7 py-16 sm:px-16 lg:px-[7vw]"><div><p className="section-kicker">My journey</p><h1 className="mt-4 font-heading text-[clamp(4rem,6.5vw,7rem)] leading-[0.86] tracking-[-0.05em]">The story behind Miriam’s Collection.</h1><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><div className="mt-8 flex flex-wrap gap-3"><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="social-pill"><Music2 /> Follow on TikTok</a><a href="https://www.instagram.com/miriamscollectionuk/" target="_blank" rel="noreferrer" className="social-pill"><Camera /> Follow on Instagram</a></div></div></div>
       </section>
       <section className="px-5 py-24 sm:px-8 sm:py-32"><div className="mx-auto max-w-[1380px]"><p className="section-kicker">Rice Water Rituals, Shared By You.</p><h2 className="section-title mt-4">Continue the journey.</h2><div className="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">{socialTiles.map((tile) => <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" /><span className="absolute left-4 top-4 flex size-10 items-center justify-center rounded-full bg-white text-primary"><Play className="size-4 fill-current" /></span><p className="absolute bottom-5 left-5 font-heading text-2xl text-white">{tile.label}</p></a>)}</div></div></section>
       <Newsletter />
@@ -1204,7 +1213,7 @@ export function ProductDetail() {
             <h1 className="mt-3 font-heading text-[clamp(3rem,5vw,5.8rem)] leading-[0.88] tracking-[-0.045em]">The Rice Water Revive Duo (Sulfate Free)</h1>
           </div>
           <p className="mt-6 text-lg font-semibold leading-7">Repairs Damage, Fights Frizz and Promotes Healthy Growth.</p>
-          <p className="mt-2 leading-7 text-muted-foreground">Powered by 65%+ real Rice Water - rich in amino acids, vitamins and minerals.</p>
+          <p className="body-copy mt-2 text-muted-foreground">Powered by 65%+ real Rice Water - rich in amino acids, vitamins and minerals.</p>
           <ul className="mt-6 space-y-3 text-sm">
             {['Sulfate Free', 'Suitable for All Hair Types', '16 Botanical and Active Ingredients'].map((item) => <li key={item} className="flex items-center gap-3"><span className="flex size-5 items-center justify-center rounded-full bg-primary text-white"><Check className="size-3" /></span>{item}</li>)}
           </ul>
@@ -1226,7 +1235,7 @@ export function ProductDetail() {
 
       <section id="ingredients" className="bg-primary px-5 py-20 text-white sm:px-8 sm:py-28"><div className="mx-auto max-w-[1180px]"><div className="mx-auto max-w-3xl text-center"><p className="section-kicker text-[#bad6ce]">Ingredients</p><h2 className="mt-4 font-heading text-[clamp(3.2rem,5.8vw,6.3rem)] leading-[0.9] tracking-[-0.045em]">We use 16 hero ingredients..</h2><p className="mt-5 text-white/70">because why settle for just 1 or 2?</p></div><div className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-white/15 sm:grid-cols-3"><div className="ingredient-panel"><span>01</span><h3>65% real rice water</h3><p>Other brands use water as their main ingredient. We've flipped that on its head by using 65% real rice water instead - naturally rich in vitamins, minerals and antioxidants.</p></div><div className="ingredient-panel"><span>02</span><h3>16 hero ingredients across the set</h3><p>Most Shampoo and Conditioner sets contain just 1 or 2. Let that sink in.</p></div><div className="ingredient-panel"><span>03</span><h3>No sulfates</h3><p>Sulfates strip the scalp, causing it to overproduce oil to compensate.</p></div></div></div></section>
 
-      <section className="px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-2"><div><p className="section-kicker">How to use</p><h2 className="section-title mt-4">Make every wash count.</h2><ol className="mt-9 space-y-7">{[['1', 'Cleanse', 'Massage shampoo into wet hair and scalp. Let the lather work for 1–2 minutes, then rinse well.'], ['2', 'Condition', 'Apply through mid-lengths and ends. Leave for 2–5 minutes, or longer as a nourishing mask.'], ['3', 'Repeat', 'Use consistently as your regular wash routine. The conditioner can also be used as a leave-in or curl cream.']].map(([n, title, copy]) => <li key={n} className="grid grid-cols-[42px_1fr] gap-4 border-t pt-5"><span className="font-heading text-3xl text-[#7e9f96]">{n}</span><div><strong className="font-heading text-2xl">{title}</strong><p className="mt-2 text-sm leading-6 text-muted-foreground">{copy}</p></div></li>)}</ol></div><div className="overflow-hidden rounded-2xl"><img src="/hero-ritual.png" alt="Using Rice Water Shampoo as part of a wash-day ritual" className="h-full min-h-[580px] w-full object-cover object-[62%_62%]" /></div></div></section>
+      <section className="px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-2"><div><p className="section-kicker">How to use</p><h2 className="section-title mt-4">Make every wash count.</h2><ol className="mt-9 space-y-7">{[['1', 'Cleanse', 'Massage shampoo into wet hair and scalp. Let the lather work for 1–2 minutes, then rinse well.'], ['2', 'Condition', 'Apply through mid-lengths and ends. Leave for 2–5 minutes, or longer as a nourishing mask.'], ['3', 'Repeat', 'Use consistently as your regular wash routine. The conditioner can also be used as a leave-in or curl cream.']].map(([n, title, copy]) => <li key={n} className="grid grid-cols-[42px_1fr] gap-4 border-t pt-5"><span className="font-heading text-3xl text-[#7e9f96]">{n}</span><div><strong className="font-heading text-2xl">{title}</strong><p className="mt-2 text-base leading-7 text-muted-foreground">{copy}</p></div></li>)}</ol></div><div className="overflow-hidden rounded-2xl"><img src="/hero-ritual.png" alt="Using Rice Water Shampoo as part of a wash-day ritual" className="h-full min-h-[580px] w-full object-cover object-[62%_62%]" /></div></div></section>
 
       <section id="product-faqs" className="border-t px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.65fr_1.35fr]"><div><p className="section-kicker">Product FAQs</p><h2 className="section-title mt-4">Everything you need to know.</h2></div><Accordion className="border-t">{faqs.map((faq) => <AccordionItem key={faq.q} value={faq.q} className="border-b"><AccordionTrigger className="rounded-none py-6 font-heading text-xl hover:no-underline sm:text-2xl">{faq.q}</AccordionTrigger><AccordionContent className="max-w-2xl pb-6 leading-6 text-muted-foreground">{faq.a}</AccordionContent></AccordionItem>)}</Accordion></div></section>
 
