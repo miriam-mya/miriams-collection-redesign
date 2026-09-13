@@ -140,6 +140,13 @@ const productGalleryImages = [
   { src: '/complete-ritual.png', alt: "Complete Miriam's hair and skin ritual" },
 ];
 
+const washDaySetItems = [
+  { image: '/revive-duo.jpg', name: 'Shampoo and Conditioner', was: '£50.00', price: '£39.95' },
+  { image: '/skincare-duo.jpg', name: 'Rice Water Cleanser', was: '£22.00', price: '£6' },
+  { image: '/complete-ritual.png', name: 'Rice Water Face Cream', was: '£24.00', price: 'Free' },
+  { image: '/sample-sachets.png', name: '3x Travel Sachets', was: '', price: 'Free' },
+];
+
 const ingredientCards = [
   {
     name: 'Rice Water', image: '/ingredients/rice-water.jpg',
@@ -1309,10 +1316,11 @@ export function StoryStorefront() {
 export function ProductDetail() {
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
-  const [plan, setPlan] = useState<'subscribe' | 'once'>('subscribe');
+  const [plan, setPlan] = useState<'duo' | 'washDay'>('washDay');
   const [quantity, setQuantity] = useState(1);
   const [galleryApi, setGalleryApi] = useState<CarouselApi>();
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const washDaySelected = plan === 'washDay';
 
   useEffect(() => {
     if (!galleryApi) return;
@@ -1382,14 +1390,45 @@ export function ProductDetail() {
             {['Sulfate Free', 'Suitable for All Hair Types', '16 Botanical and Active Ingredients'].map((item) => <li key={item} className="flex items-center gap-3"><span className="flex size-5 items-center justify-center rounded-full bg-primary text-white"><Check className="size-3" /></span>{item}</li>)}
           </ul>
 
-          <div className="mt-8 rounded-2xl border bg-white p-2">
-            <button onClick={() => setPlan('subscribe')} className={`purchase-option ${plan === 'subscribe' ? 'purchase-option-active' : ''}`}><span className="purchase-radio"><i /></span><span className="flex-1 text-left"><strong className="block">Subscribe & save 10%</strong><small>£35.96 · Pause, skip or cancel anytime</small></span><span className="price-stack"><strong>£35.96</strong><s>£39.95</s></span></button>
-            <button onClick={() => setPlan('once')} className={`purchase-option ${plan === 'once' ? 'purchase-option-active' : ''}`}><span className="purchase-radio"><i /></span><span className="flex-1 text-left"><strong className="block">One-time purchase</strong><small>A single wash-day ritual</small></span><strong>£39.95</strong></button>
+          <div className="mt-8 space-y-3">
+            <button onClick={() => setPlan('duo')} className={`purchase-option border bg-white ${plan === 'duo' ? 'purchase-option-active' : 'border-primary/15'}`}>
+              <span className="purchase-radio shrink-0"><i /></span>
+              <span className="flex-1 text-left font-semibold">Shampoo and Conditioner Only</span>
+              <span className="price-stack shrink-0"><strong>£39.95</strong><s>£50.00</s></span>
+            </button>
+
+            <button onClick={() => setPlan('washDay')} className={`purchase-option border ${washDaySelected ? 'purchase-option-active' : 'border-primary/15 bg-white'}`}>
+              <span className="purchase-radio shrink-0"><i /></span>
+              <span className="flex-1 text-left">
+                <strong className="block">Wash Day Set Offer</strong>
+                <small className="flex flex-wrap items-center gap-2"><span>✦ Welcome kit worth £53.99 included</span></small>
+              </span>
+              <span className="price-stack shrink-0"><span className="mb-1 rounded-full bg-primary px-2 py-1 text-[8px] font-bold uppercase tracking-wider text-white">Most popular</span><strong>£45.95</strong><s>£103.99</s></span>
+            </button>
+
+            {washDaySelected && (
+              <div className="overflow-hidden rounded-2xl border border-primary/20 bg-white">
+                <p className="px-4 pb-1 pt-4 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground">Included in your Wash Day Set:</p>
+                <div className="px-4">
+                  {washDaySetItems.map((item, index) => (
+                    <div key={item.name} className={`grid grid-cols-[44px_1fr_auto] items-center gap-3 py-3 ${index < washDaySetItems.length - 1 ? 'border-b' : ''}`}>
+                      <img src={item.image} alt="" className="size-11 rounded-lg bg-muted object-cover" />
+                      <span className="text-sm font-semibold leading-5">{item.name}</span>
+                      <span className="text-right text-sm"><s className="mr-2 text-xs text-muted-foreground">{item.was}</s><strong>{item.price}</strong></span>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-2 divide-x border-t text-[9px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <span className="flex items-center justify-center gap-2 px-3 py-3"><Truck className="size-3.5" /> Free shipping</span>
+                  <span className="flex items-center justify-center gap-2 px-3 py-3"><Clock3 className="size-3.5" /> Limited time offer</span>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="mt-4 flex gap-3">
             <div className="flex min-h-12 items-center rounded-full border bg-white px-1"><button className="p-3" aria-label="Decrease quantity" onClick={() => setQuantity(Math.max(1, quantity - 1))}><Minus className="size-3.5" /></button><span className="min-w-7 text-center text-sm font-bold">{quantity}</span><button className="p-3" aria-label="Increase quantity" onClick={() => setQuantity(quantity + 1)}><Plus className="size-3.5" /></button></div>
-            <button onClick={add} className="flex min-h-12 flex-1 items-center justify-center rounded-full bg-primary px-6 text-xs font-bold uppercase tracking-widest text-white">Add to bag · {plan === 'subscribe' ? '£35.96' : '£39.95'}</button>
+            <button onClick={add} className="flex min-h-12 flex-1 items-center justify-center rounded-full bg-primary px-6 text-xs font-bold uppercase tracking-widest text-white">Add to bag · {washDaySelected ? '£45.95' : '£39.95'}</button>
           </div>
           <p className="mt-4 text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Free UK tracked shipping · 30-day returns · Secure checkout</p>
 
@@ -1441,7 +1480,7 @@ export function ProductDetail() {
       <Newsletter />
       <Footer />
 
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t bg-[#fbfaf6]/95 px-4 py-3 shadow-[0_-8px_30px_rgb(0_0_0/8%)] backdrop-blur md:hidden"><button onClick={add} className="flex min-h-12 w-full items-center justify-between rounded-full bg-primary px-6 text-xs font-bold uppercase tracking-widest text-white"><span>Add to bag</span><span>{plan === 'subscribe' ? '£35.96' : '£39.95'}</span></button></div>
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t bg-[#fbfaf6]/95 px-4 py-3 shadow-[0_-8px_30px_rgb(0_0_0/8%)] backdrop-blur md:hidden"><button onClick={add} className="flex min-h-12 w-full items-center justify-between rounded-full bg-primary px-6 text-xs font-bold uppercase tracking-widest text-white"><span>Add to bag</span><span>{washDaySelected ? '£45.95' : '£39.95'}</span></button></div>
     </main>
   );
 }
