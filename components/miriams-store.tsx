@@ -489,10 +489,12 @@ function Header({
   cartCount,
   openCart,
   transparent = false,
+  sticky = false,
 }: {
   cartCount: number;
   openCart: () => void;
   transparent?: boolean;
+  sticky?: boolean;
 }) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -509,7 +511,7 @@ function Header({
   return (
     <>
       <Announcement />
-      <header className={`left-0 right-0 z-40 transition-[background-color,color,border-color,box-shadow] duration-300 ${solid ? `${transparent ? 'fixed top-0' : 'relative'} border-b border-border bg-background text-foreground shadow-[0_8px_30px_rgb(0_0_0/6%)]` : 'absolute top-8 border-b border-transparent bg-transparent text-white shadow-none'}`}>
+      <header className={`left-0 right-0 z-40 transition-[background-color,color,border-color,box-shadow] duration-300 ${solid ? `${transparent ? 'fixed top-0' : sticky ? 'sticky top-0' : 'relative'} border-b border-border bg-background text-foreground shadow-[0_8px_30px_rgb(0_0_0/6%)]` : 'absolute top-8 border-b border-transparent bg-transparent text-white shadow-none'}`}>
         <div className="mx-auto grid h-[76px] max-w-[1440px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-5 sm:h-[88px] sm:px-8 lg:h-[108px] lg:px-12">
           <nav className="hidden items-center gap-6 text-[12px] font-bold uppercase tracking-[0.08em] lg:flex">
             <a href="/hair" className="nav-link">Hair</a>
@@ -813,7 +815,7 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
                 <article className="overflow-hidden rounded-2xl border bg-white">
                   <div className="relative aspect-square overflow-hidden bg-[#e7e2da]">
                     <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="h-full w-full object-cover object-top" />
-                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/55 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white via-white/60 to-transparent" />
                     <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
                   </div>
                   <div className="relative -mt-8 px-6 pb-7 sm:px-8 sm:pb-8">
@@ -1267,13 +1269,13 @@ export function StoryStorefront() {
     <main className="min-h-screen overflow-x-clip bg-background text-foreground">
       <Header cartCount={cartCount} openCart={() => setCartOpen(true)} transparent />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
-      <section className="relative isolate flex min-h-[720px] items-end overflow-hidden sm:min-h-[780px] lg:min-h-[calc(100svh-72px)]">
+      <section className="relative isolate flex min-h-[720px] items-end overflow-hidden sm:min-h-[780px] lg:min-h-[calc(100svh-32px)]">
         <img src="/editorial.png" alt="Miriam’s Rice Water Shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover object-[58%_center] sm:object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d2924]/80 via-[#0d2924]/15 to-black/5" />
-        <div className="relative w-full px-5 pb-8 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
-          <div className="max-w-[760px] rounded-[1.75rem] border border-white/25 bg-white/15 p-6 text-white shadow-2xl backdrop-blur-xl sm:p-9 lg:p-11">
+        <div className="relative w-full px-5 pb-8 sm:px-8 sm:pb-12 lg:px-12 lg:pb-12 xl:px-16 xl:pb-14">
+          <div className="max-w-[760px] rounded-[1.75rem] border border-white/25 bg-white/15 p-6 text-white shadow-2xl backdrop-blur-xl sm:p-9 lg:max-w-[680px] lg:p-9 xl:max-w-[720px]">
             <p className="section-kicker text-white/75">My journey</p>
-            <h1 className="mt-4 font-heading text-[clamp(3rem,11vw,7.6rem)] leading-[0.88] tracking-[-0.05em]">The story behind Miriam’s Collection.</h1>
+            <h1 className="mt-4 font-heading text-[clamp(3rem,11vw,7.6rem)] leading-[0.88] tracking-[-0.05em] lg:text-[clamp(4rem,5vw,5.8rem)]">The story behind Miriam’s Collection.</h1>
             <p className="body-copy mt-6 max-w-2xl text-white/85">It began with a personal search for healthier hair and grew into everyday rituals designed to help others feel confident too.</p>
             <a href="#story-timeline" className="cta cta-light mt-7">Read the story <ArrowRight className="rotate-90" /></a>
           </div>
@@ -1366,7 +1368,7 @@ export function ProductDetail() {
 
   return (
     <main className="min-h-screen overflow-x-clip bg-background text-foreground pb-20 md:pb-0">
-      <Header cartCount={cartCount} openCart={() => setCartOpen(true)} />
+      <Header cartCount={cartCount} openCart={() => setCartOpen(true)} sticky />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
 
       <div className="mx-auto max-w-[1440px] px-5 py-5 sm:px-8 lg:px-12">
@@ -1457,6 +1459,8 @@ export function ProductDetail() {
 
         </div>
       </section>
+
+      <PressStrip />
 
       <section className="bg-[#f3ede4] px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1440px]">
