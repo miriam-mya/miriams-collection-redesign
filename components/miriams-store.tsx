@@ -276,30 +276,28 @@ const reviews = [
     quote:
       'My curls now look amazing. Underneath they are so silky and shiny — I am hooked.',
     name: 'Claire',
+    image: '/social-curly.webp',
   },
   {
-    tag: 'Ageing hair',
+    tag: 'Dry, coloured hair',
     quote:
-      'After the first wash my hair felt much softer. It looks thicker and seems to be growing again.',
-    name: 'Verified customer',
+      'The difference with this one is that my hair stays hydrated, forms curls better and keeps its shine for longer.',
+    name: 'Sara',
+    image: '/social-coloured.webp',
   },
   {
-    tag: 'Men’s hair',
+    tag: 'Compliments',
     quote:
-      'I have thinning hair and a receding hairline. I have noticed baby hairs around my hairline.',
-    name: 'David',
+      'From wash one the quality of my hair has changed. It doesn’t strip the hair but somehow feels so much cleaner.',
+    name: 'Lucy J',
+    image: '/social-compliments.webp',
   },
   {
-    tag: 'Sensitive scalp',
+    tag: 'Knotty hair',
     quote:
-      'My scalp is healthier with no dryness or flakes, and it has made my hair so much softer.',
-    name: 'Emma W.',
-  },
-  {
-    tag: 'Grey hair',
-    quote:
-      'It softens my wiry, greying hair without weighing it down and makes it feel extraordinarily healthy.',
-    name: 'Marie P.',
+      'My hair gets very knotty and tangled at the ends, but I’ve noticed a vast improvement. This shampoo makes my hair feel so soft.',
+    name: 'Sharon',
+    image: '/social-knotty.webp',
   },
 ];
 
@@ -942,7 +940,7 @@ function LegacyHomeStorefront() {
             <CarouselContent className="-ml-5">
               {reviews.map((review) => (
                 <CarouselItem key={review.tag} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                  <article className="flex min-h-[330px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex justify-between"><Stars /><span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified</span></div><blockquote className="mt-9 flex-1 font-heading text-[1.8rem] leading-[1.08] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-8 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
+                  <article className="flex min-h-[390px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex items-start justify-between gap-5"><img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="size-20 rounded-2xl object-cover object-top" /><div className="text-right"><Stars /><span className="mt-3 block text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified</span></div></div><blockquote className="mt-7 flex-1 font-heading text-[1.65rem] leading-[1.1] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -1049,7 +1047,7 @@ export function HomeStorefront() {
             <CarouselContent className="-ml-5">
               {reviews.map((review) => (
                 <CarouselItem key={review.tag} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                  <article className="flex min-h-[330px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex justify-between"><Stars /><span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified</span></div><blockquote className="mt-9 flex-1 font-heading text-[1.8rem] leading-[1.08] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-8 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
+                  <article className="flex min-h-[390px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex items-start justify-between gap-5"><img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="size-20 rounded-2xl object-cover object-top" /><div className="text-right"><Stars /><span className="mt-3 block text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified</span></div></div><blockquote className="mt-7 flex-1 font-heading text-[1.65rem] leading-[1.1] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -1082,7 +1080,7 @@ export function HomeStorefront() {
       <section id="story" className="grid bg-[#e9e1d6] lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative min-h-[520px] overflow-hidden lg:min-h-[760px]"><img src="/editorial.png" alt="Miriam's rice water shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" /></div>
         <div className="flex items-center px-7 py-16 sm:px-16 lg:px-[7vw]">
-          <div><p className="section-kicker">My journey</p><h2 className="mt-4 font-heading text-[clamp(3.3rem,5.5vw,6.2rem)] leading-[0.88] tracking-[-0.045em]">Miriam’s Collection.</h2><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><a href="/our-story" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Continue my journey <ArrowRight className="size-4" /></a></div>
+          <div><p className="section-kicker">My journey</p><h2 className="mt-4 font-heading text-[clamp(3.3rem,5.5vw,6.2rem)] leading-[0.88] tracking-[-0.045em]">Miriam’s Collection.</h2><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><a href="/our-story" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Read my story <ArrowRight className="size-4" /></a></div>
         </div>
       </section>
 
