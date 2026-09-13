@@ -1265,7 +1265,7 @@ export function StoryStorefront() {
   ];
   return (
     <main className="min-h-screen overflow-x-clip bg-background text-foreground">
-      <Header cartCount={cartCount} openCart={() => setCartOpen(true)} />
+      <Header cartCount={cartCount} openCart={() => setCartOpen(true)} transparent />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
       <section className="relative isolate flex min-h-[720px] items-end overflow-hidden sm:min-h-[780px] lg:min-h-[calc(100svh-72px)]">
         <img src="/editorial.png" alt="Miriam’s Rice Water Shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover object-[58%_center] sm:object-center" />
@@ -1290,32 +1290,34 @@ export function StoryStorefront() {
         </div>
       </section>
 
-      <section id="story-timeline" className="bg-[#f3ede4] px-5 py-24 sm:px-8 sm:py-32">
+      <section id="story-timeline" className="bg-[#f3ede4] px-5 pt-24 sm:px-8 sm:pt-32">
         <div className="mx-auto max-w-[1380px]">
           <div className="mx-auto max-w-3xl text-center">
             <p className="section-kicker">How it all began</p>
             <h2 className="section-title mt-4">From one personal journey to thousands of wash days.</h2>
           </div>
 
-          <div className="relative mt-20 sm:mt-28">
+          <div className="relative mt-12 sm:mt-16">
             <div className="absolute bottom-0 left-[23px] top-0 w-px bg-primary/20 lg:left-1/2" aria-hidden="true" />
-            <div className="space-y-20 sm:space-y-28 lg:space-y-36">
+            <div className="snap-y snap-proximity">
               {storyChapters.map((chapter, index) => (
-                <article key={chapter.number} className="relative pl-16 lg:grid lg:grid-cols-2 lg:items-center lg:gap-20 lg:pl-0">
-                  <span className="absolute left-0 top-1 z-10 flex size-12 items-center justify-center rounded-full border border-primary/25 bg-[#f3ede4] font-heading text-lg lg:left-1/2 lg:-translate-x-1/2">{chapter.number}</span>
-                  <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                    <div className="overflow-hidden rounded-[1.5rem] bg-[#ddd4c8] shadow-[0_24px_80px_rgba(22,63,56,0.08)]">
-                      <img src={chapter.image} alt={chapter.alt} className={`w-full object-cover ${index === 0 ? 'aspect-[4/5] object-[66%_center]' : 'aspect-[5/4]'}`} />
+                <SlideUp key={chapter.number} className="flex min-h-[100svh] snap-start items-center py-14 sm:py-20 lg:py-12">
+                  <article className="relative w-full pl-16 lg:grid lg:grid-cols-2 lg:items-center lg:gap-20 lg:pl-0">
+                    <span className="absolute left-0 top-1 z-10 flex size-12 items-center justify-center rounded-full border border-primary/25 bg-[#f3ede4] font-heading text-lg lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2">{chapter.number}</span>
+                    <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                      <div className="overflow-hidden rounded-[1.5rem] bg-[#ddd4c8] shadow-[0_24px_80px_rgba(22,63,56,0.08)] lg:h-[min(64svh,640px)]">
+                        <img src={chapter.image} alt={chapter.alt} className={`aspect-[5/4] h-full w-full object-cover lg:aspect-auto ${index === 0 ? 'object-[66%_center]' : ''}`} />
+                      </div>
                     </div>
-                  </div>
-                  <div className={`mt-8 lg:mt-0 ${index % 2 === 1 ? 'lg:order-1 lg:pr-12' : 'lg:pl-12'}`}>
-                    <p className="section-kicker">{chapter.eyebrow}</p>
-                    <h3 className="mt-4 max-w-xl font-heading text-[clamp(2.8rem,4.8vw,5.4rem)] leading-[0.94] tracking-[-0.04em]">{chapter.title}</h3>
-                    <div className="body-copy mt-7 max-w-xl space-y-5 text-[#40534f]">
-                      {chapter.copy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    <div className={`mt-8 lg:mt-0 ${index % 2 === 1 ? 'lg:order-1 lg:pr-12' : 'lg:pl-12'}`}>
+                      <p className="section-kicker">{chapter.eyebrow}</p>
+                      <h3 className="mt-4 max-w-xl font-heading text-[clamp(2.8rem,4.8vw,5.4rem)] leading-[0.94] tracking-[-0.04em]">{chapter.title}</h3>
+                      <div className="body-copy mt-7 max-w-xl space-y-5 text-[#40534f]">
+                        {chapter.copy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                      </div>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </SlideUp>
               ))}
             </div>
           </div>
