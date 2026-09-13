@@ -534,12 +534,13 @@ function Header({
                 <SheetClose render={<a href="/skin" />}>Skin</SheetClose>
                 <SheetClose render={<a href="/sets" />}>Sets</SheetClose>
                 <SheetClose render={<a href="/#shop" />}>All Products</SheetClose>
+                <SheetClose render={<a href="/our-story" />}>Our Story</SheetClose>
               </nav>
             </SheetContent>
           </Sheet>
 
           <a href="/" aria-label="Miriam's Collection home" className="flex justify-center">
-            <img src="/miriams-logo-2026.svg" alt="Miriam's Collection" className={`h-[62px] w-[62px] object-contain transition-[filter] duration-300 sm:h-[74px] sm:w-[74px] lg:h-[96px] lg:w-[96px] ${solid ? '' : 'brightness-0 invert'}`} />
+            <img src="/miriams-logo-2026.svg" alt="Miriam's Collection" className={`h-[74px] w-[96px] object-contain transition-[filter] duration-300 sm:h-[74px] sm:w-[74px] lg:h-[96px] lg:w-[96px] ${solid ? '' : 'brightness-0 invert'}`} />
           </a>
 
           <div className="flex items-center justify-end gap-0.5 sm:gap-1">
