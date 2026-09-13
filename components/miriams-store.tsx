@@ -637,10 +637,10 @@ function ComparisonSection() {
         </div>
         <div className="mt-14 grid gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
           <div>
-            <div className="h-full min-h-[470px] overflow-hidden rounded-2xl bg-[#ded7cc]"><img src="/terrarium.png" alt="Most shampoos compared with Miriam’s Collection" className="h-full w-full object-cover" /></div>
-            <div className="-mt-7 grid grid-cols-2 gap-3 px-4 sm:px-6">
-              <span className="relative rounded-full bg-[#eadcc3] px-4 py-3 text-center text-xs font-bold uppercase tracking-wider">Most shampoos</span>
-              <span className="relative rounded-full bg-primary px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-white">Miriam’s Collection</span>
+            <div className="aspect-[2014/1490] overflow-hidden rounded-2xl bg-[#ded7cc] lg:h-full lg:min-h-[470px] lg:aspect-auto"><img src="/terrarium.png" alt="Most shampoos compared with Miriam’s Collection" className="h-full w-full object-cover" /></div>
+            <div className="-mt-5 mb-4 grid grid-cols-2 gap-2 px-3 sm:-mt-7 sm:mb-0 sm:gap-3 sm:px-6">
+              <span className="relative whitespace-nowrap rounded-full bg-[#eadcc3] px-3 py-3.5 text-center text-[10px] font-bold uppercase leading-none tracking-[0.08em] sm:px-4 sm:py-3 sm:text-xs sm:tracking-wider">Most shampoos</span>
+              <span className="relative whitespace-nowrap rounded-full bg-primary px-3 py-3.5 text-center text-[10px] font-bold uppercase leading-none tracking-[0.08em] text-white sm:px-4 sm:py-3 sm:text-xs sm:tracking-wider">Miriam’s Collection</span>
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl border border-[#cfc8bd] bg-[#f8f4ec]">
