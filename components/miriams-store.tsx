@@ -813,11 +813,11 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
                 <article className="overflow-hidden rounded-2xl border bg-white">
                   <div className="relative aspect-square overflow-hidden bg-[#e7e2da]">
                     <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="h-full w-full object-cover object-top" />
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/55 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/55 to-transparent" />
                     <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
                   </div>
                   <div className="relative -mt-8 px-6 pb-7 sm:px-8 sm:pb-8">
-                    <span className="mb-4 w-fit rounded-full bg-[#edf3f0] px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified review</span>
+                    <span className="mb-2 inline-flex w-fit rounded-full bg-[#edf3f0] px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified review</span>
                     <blockquote className="font-heading text-[1.55rem] leading-[1.1] tracking-[-0.02em] sm:text-[1.7rem]">“{review.quote}”</blockquote>
                     <div className="mt-6 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-sm text-muted-foreground">For {review.tag.toLowerCase()}</p></div>
                   </div>
