@@ -420,12 +420,12 @@ function SlideUp({ children, className = '' }: { children: ReactNode; className?
 
 function Announcement() {
   return (
-    <div className="flex h-8 items-center justify-center bg-primary px-5 text-center text-[10px] font-semibold uppercase tracking-[0.13em] text-primary-foreground sm:text-xs">
-      <span className="hidden sm:inline">Free UK tracked shipping over £40</span>
-      <span className="hidden px-4 text-white/35 sm:inline">·</span>
+    <div className="flex h-8 items-center justify-center overflow-hidden whitespace-nowrap bg-primary px-5 text-center text-[10px] font-semibold uppercase tracking-[0.13em] text-primary-foreground sm:text-xs">
+      <span className="hidden lg:inline">Free UK tracked shipping over £40</span>
+      <span className="hidden px-4 text-white/35 lg:inline">·</span>
       <span>4.79 from 3,300 reviews</span>
-      <span className="hidden px-4 text-white/35 sm:inline">·</span>
-      <span className="hidden sm:inline">Subscribe & save 10%</span>
+      <span className="hidden px-4 text-white/35 lg:inline">·</span>
+      <span className="hidden lg:inline">Wash Day Set Offer · £45.95</span>
     </div>
   );
 }
@@ -1084,7 +1084,7 @@ export function HomeStorefront() {
         <img src="/hero-current.png" alt="Woman using Miriam's Rice Water Shampoo outdoors" className="absolute inset-0 h-full w-full object-cover object-[68%_65%] sm:object-[66%_48%] lg:object-[64%_46%]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#102c26]/78 via-[#102c26]/22 to-transparent" />
         <div className="relative mx-auto flex h-full max-w-[1480px] items-end px-5 py-5 sm:items-center sm:px-8 sm:py-9 lg:px-14">
-          <div className="home-hero-card max-w-[520px] rounded-[1.5rem] border border-white/30 bg-white/[0.16] p-4 text-white shadow-[0_28px_90px_rgb(0_0_0/28%)] backdrop-blur-[28px] sm:p-8 lg:p-9">
+          <div className="home-hero-card max-w-[520px] rounded-[1.5rem] border border-white/30 bg-white/[0.16] p-4 text-white shadow-[0_28px_90px_rgb(0_0_0/28%)] backdrop-blur-[28px] sm:max-w-[420px] sm:p-6 lg:max-w-[520px] lg:p-9">
             <p className="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-white/75 sm:block">★ 4.79 from 3,300 reviews</p>
             <h1 className="mt-3 font-heading text-[clamp(2.2rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em]">Your shampoo could be doing so much more.</h1>
             <p className="hero-support mt-4 max-w-md text-base leading-7 text-white/[0.86] sm:text-[17px]">Meet the shampoo and conditioner that do more than clean.</p>
