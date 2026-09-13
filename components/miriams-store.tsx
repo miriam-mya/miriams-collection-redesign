@@ -102,6 +102,37 @@ const completeRitual: Product = {
   colour: '#ddebe8',
 };
 
+const productStoryVideos = [
+  {
+    number: '1',
+    title: '65% real rice water',
+    copy: "Other brands use water as their main ingredient. We've flipped that on its head by using 65% real rice water instead - naturally rich in vitamins, minerals and antioxidants.",
+    src: 'https://www.miriamscollection.co.uk/cdn/shop/videos/c/vp/d54e6cd579d947b4a23733d43e67ee62/d54e6cd579d947b4a23733d43e67ee62.HD-1080p-2.5Mbps-57455975.mp4?v=0',
+    poster: 'https://www.miriamscollection.co.uk/cdn/shop/files/preview_images/d54e6cd579d947b4a23733d43e67ee62.thumbnail.0000000000_1600x.jpg?v=1757874234',
+  },
+  {
+    number: '2',
+    title: '16 hero ingredients across the set',
+    copy: 'Most Shampoo and Conditioner sets contain just 1 or 2. Let that sink in.',
+    src: 'https://www.miriamscollection.co.uk/cdn/shop/videos/c/vp/e027cc19f27f4becb0c3d8635bfdd3cc/e027cc19f27f4becb0c3d8635bfdd3cc.HD-1080p-7.2Mbps-91556265.mp4?v=0',
+    poster: 'https://www.miriamscollection.co.uk/cdn/shop/files/preview_images/e027cc19f27f4becb0c3d8635bfdd3cc.thumbnail.0000000000_1600x.jpg?v=1786663045',
+  },
+  {
+    number: '3',
+    title: 'No sulfates',
+    copy: 'Sulfates strip the scalp, causing it to overproduce oil to compensate - this is what leads to greasy hair on day 2 or 3 after washing!',
+    src: 'https://www.miriamscollection.co.uk/cdn/shop/videos/c/vp/edeec1e366a54a58b8b478e8e078c911/edeec1e366a54a58b8b478e8e078c911.HD-1080p-7.2Mbps-91555098.mp4?v=0',
+    poster: 'https://www.miriamscollection.co.uk/cdn/shop/files/preview_images/edeec1e366a54a58b8b478e8e078c911.thumbnail.0000000000_1600x.jpg?v=1786661732',
+  },
+  {
+    number: '4',
+    title: 'Gentle amino acid cleansers',
+    copy: 'Ensure a nice foamy, creamy lather that cleans build up without stripping the scalp.',
+    src: 'https://www.miriamscollection.co.uk/cdn/shop/videos/c/vp/8d952906c38e4c0b89143a446e58fc1e/8d952906c38e4c0b89143a446e58fc1e.HD-1080p-7.2Mbps-85736096.mp4?v=0',
+    poster: 'https://www.miriamscollection.co.uk/cdn/shop/files/preview_images/8d952906c38e4c0b89143a446e58fc1e.thumbnail.0000000000_1600x.jpg?v=1780607067',
+  },
+];
+
 const ingredientCards = [
   {
     name: 'Rice Water', image: '/ingredients/rice-water.jpg',
@@ -1343,6 +1374,41 @@ export function ProductDetail() {
           <p className="mt-4 text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Free UK tracked shipping · 30-day returns · Secure checkout</p>
 
           <div className="mt-8 rounded-2xl bg-[#dceae6] p-6"><div className="flex items-center gap-2"><Sparkles className="size-4" /><strong className="text-xs uppercase tracking-widest">What you’ll notice</strong></div><div className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-4"><div><strong className="timeline-time">First washes</strong><p className="timeline-copy">Softer, hydrated hair</p></div><div><strong className="timeline-time">2–4 weeks</strong><p className="timeline-copy">More shine, less frizz</p></div><div><strong className="timeline-time">Month 3</strong><p className="timeline-copy">Stronger-looking growth</p></div><div><strong className="timeline-time">Beyond</strong><p className="timeline-copy">A consistent ritual</p></div></div></div>
+        </div>
+      </section>
+
+      <section className="bg-[#f3ede4] px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="max-w-5xl">
+            <p className="section-kicker">Inside the formula</p>
+            <h2 className="mt-4 font-heading text-[clamp(3rem,5.5vw,6rem)] leading-[0.92] tracking-[-0.045em]">Here’s how the Rice Water Shampoo and Conditioner work</h2>
+          </div>
+          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-5 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4">
+            {productStoryVideos.map((item) => (
+              <article key={item.number} className="min-w-[82vw] snap-start sm:min-w-0">
+                <div className="aspect-[3/4] overflow-hidden rounded-[1.35rem] bg-[#d8d2c9]">
+                  <video
+                    className="h-full w-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    poster={item.poster}
+                    title={`${item.number}. ${item.title}`}
+                  >
+                    <source src={item.src} type="video/mp4" />
+                  </video>
+                </div>
+                <div className="pt-5">
+                  <p className="section-kicker">{item.number.padStart(2, '0')}</p>
+                  <h3 className="mt-2 font-heading text-[1.75rem] leading-[1.05] tracking-[-0.025em]">{item.title}</h3>
+                  <p className="mt-3 text-base leading-7 text-[#40534f]">{item.copy}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground sm:hidden">Swipe to see how the formula works <ArrowRight className="ml-2 inline size-4" /></p>
         </div>
       </section>
 
