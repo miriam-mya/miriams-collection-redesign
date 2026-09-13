@@ -732,13 +732,13 @@ function IngredientGallery() {
                   <SheetDescription className="body-copy mt-6 text-[#40534f]">{selectedIngredient.description}</SheetDescription>
                 </SheetHeader>
                 <div className="mt-10 border-y border-primary/15">
-                  <div className="grid gap-2 py-6 sm:grid-cols-[140px_1fr] sm:gap-6">
+                  <div className="py-6">
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">What it helps with</p>
-                    <p className="body-copy font-semibold text-primary">{selectedIngredient.helps}</p>
+                    <p className="body-copy mt-3 font-semibold text-primary">{selectedIngredient.helps}</p>
                   </div>
-                  <div className="grid gap-2 border-t border-primary/15 py-6 sm:grid-cols-[140px_1fr] sm:gap-6">
+                  <div className="border-t border-primary/15 py-6">
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">The Science</p>
-                    <p className="body-copy text-[#40534f]">{selectedIngredient.science}</p>
+                    <p className="body-copy mt-3 text-[#40534f]">{selectedIngredient.science}</p>
                   </div>
                 </div>
                 <div className="mt-8">
