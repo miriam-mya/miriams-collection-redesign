@@ -1138,15 +1138,130 @@ export function CategoryStorefront({ category }: { category: CategoryKey }) {
 export function StoryStorefront() {
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
+  const storyChapters = [
+    {
+      number: '01',
+      eyebrow: 'The beginning',
+      title: 'A search for healthier hair.',
+      copy: [
+        'Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage.',
+        'Like so many people, Miriam had spent years experimenting with different remedies, trying to find something that could make everyday haircare feel simpler and more effective.',
+      ],
+      image: '/hero-ritual.png',
+      alt: 'A woman using Miriam’s Rice Water Shampoo as part of her wash-day ritual',
+    },
+    {
+      number: '02',
+      eyebrow: 'The discovery',
+      title: 'It started with rice water.',
+      copy: [
+        'After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.',
+        'With a commitment to real results, we set out to create a range to help others regain their confidence, harnessing the transformative power of Rice Water.',
+      ],
+      image: '/close-up.png',
+      alt: 'Miriam’s Rice Water Shampoo and Conditioner',
+    },
+    {
+      number: '03',
+      eyebrow: 'The first formula',
+      title: 'Every wash became an opportunity.',
+      copy: [
+        'We realised the simplest step to healthier hair is a good shampoo. Oiling has its benefits, but it requires time and consistency, something many of us can’t always commit to.',
+        'But we all shower. So creating a shampoo that truly cares for your hair made perfect sense.',
+      ],
+      image: '/editorial.png',
+      alt: 'Miriam’s Rice Water Shampoo ready for an everyday routine',
+    },
+    {
+      number: '04',
+      eyebrow: 'The collection grows',
+      title: 'From healthy hair to radiant skin.',
+      copy: [
+        'As we built our customer base, we connected with people looking for solutions to a variety of skin concerns, especially in the UK’s moisture-stripping weather.',
+        'So, we took it a step further—incorporating our Rice Water formulations into high-quality skincare products. And it paid off.',
+      ],
+      image: '/skincare-duo.jpg',
+      alt: 'Miriam’s Rice Water Cleanser and Face Cream',
+    },
+    {
+      number: '05',
+      eyebrow: 'Today',
+      title: 'A ritual shared by thousands.',
+      copy: [
+        'We’ve rapidly built a loyal community of customers who swear by our products for results.',
+        'Our mission remains the same: luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss.',
+      ],
+      image: '/complete-ritual.png',
+      alt: 'The complete Miriam’s Collection hair and skincare ritual',
+    },
+  ];
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Header cartCount={cartCount} openCart={() => setCartOpen(true)} />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
-      <section className="grid bg-[#e9e1d6] lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative min-h-[560px] overflow-hidden lg:min-h-[820px]"><img src="/editorial.png" alt="Miriam’s Collection" className="absolute inset-0 h-full w-full object-cover" /></div>
-        <div className="flex items-center px-7 py-16 sm:px-16 lg:px-[7vw]"><div><p className="section-kicker">My journey</p><h1 className="mt-4 font-heading text-[clamp(4rem,6.5vw,7rem)] leading-[0.86] tracking-[-0.05em]">The story behind Miriam’s Collection.</h1><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><div className="mt-8 flex flex-wrap gap-3"><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="social-pill"><Music2 /> Follow on TikTok</a><a href="https://www.instagram.com/miriamscollectionuk/" target="_blank" rel="noreferrer" className="social-pill"><Camera /> Follow on Instagram</a></div></div></div>
+      <section className="relative isolate flex min-h-[720px] items-end overflow-hidden sm:min-h-[780px] lg:min-h-[calc(100svh-72px)]">
+        <img src="/editorial.png" alt="Miriam’s Rice Water Shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover object-[58%_center] sm:object-center" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d2924]/80 via-[#0d2924]/15 to-black/5" />
+        <div className="relative w-full px-5 pb-8 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
+          <div className="max-w-[760px] rounded-[1.75rem] border border-white/25 bg-white/15 p-6 text-white shadow-2xl backdrop-blur-xl sm:p-9 lg:p-11">
+            <p className="section-kicker text-white/75">My journey</p>
+            <h1 className="mt-4 font-heading text-[clamp(3.6rem,7vw,7.6rem)] leading-[0.86] tracking-[-0.05em]">The story behind Miriam’s Collection.</h1>
+            <p className="body-copy mt-6 max-w-2xl text-white/85">It began with a personal search for healthier hair and grew into everyday rituals designed to help others feel confident too.</p>
+            <a href="#story-timeline" className="cta cta-light mt-7">Read the story <ArrowRight className="rotate-90" /></a>
+          </div>
+        </div>
       </section>
-      <section className="px-5 py-24 sm:px-8 sm:py-32"><div className="mx-auto max-w-[1380px]"><p className="section-kicker">Rice Water Rituals, Shared By You.</p><h2 className="section-title mt-4">Continue the journey.</h2><div className="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">{socialTiles.map((tile) => <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" /><span className="absolute left-4 top-4 flex size-10 items-center justify-center rounded-full bg-white text-primary"><Play className="size-4 fill-current" /></span><p className="absolute bottom-5 left-5 font-heading text-2xl text-white">{tile.label}</p></a>)}</div></div></section>
+
+      <section className="bg-primary px-5 py-20 text-white sm:px-8 sm:py-28">
+        <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
+          <div>
+            <p className="section-kicker text-[#bad6ce]">Told by Miriam</p>
+            <p className="mt-3 text-sm text-white/55">Founder, Miriam’s Collection</p>
+          </div>
+          <blockquote className="font-heading text-[clamp(2.5rem,5vw,5.3rem)] leading-[0.98] tracking-[-0.035em]">“I wanted the products we use every day to do more for our hair and skin.”</blockquote>
+        </div>
+      </section>
+
+      <section id="story-timeline" className="bg-[#f3ede4] px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-[1380px]">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="section-kicker">How it all began</p>
+            <h2 className="section-title mt-4">From one personal journey to thousands of wash days.</h2>
+          </div>
+
+          <div className="relative mt-20 sm:mt-28">
+            <div className="absolute bottom-0 left-[23px] top-0 w-px bg-primary/20 lg:left-1/2" aria-hidden="true" />
+            <div className="space-y-20 sm:space-y-28 lg:space-y-36">
+              {storyChapters.map((chapter, index) => (
+                <article key={chapter.number} className="relative pl-16 lg:grid lg:grid-cols-2 lg:items-center lg:gap-20 lg:pl-0">
+                  <span className="absolute left-0 top-1 z-10 flex size-12 items-center justify-center rounded-full border border-primary/25 bg-[#f3ede4] font-heading text-lg lg:left-1/2 lg:-translate-x-1/2">{chapter.number}</span>
+                  <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <div className="overflow-hidden rounded-[1.5rem] bg-[#ddd4c8] shadow-[0_24px_80px_rgba(22,63,56,0.08)]">
+                      <img src={chapter.image} alt={chapter.alt} className={`w-full object-cover ${index === 0 ? 'aspect-[4/5] object-[66%_center]' : 'aspect-[5/4]'}`} />
+                    </div>
+                  </div>
+                  <div className={`mt-8 lg:mt-0 ${index % 2 === 1 ? 'lg:order-1 lg:pr-12' : 'lg:pl-12'}`}>
+                    <p className="section-kicker">{chapter.eyebrow}</p>
+                    <h3 className="mt-4 max-w-xl font-heading text-[clamp(2.8rem,4.8vw,5.4rem)] leading-[0.94] tracking-[-0.04em]">{chapter.title}</h3>
+                    <div className="body-copy mt-7 max-w-xl space-y-5 text-[#40534f]">
+                      {chapter.copy.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#dceae6] px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div><p className="section-kicker">Our mission</p><h2 className="mt-4 font-heading text-[clamp(3.4rem,6vw,6.6rem)] leading-[0.9] tracking-[-0.045em]">Real results. No unnecessary fuss.</h2></div>
+          <div><p className="body-copy max-w-2xl text-[#40534f]">We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p><a href="/#shop" className="cta cta-dark mt-8">Shop the collection <ArrowRight /></a></div>
+        </div>
+      </section>
+
+      <section className="px-5 py-24 sm:px-8 sm:py-32"><div className="mx-auto max-w-[1380px]"><p className="section-kicker">Rice Water Rituals, Shared By You.</p><h2 className="section-title mt-4">The story continues with you.</h2><div className="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">{socialTiles.map((tile) => <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" /><span className="absolute left-4 top-4 flex size-10 items-center justify-center rounded-full bg-white text-primary"><Play className="size-4 fill-current" /></span><p className="absolute bottom-5 left-5 font-heading text-2xl text-white">{tile.label}</p></a>)}</div><div className="mt-9 flex flex-wrap gap-3"><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="social-pill"><Music2 /> Follow on TikTok</a><a href="https://www.instagram.com/miriamscollectionuk/" target="_blank" rel="noreferrer" className="social-pill"><Camera /> Follow on Instagram</a></div></div></section>
       <Newsletter />
       <Footer />
     </main>
