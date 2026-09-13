@@ -28,6 +28,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import {
+  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -131,6 +132,12 @@ const productStoryVideos = [
     src: 'https://www.miriamscollection.co.uk/cdn/shop/videos/c/vp/8d952906c38e4c0b89143a446e58fc1e/8d952906c38e4c0b89143a446e58fc1e.HD-1080p-7.2Mbps-85736096.mp4?v=0',
     poster: 'https://www.miriamscollection.co.uk/cdn/shop/files/preview_images/8d952906c38e4c0b89143a446e58fc1e.thumbnail.0000000000_1600x.jpg?v=1780607067',
   },
+];
+
+const productGalleryImages = [
+  { src: '/revive-duo.jpg', alt: 'Rice Water Revive Duo' },
+  { src: '/close-up.png', alt: 'Close-up of rice water shampoo and conditioner' },
+  { src: '/complete-ritual.png', alt: "Complete Miriam's hair and skin ritual" },
 ];
 
 const ingredientCards = [
@@ -1304,6 +1311,20 @@ export function ProductDetail() {
   const [cartOpen, setCartOpen] = useState(false);
   const [plan, setPlan] = useState<'subscribe' | 'once'>('subscribe');
   const [quantity, setQuantity] = useState(1);
+  const [galleryApi, setGalleryApi] = useState<CarouselApi>();
+  const [galleryIndex, setGalleryIndex] = useState(0);
+
+  useEffect(() => {
+    if (!galleryApi) return;
+    const updateGalleryIndex = () => setGalleryIndex(galleryApi.selectedScrollSnap());
+    updateGalleryIndex();
+    galleryApi.on('select', updateGalleryIndex);
+    galleryApi.on('reInit', updateGalleryIndex);
+    return () => {
+      galleryApi.off('select', updateGalleryIndex);
+      galleryApi.off('reInit', updateGalleryIndex);
+    };
+  }, [galleryApi]);
 
   const add = () => {
     setCartCount((count) => count + quantity);
@@ -1319,42 +1340,41 @@ export function ProductDetail() {
         <a href="/#shop" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground"><ArrowLeft className="size-3.5" /> Back to shop</a>
       </div>
 
-      <section className="mx-auto grid max-w-[1440px] gap-8 px-5 pb-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:px-12">
+      <section className="mx-auto grid max-w-[1320px] gap-8 px-5 pb-20 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:px-12">
         <div className="lg:hidden">
           <p className="section-kicker">Bestselling hair ritual</p>
-          <h1 className="mt-3 font-heading text-[clamp(2.8rem,12vw,4.5rem)] leading-[0.9] tracking-[-0.045em]">The Rice Water Revive Duo (Sulfate Free)</h1>
+          <h1 className="mt-3 max-w-lg font-heading text-[clamp(2.15rem,9vw,3rem)] leading-[0.94] tracking-[-0.035em]">The Rice Water Revive Duo (Sulfate Free)</h1>
         </div>
 
-        <Carousel opts={{ loop: true }} className="lg:hidden" aria-label="Rice Water Revive Duo product images">
-          <CarouselContent>
-            {[
-              ['/revive-duo.jpg', 'Rice Water Revive Duo'],
-              ['/close-up.png', 'Close-up of rice water shampoo and conditioner'],
-              ['/complete-ritual.png', "Complete Miriam's hair and skin ritual"],
-            ].map(([image, alt]) => (
-              <CarouselItem key={image}>
-                <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-[#e9e0d6]">
-                  <img src={image} alt={alt} className="h-full w-full object-cover" />
-                </div>
-              </CarouselItem>
+        <div className="min-w-0 lg:sticky lg:top-6 lg:self-start">
+          <Carousel setApi={setGalleryApi} opts={{ loop: true }} aria-label="Rice Water Revive Duo product gallery">
+            <CarouselContent>
+              {productGalleryImages.map((image, index) => (
+                <CarouselItem key={image.src}>
+                  <div className="aspect-square max-h-[620px] overflow-hidden rounded-2xl bg-[#e9e0d6]">
+                    <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading={index === 0 ? 'eager' : 'lazy'} />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-3 border-0 bg-white/90 text-primary shadow-md backdrop-blur-sm hover:bg-white" />
+            <CarouselNext className="right-3 border-0 bg-white/90 text-primary shadow-md backdrop-blur-sm hover:bg-white" />
+          </Carousel>
+          <div className="mt-3 grid grid-cols-3 gap-2" aria-label="Choose a product image">
+            {productGalleryImages.map((image, index) => (
+              <button key={image.src} type="button" onClick={() => galleryApi?.scrollTo(index)} aria-label={`View image ${index + 1}: ${image.alt}`} aria-current={galleryIndex === index ? 'true' : undefined} className={`overflow-hidden rounded-xl border-2 bg-[#e9e0d6] transition-opacity ${galleryIndex === index ? 'border-primary opacity-100' : 'border-transparent opacity-65 hover:opacity-100'}`}>
+                <img src={image.src} alt="" className="aspect-[4/3] w-full object-cover" />
+              </button>
             ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-3 border-0 bg-white/90 text-primary shadow-md backdrop-blur-sm hover:bg-white" />
-          <CarouselNext className="right-3 border-0 bg-white/90 text-primary shadow-md backdrop-blur-sm hover:bg-white" />
-          <p className="mt-3 text-center text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Swipe to view all images</p>
-        </Carousel>
-
-        <div className="hidden gap-3 lg:sticky lg:top-5 lg:grid lg:self-start lg:grid-cols-2">
-          <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-[#e9e0d6] sm:col-span-2"><img src="/revive-duo.jpg" alt="Rice Water Revive Duo" className="h-full w-full object-cover" /></div>
-          <div className="aspect-square overflow-hidden rounded-2xl bg-[#f2eee9]"><img src="/close-up.png" alt="Close-up of rice water shampoo and conditioner" className="h-full w-full object-cover" /></div>
-          <div className="aspect-square overflow-hidden rounded-2xl bg-[#dce8e4]"><img src="/complete-ritual.png" alt="Complete Miriam's hair and skin ritual" className="h-full w-full object-cover" /></div>
+          </div>
+          <p className="mt-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground lg:hidden">Swipe to view all images</p>
         </div>
 
         <div className="lg:pt-3">
           <div className="grid grid-cols-3 gap-4 border-b pb-5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground"><span><strong className="mb-1 block text-sm text-foreground">4.79 ★</strong>3,300 reviews</span><span><strong className="mb-1 block text-sm text-foreground">65%+</strong>rice water</span><span><strong className="mb-1 block text-sm text-foreground">65k+</strong>bottles sold</span></div>
           <div className="hidden lg:block">
             <p className="section-kicker mt-7">Bestselling hair ritual</p>
-            <h1 className="mt-3 font-heading text-[clamp(3rem,5vw,5.8rem)] leading-[0.88] tracking-[-0.045em]">The Rice Water Revive Duo (Sulfate Free)</h1>
+            <h1 className="mt-3 max-w-3xl font-heading text-[clamp(2.8rem,3.65vw,4.25rem)] leading-[0.92] tracking-[-0.04em]">The Rice Water Revive Duo (Sulfate Free)</h1>
           </div>
           <p className="mt-6 text-lg font-semibold leading-7">Repairs Damage, Fights Frizz and Promotes Healthy Growth.</p>
           <p className="body-copy mt-2 text-muted-foreground">Powered by 65%+ real Rice Water - rich in amino acids, vitamins and minerals.</p>
