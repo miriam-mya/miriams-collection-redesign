@@ -767,13 +767,13 @@ function IngredientGallery() {
         <SheetContent className="w-[94vw] overflow-y-auto bg-[#fbfaf6] p-0 sm:max-w-[560px]">
           {selectedIngredient && (
             <>
-              <div className="aspect-[4/3] overflow-hidden bg-[#f0eee8]">
+              <div className="aspect-square overflow-hidden bg-[#f0eee8] sm:aspect-[5/4]">
                 <img src={selectedIngredient.image} alt={selectedIngredient.name} className="h-full w-full object-cover" />
               </div>
               <div className="px-7 py-10 sm:px-10 sm:py-12">
                 <p className="section-kicker">Inside the formula</p>
                 <SheetHeader className="mt-4 p-0 text-left">
-                  <SheetTitle className="font-heading text-[clamp(3.2rem,7vw,5.4rem)] leading-[0.9] tracking-[-0.04em]">{selectedIngredient.name}</SheetTitle>
+                  <SheetTitle className="font-heading text-[clamp(2.4rem,5.5vw,3.75rem)] leading-[0.94] tracking-[-0.035em]">{selectedIngredient.name}</SheetTitle>
                   <SheetDescription className="body-copy mt-6 text-[#40534f]">{selectedIngredient.description}</SheetDescription>
                 </SheetHeader>
                 <div className="mt-10 border-y border-primary/15">
@@ -1083,7 +1083,6 @@ export function HomeStorefront() {
       </section>
 
       <ComparisonSection />
-      <IngredientGallery />
 
       <section id="results" className="bg-[#f7f4ee] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-[1260px]">
@@ -1173,7 +1172,6 @@ export function CategoryStorefront({ category }: { category: CategoryKey }) {
       {category === 'sets' && <OfferBundle addToCart={addToCart} />}
       <section id="collection" className="px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto max-w-[1380px]"><p className="section-kicker">Shop {category}</p><h2 className="section-title mt-4">The collection.</h2><div className="mt-12 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">{content.products.map((product) => <ProductCard key={product.name} product={product} addToCart={addToCart} />)}</div></div></section>
       {(category === 'hair' || category === 'men') && <ComparisonSection />}
-      {(category === 'hair' || category === 'sets') && <IngredientGallery />}
       <Newsletter />
       <Footer />
     </main>
@@ -1469,7 +1467,8 @@ export function ProductDetail() {
         </div>
       </section>
 
-      <section className="px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-2"><div><p className="section-kicker">How to use</p><h2 className="section-title mt-4">Make every wash count.</h2><ol className="mt-9 space-y-7">{[['1', 'Cleanse', 'Massage shampoo into wet hair and scalp. Let the lather work for 1–2 minutes, then rinse well.'], ['2', 'Condition', 'Apply through mid-lengths and ends. Leave for 2–5 minutes, or longer as a nourishing mask.'], ['3', 'Repeat', 'Use consistently as your regular wash routine. The conditioner can also be used as a leave-in or curl cream.']].map(([n, title, copy]) => <li key={n} className="grid grid-cols-[42px_1fr] gap-4 border-t pt-5"><span className="font-heading text-3xl text-[#7e9f96]">{n}</span><div><strong className="font-heading text-2xl">{title}</strong><p className="mt-2 text-base leading-7 text-muted-foreground">{copy}</p></div></li>)}</ol></div><div className="overflow-hidden rounded-2xl"><img src="/hero-ritual.png" alt="Using Rice Water Shampoo as part of a wash-day ritual" className="h-full min-h-[580px] w-full object-cover object-[62%_62%]" /></div></div></section>
+      <ComparisonSection />
+      <IngredientGallery />
 
       <section id="product-faqs" className="border-t px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.65fr_1.35fr]"><div><p className="section-kicker">Product FAQs</p><h2 className="section-title mt-4">Everything you need to know.</h2></div><Accordion className="border-t">{faqs.map((faq) => <AccordionItem key={faq.q} value={faq.q} className="border-b"><AccordionTrigger className="rounded-none py-6 font-heading text-xl hover:no-underline sm:text-2xl">{faq.q}</AccordionTrigger><AccordionContent className="max-w-2xl pb-6 leading-6 text-muted-foreground">{faq.a}</AccordionContent></AccordionItem>)}</Accordion></div></section>
 
