@@ -786,10 +786,6 @@ function IngredientGallery() {
                     <p className="body-copy mt-3 text-[#40534f]">{selectedIngredient.science}</p>
                   </div>
                 </div>
-                <div className="mt-8">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Found in</p>
-                  <a href="/products/rice-water-revive-duo" className="mt-3 inline-flex items-center gap-3 font-heading text-2xl">The Rice Water Revive Duo <ArrowRight className="size-4" /></a>
-                </div>
               </div>
             </>
           )}
