@@ -665,7 +665,7 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
   );
 }
 
-function ComparisonSection() {
+function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
   const rows = [
     { label: 'Number of active & botanical ingredients', us: '16', them: 'Typically 1 or 2' },
     { label: 'Sulfates or bulk fillers', us: false, them: true },
@@ -722,10 +722,12 @@ function ComparisonSection() {
                 <p className="text-lg font-semibold leading-7 sm:text-xl sm:leading-8">Pick up your current bottle... we bet it has 1 or 2 hero ingredients - Argan Oil, Keratin?</p>
                 <p className="body-copy mt-5 max-w-xl text-white/72">Plastered across the front to make you think you’re getting more of the good stuff than you actually are.</p>
               </div>
-              <a href="/products/rice-water-revive-duo" className="group mt-9 inline-flex w-fit items-center gap-4 rounded-full bg-[#d4ae67] px-7 py-4 text-xs font-bold uppercase tracking-widest text-primary transition-transform hover:-translate-y-0.5">
-                Shop now
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              {showShopCta && (
+                <a href="/products/rice-water-revive-duo" className="group mt-9 inline-flex w-fit items-center gap-4 rounded-full bg-[#d4ae67] px-7 py-4 text-xs font-bold uppercase tracking-widest text-primary transition-transform hover:-translate-y-0.5">
+                  Shop now
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -793,6 +795,45 @@ function IngredientGallery() {
         </SheetContent>
       </Sheet>
     </>
+  );
+}
+
+function ReviewsSection({ id = 'results' }: { id?: string }) {
+  return (
+    <section id={id} className="bg-[#f7f4ee] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="mx-auto max-w-[1260px]">
+        <div className="flex items-end justify-between gap-8">
+          <div><p className="section-kicker">★ 4.79 from 3200 reviews</p><h2 className="section-title mt-4">Different hair.<br />Different reasons for loving it.</h2></div>
+          <div className="hidden text-right text-sm sm:block"><Stars /><p className="mt-2 text-muted-foreground">Verified customer reviews</p></div>
+        </div>
+        <Carousel className="mt-12" opts={{ align: 'start', loop: true }}>
+          <CarouselContent className="-ml-5">
+            {reviews.map((review) => (
+              <CarouselItem key={review.tag} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
+                <article className="flex min-h-[390px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex items-start justify-between gap-5"><img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="size-20 rounded-2xl object-cover object-top" /><div className="text-right"><Stars /><span className="mt-3 block text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified</span></div></div><blockquote className="mt-7 flex-1 font-heading text-[1.65rem] leading-[1.1] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="-left-3 size-10 bg-white shadow-sm sm:-left-5" />
+          <CarouselNext className="-right-3 size-10 bg-white shadow-sm sm:-right-5" />
+        </Carousel>
+      </div>
+    </section>
+  );
+}
+
+function CameraRollSection() {
+  return (
+    <section className="bg-[#fbfaf6] px-5 py-24 sm:px-8 sm:py-32">
+      <div className="mx-auto max-w-[1380px]">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="section-kicker">From your camera rolls</p><h2 className="section-title mt-4">Rice Water Rituals, Shared By You.</h2></div><div className="flex gap-3"><a href="https://www.instagram.com/miriamscollectionuk/" target="_blank" rel="noreferrer" className="social-pill"><Camera /> Instagram</a><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="social-pill"><Music2 /> TikTok</a></div></div>
+        <div className="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
+          {socialTiles.map((tile) => (
+            <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-muted"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/5" /><span className="absolute left-3 top-3 flex size-10 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm sm:left-5 sm:top-5"><Play className="ml-0.5 size-4 fill-current" /></span><div className="absolute bottom-4 left-4 right-4 text-white sm:bottom-6 sm:left-6"><p className="text-[9px] font-bold uppercase tracking-widest text-white/65">Watch on {tile.network}</p><p className="mt-1 font-heading text-xl sm:text-2xl">{tile.label}</p></div></a>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1081,22 +1122,7 @@ export function HomeStorefront() {
 
       <ComparisonSection />
 
-      <section id="results" className="bg-[#f7f4ee] px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-[1260px]">
-          <div className="flex items-end justify-between gap-8"><div><p className="section-kicker">★ 4.79 from 3200 reviews</p><h2 className="section-title mt-4">Different hair.<br />Different reasons for loving it.</h2></div><div className="hidden text-right text-sm sm:block"><Stars /><p className="mt-2 text-muted-foreground">Verified customer reviews</p></div></div>
-          <Carousel className="mt-12" opts={{ align: 'start', loop: true }}>
-            <CarouselContent className="-ml-5">
-              {reviews.map((review) => (
-                <CarouselItem key={review.tag} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                  <article className="flex min-h-[390px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex items-start justify-between gap-5"><img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="size-20 rounded-2xl object-cover object-top" /><div className="text-right"><Stars /><span className="mt-3 block text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified</span></div></div><blockquote className="mt-7 flex-1 font-heading text-[1.65rem] leading-[1.1] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="-left-3 size-10 bg-white shadow-sm sm:-left-5" />
-            <CarouselNext className="-right-3 size-10 bg-white shadow-sm sm:-right-5" />
-          </Carousel>
-        </div>
-      </section>
+      <ReviewsSection />
 
       <section className="bg-primary px-5 py-14 text-white sm:px-8 sm:py-20 lg:py-[88px]">
         <div className="mx-auto grid max-w-[1380px] gap-10 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-12 lg:grid-cols-[1.35fr_repeat(3,minmax(0,1fr))] lg:gap-14">
@@ -1125,16 +1151,7 @@ export function HomeStorefront() {
         </div>
       </section>
 
-      <section className="bg-[#fbfaf6] px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-[1380px]">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="section-kicker">From your camera rolls</p><h2 className="section-title mt-4">Rice Water Rituals, Shared By You.</h2></div><div className="flex gap-3"><a href="https://www.instagram.com/miriamscollectionuk/" target="_blank" rel="noreferrer" className="social-pill"><Camera /> Instagram</a><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="social-pill"><Music2 /> TikTok</a></div></div>
-          <div className="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
-            {socialTiles.map((tile) => (
-              <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-muted"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/5" /><span className="absolute left-3 top-3 flex size-10 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm sm:left-5 sm:top-5"><Play className="ml-0.5 size-4 fill-current" /></span><div className="absolute bottom-4 left-4 right-4 text-white sm:bottom-6 sm:left-6"><p className="text-[9px] font-bold uppercase tracking-widest text-white/65">Watch on {tile.network}</p><p className="mt-1 font-heading text-xl sm:text-2xl">{tile.label}</p></div></a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CameraRollSection />
 
       <section id="faqs" className="border-t px-5 py-24 sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.7fr_1.3fr]">
@@ -1464,8 +1481,10 @@ export function ProductDetail() {
         </div>
       </section>
 
-      <ComparisonSection />
+      <ComparisonSection showShopCta={false} />
       <IngredientGallery />
+      <ReviewsSection id="product-reviews" />
+      <CameraRollSection />
 
       <section id="product-faqs" className="border-t px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[0.65fr_1.35fr]"><div><p className="section-kicker">Product FAQs</p><h2 className="section-title mt-4">Everything you need to know.</h2></div><Accordion className="border-t">{faqs.map((faq) => <AccordionItem key={faq.q} value={faq.q} className="border-b"><AccordionTrigger className="rounded-none py-6 font-heading text-xl hover:no-underline sm:text-2xl">{faq.q}</AccordionTrigger><AccordionContent className="max-w-2xl pb-6 leading-6 text-muted-foreground">{faq.a}</AccordionContent></AccordionItem>)}</Accordion></div></section>
 
