@@ -810,7 +810,18 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
           <CarouselContent className="-ml-5">
             {reviews.map((review) => (
               <CarouselItem key={review.tag} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                <article className="flex min-h-[390px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex items-start justify-between gap-5"><img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="size-20 rounded-2xl object-cover object-top" /><div className="text-right"><Stars /><span className="mt-3 block text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified</span></div></div><blockquote className="mt-7 flex-1 font-heading text-[1.65rem] leading-[1.1] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
+                <article className="flex min-h-[540px] flex-col overflow-hidden rounded-2xl border bg-white">
+                  <div className="relative h-64 shrink-0 overflow-hidden sm:h-72">
+                    <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="h-full w-full object-cover object-top" />
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white via-white/70 to-transparent" />
+                    <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
+                  </div>
+                  <div className="relative -mt-10 flex flex-1 flex-col px-6 pb-7 sm:px-8 sm:pb-8">
+                    <span className="mb-4 w-fit rounded-full bg-[#edf3f0] px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified review</span>
+                    <blockquote className="flex-1 font-heading text-[1.55rem] leading-[1.1] tracking-[-0.02em] sm:text-[1.7rem]">“{review.quote}”</blockquote>
+                    <div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-sm text-muted-foreground">For {review.tag.toLowerCase()}</p></div>
+                  </div>
+                </article>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -1080,10 +1091,10 @@ export function HomeStorefront() {
       <Header cartCount={cartCount} openCart={() => setCartOpen(true)} transparent />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
 
-      <section id="top" className="relative h-[calc(100svh-164px)] max-h-[744px] overflow-hidden bg-[#0d2f29] sm:h-[calc(100svh-208px)] sm:max-h-[720px]">
+      <section id="top" className="home-hero relative h-[calc(100svh-164px)] max-h-[744px] overflow-hidden bg-[#0d2f29] sm:h-[calc(100svh-208px)] sm:max-h-[720px]">
         <img src="/hero-current.png" alt="Woman using Miriam's Rice Water Shampoo outdoors" className="absolute inset-0 h-full w-full object-cover object-[68%_65%] sm:object-[66%_48%] lg:object-[64%_46%]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#102c26]/78 via-[#102c26]/22 to-transparent" />
-        <div className="relative mx-auto flex h-full max-w-[1480px] items-end px-5 py-5 sm:items-center sm:px-8 sm:py-9 lg:px-14">
+        <div className="home-hero-inner relative mx-auto flex h-full max-w-[1480px] items-end px-5 py-5 sm:items-center sm:px-8 sm:py-9 lg:px-14">
           <div className="home-hero-card max-w-[520px] rounded-[1.5rem] border border-white/30 bg-white/[0.16] p-4 text-white shadow-[0_28px_90px_rgb(0_0_0/28%)] backdrop-blur-[28px] sm:max-w-[420px] sm:p-6 lg:max-w-[520px] lg:p-9">
             <p className="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-white/75 sm:block">★ 4.79 from 3,300 reviews</p>
             <h1 className="mt-3 font-heading text-[clamp(2.2rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em]">Your shampoo could be doing so much more.</h1>
@@ -1173,14 +1184,14 @@ export function CategoryStorefront({ category }: { category: CategoryKey }) {
   const addToCart = () => { setCartCount((count) => count + 1); setCartOpen(true); };
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen overflow-x-clip bg-background text-foreground">
       <Header cartCount={cartCount} openCart={() => setCartOpen(true)} />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
-      <section className="grid min-h-[600px] bg-[#dceae6] lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="order-2 flex items-center px-7 py-16 sm:px-14 lg:order-1 lg:px-[8vw]">
-          <div><p className="section-kicker">{content.eyebrow}</p><h1 className="mt-4 font-heading text-[clamp(4rem,7vw,8rem)] leading-[0.86] tracking-[-0.05em]">{content.title}</h1><p className="body-copy mt-7 max-w-xl text-[#35544e]">{content.copy}</p><a href="#collection" className="cta cta-dark mt-8">Shop the collection <ArrowRight /></a></div>
+      <section className="grid bg-[#dceae6] lg:min-h-[600px] lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="order-2 flex items-center px-7 py-12 sm:px-14 sm:py-16 lg:order-1 lg:px-[8vw]">
+          <div><p className="section-kicker">{content.eyebrow}</p><h1 className="mt-4 font-heading text-[clamp(3rem,10vw,6rem)] leading-[0.9] tracking-[-0.05em] lg:text-[clamp(3.6rem,5vw,5rem)]">{content.title}</h1><p className="body-copy mt-7 max-w-xl text-[#35544e]">{content.copy}</p><a href="#collection" className="cta cta-dark mt-8">Shop the collection <ArrowRight /></a></div>
         </div>
-        <div className="relative order-1 min-h-[460px] overflow-hidden lg:order-2"><img src={content.image} alt={`${category} collection`} className="absolute inset-0 h-full w-full object-cover" /></div>
+        <div className="relative order-1 min-h-[320px] overflow-hidden sm:min-h-[420px] lg:order-2 lg:min-h-0"><img src={content.image} alt={`${category} collection`} className="absolute inset-0 h-full w-full object-cover" /></div>
       </section>
       <PressStrip />
       {category === 'sets' && <OfferBundle addToCart={addToCart} />}
@@ -1253,7 +1264,7 @@ export function StoryStorefront() {
     },
   ];
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen overflow-x-clip bg-background text-foreground">
       <Header cartCount={cartCount} openCart={() => setCartOpen(true)} />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
       <section className="relative isolate flex min-h-[720px] items-end overflow-hidden sm:min-h-[780px] lg:min-h-[calc(100svh-72px)]">
@@ -1262,7 +1273,7 @@ export function StoryStorefront() {
         <div className="relative w-full px-5 pb-8 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
           <div className="max-w-[760px] rounded-[1.75rem] border border-white/25 bg-white/15 p-6 text-white shadow-2xl backdrop-blur-xl sm:p-9 lg:p-11">
             <p className="section-kicker text-white/75">My journey</p>
-            <h1 className="mt-4 font-heading text-[clamp(3.6rem,7vw,7.6rem)] leading-[0.86] tracking-[-0.05em]">The story behind Miriam’s Collection.</h1>
+            <h1 className="mt-4 font-heading text-[clamp(3rem,11vw,7.6rem)] leading-[0.88] tracking-[-0.05em]">The story behind Miriam’s Collection.</h1>
             <p className="body-copy mt-6 max-w-2xl text-white/85">It began with a personal search for healthier hair and grew into everyday rituals designed to help others feel confident too.</p>
             <a href="#story-timeline" className="cta cta-light mt-7">Read the story <ArrowRight className="rotate-90" /></a>
           </div>
@@ -1352,7 +1363,7 @@ export function ProductDetail() {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground pb-20 md:pb-0">
+    <main className="min-h-screen overflow-x-clip bg-background text-foreground pb-20 md:pb-0">
       <Header cartCount={cartCount} openCart={() => setCartOpen(true)} />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
 
@@ -1360,17 +1371,17 @@ export function ProductDetail() {
         <a href="/#shop" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground"><ArrowLeft className="size-3.5" /> Back to shop</a>
       </div>
 
-      <section className="mx-auto grid max-w-[1320px] gap-8 px-5 pb-20 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:px-12">
-        <div className="lg:hidden">
+      <section className="mx-auto grid max-w-[1320px] gap-8 px-5 pb-20 sm:px-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-8 lg:gap-12 lg:px-12">
+        <div className="md:hidden">
           <h1 className="max-w-lg font-heading text-[clamp(2.15rem,9vw,3rem)] leading-[0.94] tracking-[-0.035em]">The Rice Water Revive Duo (Sulfate Free)</h1>
         </div>
 
-        <div className="min-w-0 lg:sticky lg:top-6 lg:self-start">
+        <div className="min-w-0 md:sticky md:top-6 md:self-start">
           <Carousel setApi={setGalleryApi} opts={{ loop: true }} aria-label="Rice Water Revive Duo product gallery">
             <CarouselContent>
               {productGalleryImages.map((image, index) => (
                 <CarouselItem key={image.src}>
-                  <div className="aspect-square max-h-[620px] overflow-hidden rounded-2xl bg-[#e9e0d6]">
+                  <div className="mx-auto aspect-square w-full max-w-[620px] overflow-hidden rounded-2xl bg-[#e9e0d6]">
                     <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading={index === 0 ? 'eager' : 'lazy'} />
                   </div>
                 </CarouselItem>
@@ -1386,13 +1397,13 @@ export function ProductDetail() {
               </button>
             ))}
           </div>
-          <p className="mt-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground lg:hidden">Swipe to view all images</p>
+          <p className="mt-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground md:hidden">Swipe to view all images</p>
         </div>
 
-        <div className="lg:pt-3">
+        <div className="md:pt-1 lg:pt-3">
           <div className="grid grid-cols-3 gap-4 border-b pb-5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground"><span><strong className="mb-1 block text-sm text-foreground">4.79 ★</strong>3,300 reviews</span><span><strong className="mb-1 block text-sm text-foreground">65%+</strong>rice water</span><span><strong className="mb-1 block text-sm text-foreground">65k+</strong>bottles sold</span></div>
-          <div className="hidden lg:block">
-            <h1 className="mt-7 max-w-3xl font-heading text-[clamp(2.8rem,3.65vw,4.25rem)] leading-[0.92] tracking-[-0.04em]">The Rice Water Revive Duo (Sulfate Free)</h1>
+          <div className="hidden md:block">
+            <h1 className="mt-7 max-w-3xl font-heading text-[clamp(2.4rem,3.7vw,4.1rem)] leading-[0.94] tracking-[-0.04em]">The Rice Water Revive Duo (Sulfate Free)</h1>
           </div>
           <p className="mt-6 text-lg font-semibold leading-7">Repairs Damage, Fights Frizz and Promotes Healthy Growth.</p>
           <p className="body-copy mt-2 text-muted-foreground">Powered by 65%+ real Rice Water - rich in amino acids, vitamins and minerals.</p>
@@ -1452,7 +1463,7 @@ export function ProductDetail() {
             <p className="section-kicker">Inside the formula</p>
             <h2 className="mt-4 font-heading text-[clamp(3rem,5.5vw,6rem)] leading-[0.92] tracking-[-0.045em]">Here’s how the Rice Water Shampoo and Conditioner work</h2>
           </div>
-          <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-5 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4">
+          <div className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
             {productStoryVideos.map((item) => (
               <article key={item.number} className="min-w-[82vw] snap-start sm:min-w-0">
                 <div className="aspect-[3/4] overflow-hidden rounded-[1.35rem] bg-[#d8d2c9]">
