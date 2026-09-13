@@ -578,7 +578,7 @@ function ProductCard({ product, addToCart }: { product: Product; addToCart: () =
 
 function PressStrip() {
   return (
-    <section className="flex h-[112px] flex-col justify-center overflow-hidden border-b border-border bg-white sm:h-[160px]" aria-label="As seen in">
+    <section className="flex h-[132px] flex-col justify-center overflow-hidden border-b border-border bg-white sm:h-[160px]" aria-label="As seen in">
       <p className="px-5 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-muted-foreground sm:px-8">As seen in</p>
       <div className="mt-4 overflow-hidden sm:mt-5">
         <div className="press-marquee">
