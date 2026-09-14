@@ -419,7 +419,7 @@ function SlideUp({ children, className = '' }: { children: ReactNode; className?
 
 function Announcement() {
   return (
-    <div className="flex h-8 items-center justify-center overflow-hidden whitespace-nowrap bg-primary px-5 text-center text-[10px] font-semibold uppercase tracking-[0.13em] text-primary-foreground sm:text-xs">
+    <div className="flex h-8 items-center justify-center overflow-hidden whitespace-nowrap bg-primary px-5 text-center text-xs font-semibold uppercase tracking-[0.13em] text-primary-foreground">
       <span className="hidden lg:inline">Free UK tracked shipping over £40</span>
       <span className="hidden px-4 text-white/35 lg:inline">·</span>
       <span>4.79 from 3,300 reviews</span>
@@ -513,7 +513,7 @@ function Header({
       <Announcement />
       <header className={`left-0 right-0 z-40 transition-[background-color,color,border-color,box-shadow] duration-300 ${solid ? `${transparent ? 'fixed top-0' : sticky ? 'sticky top-0' : 'relative'} border-b border-border bg-background text-foreground shadow-[0_8px_30px_rgb(0_0_0/6%)]` : 'absolute top-8 border-b border-transparent bg-transparent text-white shadow-none'}`}>
         <div className="mx-auto grid h-[76px] max-w-[1440px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-5 sm:h-[88px] sm:px-8 lg:h-[108px] lg:px-12">
-          <nav className="hidden items-center gap-6 text-[12px] font-bold uppercase tracking-[0.08em] lg:flex">
+          <nav className="hidden items-center gap-6 text-xs font-bold uppercase tracking-[0.08em] lg:flex">
             <a href="/hair" className="nav-link">Hair</a>
             <a href="/skin" className="nav-link">Skin</a>
             <a href="/sets" className="nav-link">Sets</a>
@@ -549,7 +549,7 @@ function Header({
             <button className="icon-button hidden sm:flex" aria-label="Account"><CircleUserRound /></button>
             <button className="icon-button relative flex" aria-label={`Shopping bag with ${cartCount} items`} onClick={openCart}>
               <ShoppingBag />
-              <span className="absolute right-0 top-0 flex size-4 items-center justify-center rounded-full bg-accent text-[9px] font-bold text-accent-foreground">{cartCount}</span>
+              <span className="absolute right-0 top-0 flex size-4 items-center justify-center rounded-full bg-accent text-xs font-bold text-accent-foreground">{cartCount}</span>
             </button>
           </div>
         </div>
@@ -562,16 +562,16 @@ function ProductCard({ product, addToCart }: { product: Product; addToCart: () =
   return (
     <article className="group flex h-full flex-col">
       <a href={product.href} className="relative block aspect-[4/5] overflow-hidden rounded-[1.25rem]" style={{ background: product.colour }}>
-        {product.was && <span className="absolute left-4 top-4 z-10 rounded-full bg-primary px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest text-white">Save</span>}
+        {product.was && <span className="absolute left-4 top-4 z-10 rounded-full bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white">Save</span>}
         <img src={product.image} alt={product.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
-        <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest text-primary backdrop-blur">Subscribe & save 10%</span>
+        <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-primary backdrop-blur">Subscribe & save 10%</span>
       </a>
       <div className="flex flex-1 flex-col pt-5">
-        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">{product.eyebrow}</p>
+        <p className="meta-label text-muted-foreground">{product.eyebrow}</p>
         <a href={product.href} className="mt-2 font-heading text-[1.7rem] leading-[1.05] tracking-[-0.02em]">{product.name}</a>
         <div className="mt-3 flex items-center gap-2 text-sm"><Stars /><span className="text-xs text-muted-foreground">4.9</span></div>
         <div className="mt-3 flex items-baseline gap-2 text-sm"><strong>{product.price}</strong>{product.was && <s className="text-xs text-muted-foreground">{product.was}</s>}</div>
-        <button onClick={addToCart} className="mt-5 min-h-11 rounded-full border border-primary bg-transparent px-5 text-[11px] font-bold uppercase tracking-[0.11em] transition-colors hover:bg-primary hover:text-white">Add to bag</button>
+        <button onClick={addToCart} className="mt-5 min-h-11 rounded-full border border-primary bg-transparent px-5 text-xs font-bold uppercase tracking-[0.11em] transition-colors hover:bg-primary hover:text-white">Add to bag</button>
       </div>
     </article>
   );
@@ -580,7 +580,7 @@ function ProductCard({ product, addToCart }: { product: Product; addToCart: () =
 function PressStrip() {
   return (
     <section className="flex h-[132px] flex-col justify-center overflow-hidden border-b border-border bg-white sm:h-[160px]" aria-label="As seen in">
-      <p className="px-5 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-muted-foreground sm:px-8">As seen in</p>
+      <p className="section-kicker px-5 text-center sm:px-8">As seen in</p>
       <div className="mt-4 overflow-hidden sm:mt-5">
         <div className="press-marquee">
           {[0, 1].map((setIndex) => (
@@ -616,13 +616,13 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
       <div className="mx-auto max-w-[1380px] overflow-hidden rounded-[1.5rem] border border-primary/10 bg-[#f8f5ef] lg:grid lg:h-[min(780px,calc(100vh-48px))] lg:min-h-[680px] lg:grid-cols-[1.1fr_0.9fr]">
         <div className="relative min-h-[480px] overflow-hidden bg-[#e9e0d6] lg:min-h-0">
           <img src="/complete-ritual.png" alt="The complete Hair and Skin Ritual" className="absolute inset-0 h-full w-full object-cover" />
-          <span className="absolute left-5 top-5 rounded-full bg-[#dbece7] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] text-primary sm:left-8 sm:top-8">✦ September offer</span>
+          <span className="absolute left-5 top-5 rounded-full bg-[#dbece7] px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary sm:left-8 sm:top-8">✦ September offer</span>
         </div>
 
         <div className="flex items-center px-5 py-8 sm:px-9 sm:py-10 lg:overflow-y-auto lg:px-9 lg:py-7">
           <div className="w-full">
             <p className="section-kicker">September offer</p>
-            <h2 className="mt-2 font-heading text-[clamp(2.8rem,3.6vw,4.3rem)] leading-[0.9] tracking-[-0.04em]">The Hair &amp; Skin Ritual</h2>
+            <h2 className="feature-title mt-2">The Hair &amp; Skin Ritual</h2>
             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm"><span className="text-[#b78932]"><Stars /></span><strong>4.93</strong><span className="text-muted-foreground">Based on 1131 reviews</span></div>
             <p className="body-copy mt-4 max-w-xl">Upgrade your Rice Water Revive Duo for just £6 and get £53.99 worth of hair + skincare extras.</p>
 
@@ -633,7 +633,7 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
                 <span className="price-stack"><s>£50.00</s><strong>£39.95</strong></span>
               </button>
               <button onClick={() => setChoice('ritual')} className={`purchase-option relative border pt-5 lg:py-4 ${choice === 'ritual' ? 'purchase-option-active' : 'border-primary/15 bg-white'}`}>
-                <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary px-3 py-1.5 text-[8px] font-bold uppercase tracking-wider text-white shadow-sm">Best value</span>
+                <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-white shadow-sm">Best value</span>
                 <span className="purchase-radio"><i /></span>
                 <span className="flex-1 text-left"><strong className="block">Complete Hair &amp; Skin Ritual</strong><small>✦ Welcome kit worth £53.99 included</small></span>
                 <span className="price-stack"><s>£103.99</s><strong>£45.95</strong></span>
@@ -642,7 +642,7 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
 
             {ritual && (
               <div className="mt-3 rounded-2xl border border-primary/20 bg-white p-4 lg:p-3.5">
-                <p className="mb-2 text-[9px] font-bold uppercase tracking-[0.15em] text-muted-foreground">Included in your Hair &amp; Skin Ritual:</p>
+                <p className="meta-label mb-2 text-muted-foreground">Included in your Hair &amp; Skin Ritual:</p>
                 {included.map(([image, name, was, price], index) => (
                   <div key={name} className={`grid grid-cols-[48px_1fr_auto] items-center gap-3 py-3 lg:grid-cols-[40px_1fr_auto] lg:py-2 ${index < included.length - 1 ? 'border-b' : ''}`}>
                     <img src={image} alt="" className="size-12 rounded-lg bg-muted object-cover lg:size-10" />
@@ -650,7 +650,7 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
                     <span className="text-right text-xs"><s className="mr-2 text-muted-foreground">{was}</s><strong>{price}</strong></span>
                   </div>
                 ))}
-                <div className="mt-2 grid grid-cols-2 divide-x border-t pt-3 text-[9px] font-bold uppercase tracking-wider text-muted-foreground">
+                <div className="mt-2 grid grid-cols-2 divide-x border-t pt-3 text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">
                   <span className="flex items-center gap-2 pr-3"><Truck className="size-3.5" /> Free UK Tracked 48 shipping</span>
                   <span className="flex items-center gap-2 pl-3"><Clock3 className="size-3.5" /> Limited time offer</span>
                 </div>
@@ -681,14 +681,14 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
       <div className="mx-auto max-w-[1260px]">
         <div className="mx-auto max-w-3xl text-center">
           <p className="section-kicker">What makes us different</p>
-          <h2 className="mt-4 font-heading text-[clamp(3rem,5vw,5.6rem)] leading-[0.92] tracking-[-0.04em]">What’s the difference between us and the other brands?</h2>
+          <h2 className="section-title mt-4">What’s the difference between us and the other brands?</h2>
         </div>
         <div className="mt-14 grid gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
           <div>
             <div className="aspect-[2014/1490] overflow-hidden rounded-2xl bg-[#ded7cc] lg:h-full lg:min-h-[470px] lg:aspect-auto"><img src="/terrarium.png" alt="Most shampoos compared with Miriam’s Collection" className="h-full w-full object-cover" /></div>
             <div className="-mt-5 mb-4 grid grid-cols-2 gap-2 px-3 sm:-mt-7 sm:mb-0 sm:gap-3 sm:px-6">
-              <span className="relative whitespace-nowrap rounded-full bg-[#eadcc3] px-3 py-3.5 text-center text-[10px] font-bold uppercase leading-none tracking-[0.08em] sm:px-4 sm:py-3 sm:text-xs sm:tracking-wider">Most shampoos</span>
-              <span className="relative whitespace-nowrap rounded-full bg-primary px-3 py-3.5 text-center text-[10px] font-bold uppercase leading-none tracking-[0.08em] text-white sm:px-4 sm:py-3 sm:text-xs sm:tracking-wider">Miriam’s Collection</span>
+              <span className="relative whitespace-nowrap rounded-full bg-[#eadcc3] px-3 py-3.5 text-center text-xs font-bold uppercase leading-none tracking-[0.08em] sm:px-4 sm:py-3">Most shampoos</span>
+              <span className="relative whitespace-nowrap rounded-full bg-primary px-3 py-3.5 text-center text-xs font-bold uppercase leading-none tracking-[0.08em] text-white sm:px-4 sm:py-3">Miriam’s Collection</span>
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl border border-[#cfc8bd] bg-[#f8f4ec]">
@@ -703,32 +703,38 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
         </div>
         <SlideUp className="mt-12">
           <div className="border border-[#d8d1c5] bg-[#f8f4ec] px-4 py-10 sm:px-8 sm:py-12">
-            <h3 className="text-center font-heading text-[clamp(2rem,3vw,3rem)] leading-tight">Our 16 active &amp; botanical ingredients</h3>
+            <h3 className="feature-title text-center">Our 16 active &amp; botanical ingredients</h3>
             <div className="mt-10 grid grid-cols-4 gap-x-3 gap-y-10 lg:grid-cols-8 lg:gap-x-5">
               {ingredientIcons.map((ingredient) => (
                 <div key={ingredient.name} className="flex min-w-0 flex-col items-center text-center">
                   <img src={ingredient.image} alt="" className="size-14 object-contain sm:size-16" />
-                  <span className="mt-4 text-[11px] font-medium leading-tight tracking-[0.02em] sm:text-sm">{ingredient.name}</span>
+                  <span className="mt-4 text-xs font-medium leading-tight tracking-[0.02em] sm:text-sm">{ingredient.name}</span>
                 </div>
               ))}
             </div>
           </div>
         </SlideUp>
-        <div className="mt-10 overflow-hidden rounded-[2rem] bg-primary text-white shadow-[0_24px_70px_rgb(19_67_59/12%)]">
-          <div className="grid lg:grid-cols-[0.72fr_1.28fr]">
-            <div className="flex items-end border-b border-white/15 px-7 py-9 sm:px-10 sm:py-12 lg:min-h-[290px] lg:border-b-0 lg:border-r lg:px-12">
-              <strong className="font-heading text-[clamp(3.25rem,5vw,5.75rem)] leading-[0.86] tracking-[-0.045em]">We’re<br className="hidden lg:block" /> different.</strong>
+        <div className="mt-10 overflow-hidden rounded-[2rem] border border-primary/15 bg-[#fbf8f2]">
+          <div className="grid lg:grid-cols-[0.88fr_1.12fr]">
+            <div className="relative min-h-[280px] overflow-hidden border-b border-primary/15 lg:min-h-[360px] lg:border-b-0 lg:border-r">
+              <img src="/terrarium.png" alt="Most shampoos compared with Miriam’s Collection" className="absolute inset-0 h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#102f29]/55 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 flex justify-between text-xs font-bold uppercase tracking-[0.14em] text-white sm:bottom-7 sm:left-7 sm:right-7">
+                <span>Most shampoos</span><span>Miriam’s Collection</span>
+              </div>
             </div>
-            <div className="flex flex-col justify-between px-7 py-9 sm:px-10 sm:py-12 lg:px-14">
-              <div className="max-w-2xl">
-                <p className="text-lg font-semibold leading-7 sm:text-xl sm:leading-8">Pick up your current bottle... we bet it has 1 or 2 hero ingredients - Argan Oil, Keratin?</p>
-                <p className="body-copy mt-5 max-w-xl text-white/72">Plastered across the front to make you think you’re getting more of the good stuff than you actually are.</p>
+            <div className="flex flex-col justify-center px-7 py-10 sm:px-12 sm:py-14 lg:px-14">
+              <p className="section-kicker">Try it for yourself</p>
+              <h3 className="feature-title mt-4">We challenge you.</h3>
+              <p className="mt-7 max-w-2xl text-lg font-semibold leading-8">Pick up your current bottle... we bet it has 1 or 2 hero ingredients - Argan Oil, Keratin?</p>
+              <p className="body-copy mt-4 max-w-xl text-muted-foreground">Plastered across the front to make you think you’re getting more of the good stuff than you actually are.</p>
+              <div className="mt-8 flex items-end gap-8 border-y border-primary/15 py-6">
+                <div><span className="meta-label text-muted-foreground">Typical bottle</span><strong className="mt-1 block font-heading text-4xl font-normal">1 or 2</strong></div>
+                <div className="h-12 w-px bg-primary/20" />
+                <div><span className="meta-label text-muted-foreground">Our formula</span><strong className="mt-1 block font-heading text-4xl font-normal">16</strong></div>
               </div>
               {showShopCta && (
-                <a href="/products/rice-water-revive-duo" className="group mt-9 inline-flex w-fit items-center gap-4 rounded-full bg-[#d4ae67] px-7 py-4 text-xs font-bold uppercase tracking-widest text-primary transition-transform hover:-translate-y-0.5">
-                  Shop now
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </a>
+                <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8 w-fit">Shop now <ArrowRight /></a>
               )}
             </div>
           </div>
@@ -747,7 +753,7 @@ function IngredientGallery() {
         <div className="mx-auto max-w-[1380px]">
           <SlideUp>
             <p className="section-kicker">Inside the formula</p>
-            <h2 className="mt-4 font-heading text-[clamp(3rem,5vw,5.6rem)] leading-[0.92] tracking-[-0.04em]">We use 16 hero ingredients..</h2>
+            <h2 className="section-title mt-4">We use 16 hero ingredients..</h2>
             <p className="mt-4 text-lg">because why settle for just 1 or 2?</p>
             <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
               {ingredientCards.map((ingredient) => (
@@ -778,16 +784,16 @@ function IngredientGallery() {
               <div className="px-7 py-10 sm:px-10 sm:py-12">
                 <p className="section-kicker">Inside the formula</p>
                 <SheetHeader className="mt-4 p-0 text-left">
-                  <SheetTitle className="font-heading text-[clamp(2.4rem,5.5vw,3.75rem)] leading-[0.94] tracking-[-0.035em]">{selectedIngredient.name}</SheetTitle>
+                  <SheetTitle className="feature-title">{selectedIngredient.name}</SheetTitle>
                   <SheetDescription className="body-copy mt-6 text-[#40534f]">{selectedIngredient.description}</SheetDescription>
                 </SheetHeader>
                 <div className="mt-10 border-y border-primary/15">
                   <div className="py-6">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">What it helps with</p>
+                    <p className="meta-label text-muted-foreground">What it helps with</p>
                     <p className="body-copy mt-3 font-semibold text-primary">{selectedIngredient.helps}</p>
                   </div>
                   <div className="border-t border-primary/15 py-6">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">The Science</p>
+                    <p className="meta-label text-muted-foreground">The Science</p>
                     <p className="body-copy mt-3 text-[#40534f]">{selectedIngredient.science}</p>
                   </div>
                 </div>
@@ -819,9 +825,11 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
                     <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
                   </div>
                   <div className="relative -mt-8 px-6 pb-7 sm:px-8 sm:pb-8">
-                    <span className="mb-2 inline-flex w-fit rounded-full bg-[#edf3f0] px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified review</span>
                     <blockquote className="font-heading text-[1.55rem] leading-[1.1] tracking-[-0.02em] sm:text-[1.7rem]">“{review.quote}”</blockquote>
-                    <div className="mt-6 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-sm text-muted-foreground">For {review.tag.toLowerCase()}</p></div>
+                    <div className="mt-6 flex items-end justify-between gap-4 border-t pt-5">
+                      <div><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-sm text-muted-foreground">For {review.tag.toLowerCase()}</p></div>
+                      <span className="meta-label shrink-0 rounded-full bg-[#edf3f0] px-3 py-1.5 text-muted-foreground">Verified</span>
+                    </div>
                   </div>
                 </article>
               </CarouselItem>
@@ -842,7 +850,7 @@ function CameraRollSection() {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="section-kicker">From your camera rolls</p><h2 className="section-title mt-4">Rice Water Rituals, Shared By You.</h2></div><div className="flex gap-3"><a href="https://www.instagram.com/miriamscollectionuk/" target="_blank" rel="noreferrer" className="social-pill"><Camera /> Instagram</a><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="social-pill"><Music2 /> TikTok</a></div></div>
         <div className="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
           {socialTiles.map((tile) => (
-            <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-muted"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/5" /><span className="absolute left-3 top-3 flex size-10 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm sm:left-5 sm:top-5"><Play className="ml-0.5 size-4 fill-current" /></span><div className="absolute bottom-4 left-4 right-4 text-white sm:bottom-6 sm:left-6"><p className="text-[9px] font-bold uppercase tracking-widest text-white/65">Watch on {tile.network}</p><p className="mt-1 font-heading text-xl sm:text-2xl">{tile.label}</p></div></a>
+            <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-muted"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/5" /><span className="absolute left-3 top-3 flex size-10 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm sm:left-5 sm:top-5"><Play className="ml-0.5 size-4 fill-current" /></span><div className="absolute bottom-4 left-4 right-4 text-white sm:bottom-6 sm:left-6"><p className="meta-label text-white/70">Watch on {tile.network}</p><p className="mt-1 font-heading text-xl sm:text-2xl">{tile.label}</p></div></a>
           ))}
         </div>
       </div>
@@ -857,7 +865,7 @@ function Newsletter() {
       <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[1fr_0.9fr]">
         <div>
           <p className="section-kicker">Shop the collection</p>
-          <h2 className="mt-3 font-heading text-[clamp(2.9rem,5vw,5.4rem)] leading-[0.95] tracking-[-0.04em]">Elevate your everyday.</h2>
+          <h2 className="section-title mt-3">Elevate your everyday.</h2>
         </div>
         <div>
           <p className="body-copy max-w-xl text-[#33514b]">Join for haircare tips, exclusive offers and insider access to the world of Miriam's Collection.</p>
@@ -870,7 +878,7 @@ function Newsletter() {
               <button className="min-h-12 rounded-full bg-primary px-7 text-xs font-bold uppercase tracking-widest text-white">Join the list</button>
             </form>
           )}
-          <p className="mt-3 text-[10px] leading-4 text-muted-foreground">By joining, you agree to receive Miriam’s Collection emails. Unsubscribe any time.</p>
+          <p className="mt-3 text-xs leading-5 text-muted-foreground">By joining, you agree to receive Miriam’s Collection emails. Unsubscribe any time.</p>
         </div>
       </div>
     </section>
@@ -915,7 +923,7 @@ function Footer() {
           <a className="footer-link" href="mailto:hello@miriamscollection.co.uk">hello@miriamscollection.co.uk</a>
         </div>
       </div>
-      <div className="mx-auto flex max-w-[1340px] flex-col gap-3 pt-6 text-[10px] uppercase tracking-widest text-white/50 sm:flex-row sm:justify-between">
+      <div className="mx-auto flex max-w-[1340px] flex-col gap-3 pt-6 text-xs uppercase tracking-[0.12em] text-white/55 sm:flex-row sm:justify-between">
         <p>© 2026 Miriam’s Collection</p><p>United Kingdom · GBP £</p>
       </div>
     </footer>
@@ -956,14 +964,14 @@ function LegacyHomeStorefront() {
           <img src="/hero-ritual.png" alt="Woman using Miriam's rice water shampoo outdoors" className="absolute inset-0 h-full w-full object-cover object-[62%_62%]" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/5" />
           <a href="/products/rice-water-revive-duo" className="absolute bottom-6 left-6 right-6 flex items-end justify-between rounded-2xl border border-white/25 bg-black/20 p-4 text-white backdrop-blur-sm transition-colors hover:bg-black/30 sm:bottom-8 sm:left-8 sm:right-8 sm:p-5">
-            <div><p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/70">The everyday ritual</p><p className="mt-1 font-heading text-2xl">Rice Water Revive Duo</p></div>
+            <div><p className="meta-label text-white/70">The everyday ritual</p><p className="mt-1 font-heading text-2xl">Rice Water Revive Duo</p></div>
             <span className="rounded-full bg-white px-4 py-2 text-sm font-bold text-[#143f38]">£39.95</span>
           </a>
         </div>
       </section>
 
       <section className="border-b border-border bg-[#f7f4ee] px-5 py-6 text-center">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">As seen in</p>
+        <p className="section-kicker">As seen in</p>
         <div className="mx-auto mt-3 flex max-w-2xl items-center justify-center gap-10 text-2xl text-[#263b36] sm:gap-20 sm:text-3xl"><span className="font-heading italic">Vogue</span><span className="font-bold tracking-[-0.08em]">GQ</span><span className="font-heading">Tatler</span></div>
       </section>
 
@@ -986,7 +994,7 @@ function LegacyHomeStorefront() {
         <div className="flex items-center px-7 py-14 sm:px-14 sm:py-20 lg:px-20">
           <div>
             <p className="section-kicker">One formula, every hair type</p>
-            <h2 className="mt-4 font-heading text-[clamp(3rem,5.2vw,5.5rem)] leading-[0.93] tracking-[-0.045em]">Clean hair is only the beginning.</h2>
+            <h2 className="section-title mt-4">Clean hair is only the beginning.</h2>
             <p className="body-copy mt-7 max-w-xl text-[#35544e]">Traditional shampoos are designed to clean. But shampoo is something you use again and again — so why waste the opportunity? Miriam’s turns every shower into a strengthening, scalp-caring ritual.</p>
             <div className="mt-8 grid grid-cols-2 gap-5 border-y border-primary/15 py-7 text-sm">
               <p><strong className="block font-heading text-3xl">65%+</strong> real rice water</p>
@@ -1020,7 +1028,7 @@ function LegacyHomeStorefront() {
 
       <section className="bg-primary px-5 py-20 text-white sm:px-8 sm:py-28">
         <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div><p className="section-kicker text-[#b8d5cd]">More than a hero ingredient</p><h2 className="mt-4 font-heading text-[clamp(3.2rem,5.5vw,6rem)] leading-[0.9] tracking-[-0.045em]">Every ingredient earns its place.</h2><p className="body-copy mt-6 max-w-lg text-white/72">No bulk fillers and no one-ingredient marketing story. Every formula combines the rice water base with carefully chosen actives and botanicals.</p></div>
+          <div><p className="section-kicker text-[#b8d5cd]">More than a hero ingredient</p><h2 className="section-title mt-4">Every ingredient earns its place.</h2><p className="body-copy mt-6 max-w-lg text-white/72">No bulk fillers and no one-ingredient marketing story. Every formula combines the rice water base with carefully chosen actives and botanicals.</p></div>
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/18 sm:grid-cols-4">
             {['Rice water', 'Biotin', 'Keratin', 'Caffeine', 'Rosemary', 'Coconut oil', 'Aloe', 'Pro-vitamin B5'].map((ingredient, index) => (
               <div key={ingredient} className="flex min-h-32 flex-col justify-between bg-primary p-5 transition-colors hover:bg-[#1d4a42]"><span className="font-heading text-2xl text-[#cce1db]">{String(index + 1).padStart(2, '0')}</span><span className="text-xs font-bold uppercase tracking-widest">{ingredient}</span></div>
@@ -1036,7 +1044,7 @@ function LegacyHomeStorefront() {
             <CarouselContent className="-ml-5">
               {reviews.map((review) => (
                 <CarouselItem key={review.tag} className="basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                  <article className="flex min-h-[390px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex items-start justify-between gap-5"><img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="size-20 rounded-2xl object-cover object-top" /><div className="text-right"><Stars /><span className="mt-3 block text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Verified</span></div></div><blockquote className="mt-7 flex-1 font-heading text-[1.65rem] leading-[1.1] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
+                  <article className="flex min-h-[390px] flex-col rounded-2xl border bg-white p-7 sm:p-9"><div className="flex items-start justify-between gap-5"><img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="size-20 rounded-2xl object-cover object-top" /><div className="text-right"><Stars /><span className="meta-label mt-3 block text-muted-foreground">Verified</span></div></div><blockquote className="mt-7 flex-1 font-heading text-[1.65rem] leading-[1.1] tracking-[-0.02em]">“{review.quote}”</blockquote><div className="mt-7 border-t pt-5"><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-xs text-muted-foreground">For {review.tag.toLowerCase()}</p></div></article>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -1047,9 +1055,9 @@ function LegacyHomeStorefront() {
       </section>
 
       <section id="story" className="grid bg-[#e9e1d6] lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="relative min-h-[520px] overflow-hidden lg:min-h-[760px]"><img src="/editorial.png" alt="Miriam's rice water shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" /><span className="absolute bottom-7 left-7 rounded-full border border-white/30 bg-black/15 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">From one personal journey to thousands of wash days</span></div>
+        <div className="relative min-h-[520px] overflow-hidden lg:min-h-[760px]"><img src="/editorial.png" alt="Miriam's rice water shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" /><span className="meta-label absolute bottom-7 left-7 rounded-full border border-white/30 bg-black/15 px-4 py-2 text-white backdrop-blur">From one personal journey to thousands of wash days</span></div>
         <div className="flex items-center px-7 py-16 sm:px-16 lg:px-[7vw]">
-          <div><p className="section-kicker">A note from Miriam</p><h2 className="mt-4 font-heading text-[clamp(3.3rem,5.5vw,6.2rem)] leading-[0.88] tracking-[-0.045em]">I wanted everyday care to feel like real care.</h2><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection began with my own struggles with thinning, frizz, dryness and heat damage. After years of experimenting, I found my way back to rice water — a ritual trusted for generations.</p><p>We realised the simplest step to healthier-looking hair is a good shampoo. Oiling can help, but it asks for time and consistency. We all shower. So we made that familiar step work harder.</p></div><p className="mt-8 font-heading text-3xl italic">Miriam Ahmad</p><p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Founder, Miriam’s Collection</p><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Follow Miriam on TikTok <ArrowRight className="size-4" /></a></div>
+          <div><p className="section-kicker">A note from Miriam</p><h2 className="section-title mt-4">I wanted everyday care to feel like real care.</h2><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection began with my own struggles with thinning, frizz, dryness and heat damage. After years of experimenting, I found my way back to rice water — a ritual trusted for generations.</p><p>We realised the simplest step to healthier-looking hair is a good shampoo. Oiling can help, but it asks for time and consistency. We all shower. So we made that familiar step work harder.</p></div><p className="mt-8 font-heading text-3xl italic">Miriam Ahmad</p><p className="meta-label mt-1 text-muted-foreground">Founder, Miriam’s Collection</p><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Follow Miriam on TikTok <ArrowRight className="size-4" /></a></div>
         </div>
       </section>
 
@@ -1058,7 +1066,7 @@ function LegacyHomeStorefront() {
           <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="section-kicker">From your camera rolls</p><h2 className="section-title mt-4">Rice water rituals, shared by you.</h2></div><div className="flex gap-3"><a href="https://www.instagram.com/miriamscollectionuk/" target="_blank" rel="noreferrer" className="social-pill"><Camera /> Instagram</a><a href="https://www.tiktok.com/@miriamscollectionuk" target="_blank" rel="noreferrer" className="social-pill"><Music2 /> TikTok</a></div></div>
           <div className="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
             {socialTiles.map((tile) => (
-              <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-muted"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/5" /><span className="absolute left-3 top-3 flex size-10 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm sm:left-5 sm:top-5"><Play className="ml-0.5 size-4 fill-current" /></span><div className="absolute bottom-4 left-4 right-4 text-white sm:bottom-6 sm:left-6"><p className="text-[9px] font-bold uppercase tracking-widest text-white/65">Watch on {tile.network}</p><p className="mt-1 font-heading text-xl sm:text-2xl">{tile.label}</p></div></a>
+              <a key={tile.label} href={tile.network === 'TikTok' ? 'https://www.tiktok.com/@miriamscollectionuk' : 'https://www.instagram.com/miriamscollectionuk/'} target="_blank" rel="noreferrer" className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-muted"><img src={tile.image} alt={`${tile.label} customer result`} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/5" /><span className="absolute left-3 top-3 flex size-10 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm sm:left-5 sm:top-5"><Play className="ml-0.5 size-4 fill-current" /></span><div className="absolute bottom-4 left-4 right-4 text-white sm:bottom-6 sm:left-6"><p className="meta-label text-white/70">Watch on {tile.network}</p><p className="mt-1 font-heading text-xl sm:text-2xl">{tile.label}</p></div></a>
             ))}
           </div>
         </div>
@@ -1098,7 +1106,7 @@ export function HomeStorefront() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#102c26]/78 via-[#102c26]/22 to-transparent" />
         <div className="home-hero-inner relative mx-auto flex h-full max-w-[1480px] items-end px-5 py-5 sm:items-center sm:px-8 sm:py-9 lg:px-14">
           <div className="home-hero-card max-w-[520px] rounded-[1.5rem] border border-white/30 bg-white/[0.16] p-4 text-white shadow-[0_28px_90px_rgb(0_0_0/28%)] backdrop-blur-[28px] sm:max-w-[420px] sm:p-6 lg:max-w-[520px] lg:p-9">
-            <p className="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-white/75 sm:block">★ 4.79 from 3,300 reviews</p>
+            <p className="meta-label hidden text-white/75 sm:block">★ 4.79 from 3,300 reviews</p>
             <h1 className="mt-3 font-heading text-[clamp(2.2rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em]">Your shampoo could be doing so much more.</h1>
             <p className="hero-support mt-4 max-w-md text-base leading-7 text-white/[0.86] sm:text-[17px]">Meet the shampoo and conditioner that do more than clean.</p>
             <a href="/products/rice-water-revive-duo" className="cta mt-5 border-[#dbe7df] bg-[#dbe7df] text-primary hover:bg-white sm:mt-6">Shop Now <ArrowRight /></a>
@@ -1126,7 +1134,7 @@ export function HomeStorefront() {
         <div className="flex items-center px-7 py-16 sm:px-14 lg:px-[7vw]">
           <div>
             <p className="section-kicker">Why Rice Water?</p>
-            <h2 className="mt-4 font-heading text-[clamp(3.2rem,5.2vw,6rem)] leading-[0.9] tracking-[-0.045em]">Naturally rich in amino acids, vitamins and minerals.</h2>
+            <h2 className="section-title mt-4">Naturally rich in amino acids, vitamins and minerals.</h2>
             <p className="body-copy mt-7 max-w-xl text-[#35544e]">It’s been used for centuries across Asia for stronger, healthier hair. So we built it into the products you already use every wash.</p>
             <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8">Shop the Rice Water Shampoo &amp; Conditioner <ArrowRight /></a>
           </div>
@@ -1137,30 +1145,36 @@ export function HomeStorefront() {
 
       <ReviewsSection />
 
-      <section className="bg-primary px-5 py-14 text-white sm:px-8 sm:py-20 lg:py-[88px]">
-        <div className="mx-auto grid max-w-[1380px] gap-10 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-12 lg:grid-cols-[1.35fr_repeat(3,minmax(0,1fr))] lg:gap-14">
-          <div className="sm:col-span-2 lg:col-span-1">
-            <h2 className="font-heading text-[clamp(3rem,4.1vw,4.7rem)] leading-[0.9] tracking-[-0.04em]">Haircare, made differently.</h2>
-            <p className="body-copy mt-7 max-w-md text-white/85">We believe your wash day should do more than simply cleanse your hair. So we create formulas designed to turn everyday products into <strong className="text-white">real haircare.</strong></p>
+      <section className="bg-primary px-5 py-16 text-white sm:px-8 sm:py-24">
+        <div className="mx-auto grid max-w-[1380px] gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <p className="section-kicker text-white/60">What we believe</p>
+            <h2 className="section-title mt-4 max-w-xl">Haircare, made differently.</h2>
+            <p className="body-copy mt-7 max-w-lg text-white/82">We believe your wash day should do more than simply cleanse your hair. So we create formulas designed to turn everyday products into <strong className="text-white">real haircare.</strong></p>
           </div>
+          <div className="border-t border-white/20">
           {[
             ['/haircare-value-ingredients.png', 'More than hero ingredients', 'We don’t formulate around one or two ingredients just so they can sit on the front of the bottle. We use carefully selected ingredients that actually do something.'],
             ['/haircare-value-generations.png', 'Inspired by generations', 'From rice water to rosemary, we take inspiration from ingredients and rituals that have been used in haircare for generations — and reimagine them for your routine today.'],
             ['/haircare-value-everyday.png', 'Everyday care, elevated', 'Shampoo and conditioner are the two products almost everyone uses. We believe they should be some of the hardest-working formulas in your routine.'],
-          ].map(([icon, title, body]) => (
-            <article key={title} className="border-t border-white/20 pt-7 lg:border-0 lg:pt-0">
-              <img src={icon} alt="" className="size-[58px] object-contain" />
-              <h3 className="mt-5 font-heading text-[1.8rem] leading-[1.08]">{title}</h3>
-              <p className="body-copy mt-4 text-white/75">{body}</p>
+          ].map(([icon, title, body], index) => (
+            <article key={title} className="grid gap-5 border-b border-white/20 py-8 sm:grid-cols-[52px_64px_1fr] sm:items-start sm:gap-7 sm:py-10">
+              <span className="font-heading text-3xl font-normal text-[#d4ae67]">{String(index + 1).padStart(2, '0')}</span>
+              <img src={icon} alt="" className="size-12 object-contain opacity-80" />
+              <div>
+                <h3 className="card-title text-white">{title}</h3>
+                <p className="body-copy mt-3 max-w-2xl text-white/72">{body}</p>
+              </div>
             </article>
           ))}
+          </div>
         </div>
       </section>
 
       <section id="story" className="grid bg-[#e9e1d6] lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative min-h-[520px] overflow-hidden lg:min-h-[760px]"><img src="/editorial.png" alt="Miriam's rice water shampoo in an everyday setting" className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" /></div>
         <div className="flex items-center px-7 py-16 sm:px-16 lg:px-[7vw]">
-          <div><p className="section-kicker">My journey</p><h2 className="mt-4 font-heading text-[clamp(3.3rem,5.5vw,6.2rem)] leading-[0.88] tracking-[-0.045em]">Miriam’s Collection.</h2><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><a href="/our-story" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Read my story <ArrowRight className="size-4" /></a></div>
+          <div><p className="section-kicker">My journey</p><h2 className="section-title mt-4">Miriam’s Collection.</h2><div className="body-copy mt-8 space-y-5 text-[#40534f]"><p>Miriam’s Collection was born from a desire to overcome personal struggles with hair thinning, frizz, dryness and heat damage. After years of experimenting with various remedies, Miriam discovered the nourishing properties of Rice Water.</p><p>We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine or adding unnecessary fuss. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p></div><a href="/our-story" className="mt-8 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-widest">Read my story <ArrowRight className="size-4" /></a></div>
         </div>
       </section>
 
@@ -1328,7 +1342,7 @@ export function StoryStorefront() {
 
       <section className="bg-[#dceae6] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div><p className="section-kicker">Our mission</p><h2 className="mt-4 font-heading text-[clamp(3.4rem,6vw,6.6rem)] leading-[0.9] tracking-[-0.045em]">Real results. No unnecessary fuss.</h2></div>
+          <div><p className="section-kicker">Our mission</p><h2 className="section-title mt-4">Real results. No unnecessary fuss.</h2></div>
           <div><p className="body-copy max-w-2xl text-[#40534f]">We’re on a mission to give you luxurious, science-backed products that genuinely work—without overcomplicating your self-care routine. If you’re looking for thicker, healthier hair and brighter, younger skin, look no further. We’ve got you covered.</p><a href="/#shop" className="cta cta-dark mt-8">Shop the collection <ArrowRight /></a></div>
         </div>
       </section>
@@ -1372,7 +1386,7 @@ export function ProductDetail() {
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
 
       <div className="mx-auto max-w-[1440px] px-5 py-5 sm:px-8 lg:px-12">
-        <a href="/#shop" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground"><ArrowLeft className="size-3.5" /> Back to shop</a>
+        <a href="/#shop" className="meta-label inline-flex items-center gap-2 text-muted-foreground"><ArrowLeft className="size-3.5" /> Back to shop</a>
       </div>
 
       <section className="mx-auto grid max-w-[1320px] gap-8 px-5 pb-20 sm:px-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-8 lg:gap-12 lg:px-12">
@@ -1405,7 +1419,7 @@ export function ProductDetail() {
         </div>
 
         <div className="md:pt-1 lg:pt-3">
-          <div className="grid grid-cols-3 gap-4 border-b pb-5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground"><span><strong className="mb-1 block text-sm text-foreground">4.79 ★</strong>3,300 reviews</span><span><strong className="mb-1 block text-sm text-foreground">65%+</strong>rice water</span><span><strong className="mb-1 block text-sm text-foreground">65k+</strong>bottles sold</span></div>
+          <div className="grid grid-cols-3 gap-4 border-b pb-5 text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground"><span><strong className="mb-1 block text-sm text-foreground">4.79 ★</strong>3,300 reviews</span><span><strong className="mb-1 block text-sm text-foreground">65%+</strong>rice water</span><span><strong className="mb-1 block text-sm text-foreground">65k+</strong>bottles sold</span></div>
           <div className="hidden md:block">
             <h1 className="mt-7 max-w-3xl font-heading text-[clamp(2.4rem,3.7vw,4.1rem)] leading-[0.94] tracking-[-0.04em]">The Rice Water Revive Duo (Sulfate Free)</h1>
           </div>
@@ -1428,12 +1442,12 @@ export function ProductDetail() {
                 <strong className="block">Wash Day Set Offer</strong>
                 <small className="flex flex-wrap items-center gap-2"><span>✦ Welcome kit worth £53.99 included</span></small>
               </span>
-              <span className="price-stack shrink-0"><span className="mb-1 rounded-full bg-primary px-2 py-1 text-[8px] font-bold uppercase tracking-wider text-white">Most popular</span><strong>£45.95</strong><s>£103.99</s></span>
+              <span className="price-stack shrink-0"><span className="mb-1 rounded-full bg-primary px-2 py-1 text-xs font-bold uppercase tracking-[0.1em] text-white">Most popular</span><strong>£45.95</strong><s>£103.99</s></span>
             </button>
 
             {washDaySelected && (
               <div className="overflow-hidden rounded-2xl border border-primary/20 bg-white">
-                <p className="px-4 pb-1 pt-4 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground">Included in your Wash Day Set:</p>
+                <p className="meta-label px-4 pb-1 pt-4 text-muted-foreground">Included in your Wash Day Set:</p>
                 <div className="px-4">
                   {washDaySetItems.map((item, index) => (
                     <div key={item.name} className={`grid grid-cols-[44px_1fr_auto] items-center gap-3 py-3 ${index < washDaySetItems.length - 1 ? 'border-b' : ''}`}>
@@ -1443,7 +1457,7 @@ export function ProductDetail() {
                     </div>
                   ))}
                 </div>
-                <div className="grid grid-cols-2 divide-x border-t text-[9px] font-bold uppercase tracking-wider text-muted-foreground">
+                <div className="grid grid-cols-2 divide-x border-t text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">
                   <span className="flex items-center justify-center gap-2 px-3 py-3"><Truck className="size-3.5" /> Free shipping</span>
                   <span className="flex items-center justify-center gap-2 px-3 py-3"><Clock3 className="size-3.5" /> Limited time offer</span>
                 </div>
@@ -1455,7 +1469,7 @@ export function ProductDetail() {
             <div className="flex min-h-12 items-center rounded-full border bg-white px-1"><button className="p-3" aria-label="Decrease quantity" onClick={() => setQuantity(Math.max(1, quantity - 1))}><Minus className="size-3.5" /></button><span className="min-w-7 text-center text-sm font-bold">{quantity}</span><button className="p-3" aria-label="Increase quantity" onClick={() => setQuantity(quantity + 1)}><Plus className="size-3.5" /></button></div>
             <button onClick={add} className="flex min-h-12 flex-1 items-center justify-center rounded-full bg-primary px-6 text-xs font-bold uppercase tracking-widest text-white">Add to bag · {washDaySelected ? '£45.95' : '£39.95'}</button>
           </div>
-          <p className="mt-4 text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Free UK tracked shipping · 30-day returns · Secure checkout</p>
+          <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">Free UK tracked shipping · 30-day returns · Secure checkout</p>
 
         </div>
       </section>
@@ -1466,7 +1480,7 @@ export function ProductDetail() {
         <div className="mx-auto max-w-[1440px]">
           <div className="max-w-5xl">
             <p className="section-kicker">Inside the formula</p>
-            <h2 className="mt-4 font-heading text-[clamp(3rem,5.5vw,6rem)] leading-[0.92] tracking-[-0.045em]">Here’s how the Rice Water Shampoo and Conditioner work</h2>
+            <h2 className="section-title mt-4">Here’s how the Rice Water Shampoo and Conditioner work</h2>
           </div>
           <div className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
             {productStoryVideos.map((item) => (
