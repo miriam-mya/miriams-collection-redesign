@@ -717,10 +717,8 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
         <div className="mt-10 overflow-hidden rounded-[2rem] border border-primary/15 bg-[#fbf8f2]">
           <div className="px-7 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
             <div className="max-w-4xl">
-              <p className="section-kicker">Try it for yourself</p>
-              <h3 className="feature-title mt-4">We challenge you.</h3>
-              <p className="mt-7 max-w-2xl text-lg font-semibold leading-8">Pick up your current bottle... we bet it has 1 or 2 hero ingredients - Argan Oil, Keratin?</p>
-              <p className="body-copy mt-4 max-w-xl text-muted-foreground">Plastered across the front to make you think you’re getting more of the good stuff than you actually are.</p>
+              <h3 className="feature-title">We challenge you.</h3>
+              <p className="body-copy mt-6 max-w-2xl text-muted-foreground">Check your current bottle: most shampoos promote just one or two headline ingredients. Miriam’s Collection combines 16 active and botanical ingredients in one complete formula.</p>
               {showShopCta && (
                 <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8 w-fit">Shop now <ArrowRight /></a>
               )}
@@ -1424,13 +1422,14 @@ export function ProductDetail() {
               <span className="price-stack shrink-0"><strong>£39.95</strong><s>£50.00</s></span>
             </button>
 
-            <button onClick={() => setPlan('washDay')} className={`purchase-option border ${washDaySelected ? 'purchase-option-active' : 'border-primary/15 bg-white'}`}>
+            <button onClick={() => setPlan('washDay')} className={`purchase-option relative border pt-5 ${washDaySelected ? 'purchase-option-active' : 'border-primary/15 bg-white'}`}>
+              <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-white shadow-sm">Best value</span>
               <span className="purchase-radio shrink-0"><i /></span>
               <span className="flex-1 text-left">
                 <strong className="block">Wash Day Set Offer</strong>
                 <small className="flex flex-wrap items-center gap-2"><span>✦ Welcome kit worth £53.99 included</span></small>
               </span>
-              <span className="price-stack shrink-0"><span className="mb-1 rounded-full bg-primary px-2 py-1 text-xs font-bold uppercase tracking-[0.1em] text-white">Most popular</span><strong>£45.95</strong><s>£103.99</s></span>
+              <span className="price-stack shrink-0"><strong>£45.95</strong><s>£103.99</s></span>
             </button>
 
             {washDaySelected && (

@@ -48,6 +48,8 @@
 - P2: review verification competed with the image-to-copy transition — fixed by restoring the restrained fade and moving a shorter “Verified” label to the reviewer row.
 - P2: Haircare and challenge sections read as undifferentiated dark panels — fixed with clearer proposition-led hierarchy and restrained use of existing imagery.
 - P2: the challenge section carried a redundant image and repeated the comparison figures directly above it — removed to keep the proposition focused.
+- P2: the challenge eyebrow and long two-part setup weakened the proposition — removed and rewritten as one concise bottle-to-formula comparison.
+- P2: the product-page Wash Day Set badge crowded the price column — moved to the centred, half-overlapping position used by the homepage offer.
 - P2: typography had too many near-duplicate micro sizes and heading scales — consolidated into reusable tokens while preserving special-purpose hero titles.
 
 ## Final result
