@@ -1340,6 +1340,110 @@ export function StoryStorefront() {
   );
 }
 
+export function ChallengeConcepts() {
+  const challengeCopy = 'Check your current bottle: most shampoos promote just one or two headline ingredients. Miriam’s Collection combines 16 active and botanical ingredients in one complete formula.';
+
+  return (
+    <main className="min-h-screen bg-[#f3ede4] text-foreground">
+      <Header cartCount={0} openCart={() => {}} />
+
+      <section className="px-5 py-16 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-[1380px]">
+          <div className="max-w-4xl">
+            <p className="section-kicker">Section concepts</p>
+            <h1 className="section-title mt-4">Three ways to combine the challenge with the formula.</h1>
+            <p className="body-copy mt-6 max-w-2xl text-muted-foreground">Each option keeps the same message and ingredients, but changes how the customer discovers the proof.</p>
+          </div>
+
+          <nav className="mt-10 flex flex-wrap gap-3" aria-label="Jump to a concept">
+            {[1, 2, 3].map((number) => <a key={number} href={`#option-${number}`} className="cta border-primary/20 bg-white text-primary hover:border-primary">Option {number}</a>)}
+          </nav>
+        </div>
+      </section>
+
+      <section id="option-1" className="scroll-mt-24 px-5 pb-24 sm:px-8 sm:pb-32">
+        <div className="mx-auto max-w-[1380px]">
+          <p className="section-kicker mb-5">Option 1 · Editorial split</p>
+          <div className="overflow-hidden rounded-[2rem] border border-primary/15 bg-[#fbf8f2] lg:grid lg:grid-cols-[0.78fr_1.22fr]">
+            <div className="flex flex-col justify-between bg-primary px-7 py-10 text-white sm:px-12 sm:py-14 lg:min-h-[660px] lg:px-14 lg:py-16">
+              <div>
+                <span className="font-heading text-7xl text-[#d4ae67] sm:text-8xl">16</span>
+                <h2 className="feature-title mt-5 max-w-lg">We challenge you.</h2>
+                <p className="body-copy mt-6 max-w-lg text-white/72">{challengeCopy}</p>
+              </div>
+              <a href="/products/rice-water-revive-duo" className="cta cta-light mt-10 w-fit">Explore the formula <ArrowRight /></a>
+            </div>
+            <div className="px-6 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-16">
+              <p className="section-kicker">Inside every wash day</p>
+              <h3 className="feature-title mt-4 max-w-2xl">One complete formula. Sixteen purposeful ingredients.</h3>
+              <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-4">
+                {ingredientIcons.map((ingredient) => (
+                  <div key={ingredient.name} className="border-t border-primary/15 pt-5">
+                    <img src={ingredient.image} alt="" className="size-12 object-contain" />
+                    <p className="mt-4 text-sm font-semibold leading-5">{ingredient.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="option-2" className="scroll-mt-24 bg-primary px-5 py-24 text-white sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-[1380px]">
+          <p className="meta-label text-white/55">Option 2 · Number-led proof</p>
+          <div className="mt-8 grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+            <div>
+              <p className="font-heading text-[clamp(8rem,18vw,16rem)] leading-[0.7] tracking-[-0.07em] text-[#d4ae67]">16</p>
+              <h2 className="feature-title mt-10 max-w-lg">Count what your formula is doing for you.</h2>
+              <p className="body-copy mt-6 max-w-lg text-white/70">{challengeCopy}</p>
+              <a href="/products/rice-water-revive-duo" className="cta cta-light mt-9 w-fit">See all ingredients <ArrowRight /></a>
+            </div>
+            <ol className="grid border-t border-white/20 sm:grid-cols-2">
+              {ingredientIcons.map((ingredient, index) => (
+                <li key={ingredient.name} className="grid grid-cols-[2.5rem_1fr] items-center gap-3 border-b border-white/20 py-4 sm:odd:pr-8 sm:even:border-l sm:even:pl-8">
+                  <span className="font-heading text-xl text-[#d4ae67]">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-sm font-semibold">{ingredient.name}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="option-3" className="scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-[1380px]">
+          <p className="section-kicker mb-5">Option 3 · Formula index</p>
+          <div className="overflow-hidden rounded-[2rem] border border-primary/20 bg-white">
+            <div className="grid gap-8 border-b border-primary/15 px-7 py-10 sm:px-12 sm:py-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:px-14">
+              <h2 className="feature-title max-w-xl">We challenge you to check the label.</h2>
+              <div>
+                <p className="body-copy max-w-2xl text-muted-foreground">{challengeCopy}</p>
+                <a href="/products/rice-water-revive-duo" className="mt-6 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-[0.14em]">Shop the Rice Water Revive Duo <ArrowRight className="size-4" /></a>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8">
+              {ingredientIcons.map((ingredient, index) => (
+                <div key={ingredient.name} className="min-h-40 border-b border-r border-primary/15 p-5 last:border-r-0 lg:min-h-48">
+                  <span className="meta-label text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+                  <img src={ingredient.image} alt="" className="mt-5 size-12 object-contain" />
+                  <p className="mt-4 text-sm font-semibold leading-5">{ingredient.name}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col gap-2 bg-[#d4ae67] px-7 py-7 text-primary sm:flex-row sm:items-center sm:justify-between sm:px-12">
+              <strong className="font-heading text-3xl font-normal">More than a headline ingredient.</strong>
+              <span className="text-sm font-semibold">A complete formula for every wash day.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
+
 export function ProductDetail() {
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
