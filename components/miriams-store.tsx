@@ -613,16 +613,16 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
 
   return (
     <section id="offer" className="bg-[#eee7dc] px-5 py-12 sm:px-8 sm:py-16 lg:py-12">
-      <div className="mx-auto max-w-[1380px] overflow-hidden rounded-[1.5rem] border border-primary/10 bg-[#f8f5ef] lg:grid lg:h-[min(780px,calc(100vh-48px))] lg:min-h-[680px] lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="mx-auto max-w-[1380px] overflow-hidden rounded-[1.5rem] border border-primary/10 bg-[#f8f5ef] lg:grid lg:min-h-[760px] lg:grid-cols-[1.1fr_0.9fr]">
         <div className="relative min-h-[480px] overflow-hidden bg-[#e9e0d6] lg:min-h-0">
           <img src="/complete-ritual.png" alt="The complete Hair and Skin Ritual" className="absolute inset-0 h-full w-full object-cover" />
           <span className="absolute left-5 top-5 rounded-full bg-[#dbece7] px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary sm:left-8 sm:top-8">✦ September offer</span>
         </div>
 
-        <div className="flex items-center px-5 py-8 sm:px-9 sm:py-10 lg:overflow-y-auto lg:px-9 lg:py-7">
+        <div className="flex items-center px-5 py-8 sm:px-9 sm:py-10 lg:items-start lg:px-9 lg:py-9">
           <div className="w-full">
             <p className="section-kicker">September offer</p>
-            <h2 className="feature-title mt-2">The Hair &amp; Skin Ritual</h2>
+            <h2 className="feature-title mt-2 lg:text-[3.5rem]">The Hair &amp; Skin Ritual</h2>
             <div className="mt-3 flex flex-wrap items-center gap-2 text-sm"><span className="text-[#b78932]"><Stars /></span><strong>4.93</strong><span className="text-muted-foreground">Based on 1131 reviews</span></div>
             <p className="body-copy mt-4 max-w-xl">Upgrade your Rice Water Revive Duo for just £6 and get £53.99 worth of hair + skincare extras.</p>
 

@@ -1,57 +1,42 @@
 # Design QA
 
-## Source visual truth
+- Source visual truth: `/var/folders/df/tffbsvv13x3f7vl4jz8z4m300000gn/T/codex-clipboard-50673625-9e79-4160-ac87-09c49501d1c5.png`
+- Implementation evidence: Codex in-app browser capture of `http://localhost:4173/#offer`
+- Viewport: 1451 × 802 CSS px
+- Density normalization: source 2902 × 1604 px at 2×, normalized to 1451 × 802 CSS px; implementation captured at 1451 × 802 CSS px
+- State: desktop, Hair & Skin Ritual selected
 
-- Desktop Our Story issue: `/var/folders/df/tffbsvv13x3f7vl4jz8z4m300000gn/T/codex-clipboard-d261f82f-3ed5-4a65-b820-d5e8c3b2fe6b.png`
-- Mobile review-card issue: `/var/folders/df/tffbsvv13x3f7vl4jz8z4m300000gn/T/codex-clipboard-f78c83b3-70f2-44cf-8afe-a3a86cd0d9da.png`
-- Haircare and challenge sections: `/var/folders/df/tffbsvv13x3f7vl4jz8z4m300000gn/T/codex-clipboard-173c3feb-13b4-48f0-9696-886595c64c45.png` and `/var/folders/df/tffbsvv13x3f7vl4jz8z4m300000gn/T/codex-clipboard-2bebd82d-2ec1-4a80-b83b-515b3f0c076a.png`
+## Full-view comparison evidence
 
-## Captured implementation
+The source showed the desktop offer content vertically centred inside a fixed-height column even though the content was taller than that column. The heading was clipped above the panel and the add-to-bag control was clipped below it. In the revised implementation, the offer card sizes to its content and the page owns vertical scrolling. Browser measurements confirm the heading and CTA both remain within the right-hand panel, the panel uses visible overflow, and `scrollHeight` equals `clientHeight`.
 
-- Desktop Our Story: `/private/tmp/miriam-story-desktop-revised.png`
-- Product header and press strip: `/private/tmp/miriam-product-sticky-press.png`
-- Desktop reviews: `/private/tmp/miriam-product-review-revised.png`
-- Mobile review: `/private/tmp/miriam-product-review-mobile-final.png`
-- Story mobile: `/private/tmp/miriam-story-mobile-revised.png`
-- Desktop customer challenge: `/private/tmp/miriam-challenge-final-0918.png`
-- Desktop Haircare section: `/private/tmp/miriam-haircare-target.png`
-- Mobile Haircare section: `/private/tmp/miriam-mobile-haircare-final.png`
-- Final mobile review card: `/private/tmp/miriam-review-mobile-verified-right-final.png`
+## Focused region comparison
 
-## Comparison setup
+A separate crop was not needed because the issue and fix are both visible in the complete offer card. The header, purchase selectors, included-products panel, and CTA were legible in the full-view capture.
 
-- Story comparison: `/private/tmp/miriam-story-comparison.png`; source normalized to a 1440 × 900 desktop viewport and compared with the implementation at 1440 × 900 CSS pixels, DPR 1, initial hero state.
-- Review comparison: source card and final implementation were checked at a 390 × 844 CSS-pixel mobile viewport, DPR 1, at `#product-reviews`.
-- Sticky navigation was checked after scrolling the product page; computed position was `sticky`, `top: 0`, and the header remained visible.
+## Findings and comparison history
 
-## Visual comparison
+- P1 — Desktop offer content clipped at both ends.
+  - Earlier evidence: the source capture cuts off the top of “The Hair & Skin Ritual” and the bottom of the add-to-bag button.
+  - Fix: removed the viewport-capped card height and nested vertical scrolling, top-aligned the desktop content column, and reduced the desktop offer heading to 3.5rem.
+  - Post-fix evidence: card height 847px; content panel `scrollHeight` and `clientHeight` both 845px; heading and CTA bounds are both fully inside the panel.
 
-- Typography: the site now uses two declared families, shared display/section/feature/card title scales, a shared body scale, and shared eyebrow/meta styles. Near-duplicate 8–12 px utility labels were consolidated into the 12–13 px meta scale.
-- Spacing and geometry: the Story card is reduced and positioned to preserve the product image; the review fade is restrained and the verification label now sits beside the reviewer details.
-- Colour and effects: established cream, forest, white, and glass-blur treatments are preserved.
-- Imagery: the Story background remains prominent; the review image occupies the upper portion of the card without the earlier excess white space.
-- Content: existing brand messaging and review copy remain unchanged.
-- Section proposals: the Haircare section is now a restrained editorial sequence; the challenge section is a concise text-led proposition with a single conversion action and no decorative imagery.
+## Required fidelity surfaces
 
-## Interaction and responsive checks
+- Fonts and typography: existing brand families, weights, tracking, and hierarchy preserved; heading now fits cleanly.
+- Spacing and layout rhythm: desktop panel padding is balanced and no longer creates clipped overflow.
+- Colors and visual tokens: unchanged from the existing site.
+- Image quality and asset fidelity: original product artwork and crop preserved.
+- Copy and content: unchanged.
 
-- Product navigation remains visible during scroll on desktop and mobile.
-- The complete As Seen In logo strip is present on the product page.
-- Story and product routes were checked at desktop and mobile sizes.
-- Haircare, challenge, and review components were checked at 1440 × 900 and 390 × 844.
+## Primary interactions and console
 
-## Findings resolved
+- Switched from the ritual offer to the duo and verified the included-products panel hides and the CTA updates.
+- Switched back to the ritual offer and verified the ritual CTA returns.
+- Console errors and warnings checked: none.
 
-- P1: oversized desktop Story card obscured the hero image — fixed.
-- P1: product navigation disappeared on scroll — fixed.
-- P1: As Seen In logos were missing from the product page — fixed.
-- P2: review verification competed with the image-to-copy transition — fixed by restoring the restrained fade and moving a shorter “Verified” label to the reviewer row.
-- P2: Haircare and challenge sections read as undifferentiated dark panels — fixed with clearer proposition-led hierarchy and restrained use of existing imagery.
-- P2: the challenge section carried a redundant image and repeated the comparison figures directly above it — removed to keep the proposition focused.
-- P2: the challenge eyebrow and long two-part setup weakened the proposition — removed and rewritten as one concise bottle-to-formula comparison.
-- P2: the product-page Wash Day Set badge crowded the price column — moved to the centred, half-overlapping position used by the homepage offer.
-- P2: typography had too many near-duplicate micro sizes and heading scales — consolidated into reusable tokens while preserving special-purpose hero titles.
+## Follow-up polish
 
-## Final result
+No P3 items recorded for this focused repair.
 
-passed
+final result: passed
