@@ -44,6 +44,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 type Product = {
   name: string;
@@ -842,15 +850,25 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
           <CarouselContent className="-ml-5 items-stretch">
             {reviews.map((review) => (
               <CarouselItem key={review.tag} className="flex basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                <article className="flex h-full min-h-[680px] w-full flex-col overflow-hidden rounded-2xl border bg-white sm:min-h-[720px]">
-                  <div className="relative min-h-[330px] flex-1 overflow-hidden bg-[#e7e2da] sm:min-h-[360px]">
-                    <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="absolute inset-0 h-full w-full object-cover object-top" />
-                    <div className="absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(to_top,#fff_0%,#fff_60%,rgba(255,255,255,0.8)_78%,transparent_100%)]" />
-                    <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
-                  </div>
-                  <div className="relative -mt-8 shrink-0 px-6 pb-7 sm:px-8 sm:pb-8">
+                <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border bg-white">
+                  <Dialog>
+                    <DialogTrigger className="group relative block h-[210px] w-full shrink-0 cursor-zoom-in overflow-hidden bg-[#e7e2da] text-left sm:h-[230px]" aria-label={`View ${review.name}'s result image full size`}>
+                      <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+                      <div className="absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(to_top,#fff_0%,#fff_60%,rgba(255,255,255,0.8)_78%,transparent_100%)]" />
+                      <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
+                      <span className="meta-label absolute bottom-7 left-6 rounded-full bg-white/90 px-3 py-1.5 text-primary opacity-90 shadow-sm transition-opacity group-hover:opacity-100">View image</span>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-[calc(100%-2rem)] overflow-hidden bg-[#f7f4ee] p-2 sm:max-w-[760px] [&_[data-slot=dialog-close]]:right-4 [&_[data-slot=dialog-close]]:top-4 [&_[data-slot=dialog-close]]:rounded-full [&_[data-slot=dialog-close]]:bg-white [&_[data-slot=dialog-close]]:shadow-md" showCloseButton>
+                      <DialogHeader className="sr-only">
+                        <DialogTitle>{review.name}&apos;s result</DialogTitle>
+                        <DialogDescription>Full-size customer review image for {review.tag.toLowerCase()}.</DialogDescription>
+                      </DialogHeader>
+                      <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results, enlarged`} className="max-h-[82vh] w-full rounded-lg object-contain" />
+                    </DialogContent>
+                  </Dialog>
+                  <div className="relative -mt-7 flex flex-1 flex-col px-6 pb-7 sm:px-8 sm:pb-8">
                     <blockquote className="font-heading text-[1.55rem] leading-[1.1] tracking-[-0.02em] sm:text-[1.7rem]">“{review.quote}”</blockquote>
-                    <div className="mt-6 flex items-end justify-between gap-4 border-t pt-5">
+                    <div className="mt-auto flex items-end justify-between gap-4 border-t pt-5">
                       <div><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-sm text-muted-foreground">For {review.tag.toLowerCase()}</p></div>
                       <span className="meta-label shrink-0 rounded-full bg-[#edf3f0] px-3 py-1.5 text-muted-foreground">Verified</span>
                     </div>
