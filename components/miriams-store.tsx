@@ -442,7 +442,9 @@ function Announcement() {
         <span>{messages[2]}</span>
       </div>
       <div className="announcement-cube lg:hidden" aria-label={messages.join('. ')}>
-        {messages.map((message) => <span key={message} aria-hidden="true">{message}</span>)}
+        <div className="announcement-track" aria-hidden="true">
+          {[...messages, messages[0]].map((message, index) => <span key={`${message}-${index}`}>{message}</span>)}
+        </div>
       </div>
     </div>
   );
