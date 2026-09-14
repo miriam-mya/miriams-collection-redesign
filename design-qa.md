@@ -31,7 +31,7 @@
 - Colour and effects: established cream, forest, white, and glass-blur treatments are preserved.
 - Imagery: the Story background remains prominent; the review image occupies the upper portion of the card without the earlier excess white space.
 - Content: existing brand messaging and review copy remain unchanged.
-- Section proposals: the Haircare section is now a restrained editorial sequence; the challenge section uses existing site photography, a direct bottle comparison, and a single conversion action rather than decorative graphics.
+- Section proposals: the Haircare section is now a restrained editorial sequence; the challenge section is a concise text-led proposition with a single conversion action and no decorative imagery.
 
 ## Interaction and responsive checks
 
@@ -47,6 +47,7 @@
 - P1: As Seen In logos were missing from the product page — fixed.
 - P2: review verification competed with the image-to-copy transition — fixed by restoring the restrained fade and moving a shorter “Verified” label to the reviewer row.
 - P2: Haircare and challenge sections read as undifferentiated dark panels — fixed with clearer proposition-led hierarchy and restrained use of existing imagery.
+- P2: the challenge section carried a redundant image and repeated the comparison figures directly above it — removed to keep the proposition focused.
 - P2: typography had too many near-duplicate micro sizes and heading scales — consolidated into reusable tokens while preserving special-purpose hero titles.
 
 ## Final result

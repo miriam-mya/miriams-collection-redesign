@@ -715,24 +715,12 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
           </div>
         </SlideUp>
         <div className="mt-10 overflow-hidden rounded-[2rem] border border-primary/15 bg-[#fbf8f2]">
-          <div className="grid lg:grid-cols-[0.88fr_1.12fr]">
-            <div className="relative min-h-[280px] overflow-hidden border-b border-primary/15 lg:min-h-[360px] lg:border-b-0 lg:border-r">
-              <img src="/terrarium.png" alt="Most shampoos compared with Miriam’s Collection" className="absolute inset-0 h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#102f29]/55 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 flex justify-between text-xs font-bold uppercase tracking-[0.14em] text-white sm:bottom-7 sm:left-7 sm:right-7">
-                <span>Most shampoos</span><span>Miriam’s Collection</span>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center px-7 py-10 sm:px-12 sm:py-14 lg:px-14">
+          <div className="px-7 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
+            <div className="max-w-4xl">
               <p className="section-kicker">Try it for yourself</p>
               <h3 className="feature-title mt-4">We challenge you.</h3>
               <p className="mt-7 max-w-2xl text-lg font-semibold leading-8">Pick up your current bottle... we bet it has 1 or 2 hero ingredients - Argan Oil, Keratin?</p>
               <p className="body-copy mt-4 max-w-xl text-muted-foreground">Plastered across the front to make you think you’re getting more of the good stuff than you actually are.</p>
-              <div className="mt-8 flex items-end gap-8 border-y border-primary/15 py-6">
-                <div><span className="meta-label text-muted-foreground">Typical bottle</span><strong className="mt-1 block font-heading text-4xl font-normal">1 or 2</strong></div>
-                <div className="h-12 w-px bg-primary/20" />
-                <div><span className="meta-label text-muted-foreground">Our formula</span><strong className="mt-1 block font-heading text-4xl font-normal">16</strong></div>
-              </div>
               {showShopCta && (
                 <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8 w-fit">Shop now <ArrowRight /></a>
               )}
