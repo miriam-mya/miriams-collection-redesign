@@ -702,29 +702,31 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
           </div>
         </div>
         <SlideUp className="mt-12">
-          <div className="border border-[#d8d1c5] bg-[#f8f4ec] px-4 py-10 sm:px-8 sm:py-12">
-            <h3 className="feature-title text-center">Our 16 active &amp; botanical ingredients</h3>
-            <div className="mt-10 grid grid-cols-4 gap-x-3 gap-y-10 lg:grid-cols-8 lg:gap-x-5">
-              {ingredientIcons.map((ingredient) => (
-                <div key={ingredient.name} className="flex min-w-0 flex-col items-center text-center">
-                  <img src={ingredient.image} alt="" className="size-14 object-contain sm:size-16" />
-                  <span className="mt-4 text-xs font-medium leading-tight tracking-[0.02em] sm:text-sm">{ingredient.name}</span>
+          <div className="overflow-hidden rounded-[2rem] border border-primary/20 bg-white">
+            <div className="grid gap-8 border-b border-primary/15 px-7 py-10 sm:px-12 sm:py-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:px-14">
+              <h3 className="feature-title max-w-xl">We challenge you to check the label.</h3>
+              <div>
+                <p className="body-copy max-w-2xl text-muted-foreground">Check your current bottle: most shampoos promote just one or two headline ingredients. Miriam’s Collection combines 16 active and botanical ingredients in one complete formula.</p>
+                {showShopCta && (
+                  <a href="/products/rice-water-revive-duo" className="mt-6 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-[0.14em]">Shop the Rice Water Revive Duo <ArrowRight className="size-4" /></a>
+                )}
+              </div>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8">
+              {ingredientIcons.map((ingredient, index) => (
+                <div key={ingredient.name} className="min-h-40 border-b border-r border-primary/15 p-5 lg:min-h-48">
+                  <span className="meta-label text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
+                  <img src={ingredient.image} alt="" className="mt-5 size-12 object-contain" />
+                  <p className="mt-4 text-sm font-semibold leading-5">{ingredient.name}</p>
                 </div>
               ))}
             </div>
-          </div>
-        </SlideUp>
-        <div className="mt-10 overflow-hidden rounded-[2rem] border border-primary/15 bg-[#fbf8f2]">
-          <div className="px-7 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
-            <div className="max-w-4xl">
-              <h3 className="feature-title">We challenge you.</h3>
-              <p className="body-copy mt-6 max-w-2xl text-muted-foreground">Check your current bottle: most shampoos promote just one or two headline ingredients. Miriam’s Collection combines 16 active and botanical ingredients in one complete formula.</p>
-              {showShopCta && (
-                <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8 w-fit">Shop now <ArrowRight /></a>
-              )}
+            <div className="flex flex-col gap-2 bg-[#d4ae67] px-7 py-7 text-primary sm:flex-row sm:items-center sm:justify-between sm:px-12">
+              <strong className="font-heading text-3xl font-normal">More than a headline ingredient.</strong>
+              <span className="text-sm font-semibold">A complete formula for every wash day.</span>
             </div>
           </div>
-        </div>
+        </SlideUp>
       </div>
     </section>
   );
