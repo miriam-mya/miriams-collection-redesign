@@ -133,6 +133,13 @@ const productStoryVideos = [
   },
 ];
 
+const resultMilestones = [
+  { timing: 'First few washes', result: 'Hydrated, soft hair.', note: 'Hair feels softer and easier to manage from the start.' },
+  { timing: '2–4 weeks', result: 'More shine, strength and less frizz.', note: 'A steadier wash-day ritual begins to show between washes.' },
+  { timing: 'Month 3', result: 'New growth becomes more noticeable.', note: 'Consistency gives healthy-looking growth time to become visible.' },
+  { timing: 'Beyond', result: 'Consistently healthy hair.', note: 'The ritual becomes part of maintaining your strongest-feeling hair.' },
+];
+
 const productGalleryImages = [
   { src: '/revive-duo.jpg', alt: 'Rice Water Revive Duo' },
   { src: '/close-up.png', alt: 'Close-up of rice water shampoo and conditioner' },
@@ -614,23 +621,16 @@ function PressStrip() {
 }
 
 function ProductResultsTimeline() {
-  const milestones = [
-    ['first few washes', 'Hydrated, soft hair.'],
-    ['2-4 weeks', 'More shine, strength and less frizz.'],
-    ['month 3', 'New growth becomes more noticeable.'],
-    ['Beyond', 'Consistently healthy hair.'],
-  ];
-
   return (
     <section className="bg-[#fbfaf6] px-5 py-16 sm:px-8 sm:py-20">
       <div className="mx-auto max-w-[1320px] overflow-hidden rounded-[1.75rem] border border-primary/20 bg-[#f8f4ec] px-6 py-10 sm:px-10 sm:py-12">
         <p className="section-kicker text-center">What you&apos;ll notice</p>
         <div className="mx-auto mt-5 h-px w-14 bg-primary/35" />
         <div className="mt-9 grid gap-0 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-primary/15">
-          {milestones.map(([title, copy], index) => (
-            <article key={title} className={`px-2 py-6 text-center sm:px-6 ${index < milestones.length - 1 ? 'border-b border-primary/15 lg:border-b-0' : ''}`}>
-              <h2 className="font-heading text-[2.25rem] leading-[0.95] tracking-[-0.035em] sm:text-[2.6rem]">{title}</h2>
-              <p className="mt-5 text-base leading-6 text-[#35544e]">{copy}</p>
+          {resultMilestones.map((milestone, index) => (
+            <article key={milestone.timing} className={`px-2 py-6 text-center sm:px-6 ${index < resultMilestones.length - 1 ? 'border-b border-primary/15 lg:border-b-0' : ''}`}>
+              <h2 className="font-heading text-[2.25rem] leading-[0.95] tracking-[-0.035em] sm:text-[2.6rem]">{milestone.timing}</h2>
+              <p className="mt-5 text-base leading-6 text-[#35544e]">{milestone.result}</p>
             </article>
           ))}
         </div>
@@ -1466,6 +1466,123 @@ export function ChallengeConcepts() {
                   <img src={ingredient.image} alt="" className="mt-5 size-12 object-contain" />
                   <p className="mt-4 text-sm font-semibold leading-5">{ingredient.name}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
+
+export function ResultsConcepts() {
+  const [activeMilestone, setActiveMilestone] = useState(0);
+  const activeResult = resultMilestones[activeMilestone];
+  const chapterColours = [
+    'bg-[#dbece7] text-primary',
+    'bg-[#f8f4ec] text-primary',
+    'bg-[#d4ae67] text-primary',
+    'bg-primary text-white',
+  ];
+
+  return (
+    <main className="min-h-screen bg-[#f3ede4] text-foreground">
+      <Header cartCount={0} openCart={() => {}} sticky />
+
+      <section className="px-5 py-16 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-[1380px]">
+          <p className="section-kicker">Product-page concepts</p>
+          <h1 className="section-title mt-4 max-w-5xl">Three clearer ways to show what changes—and when.</h1>
+          <p className="body-copy mt-6 max-w-2xl text-muted-foreground">The same four stages, explored through three different customer stories. Each option is responsive and ready to replace the current section.</p>
+          <nav className="mt-9 flex flex-wrap gap-3" aria-label="Jump to a results concept">
+            {[1, 2, 3].map((number) => <a key={number} href={`#result-option-${number}`} className="cta border-primary/20 bg-white text-primary hover:border-primary">Option {number}</a>)}
+          </nav>
+        </div>
+      </section>
+
+      <section id="result-option-1" className="scroll-mt-24 px-5 pb-24 sm:px-8 sm:pb-32">
+        <div className="mx-auto max-w-[1380px]">
+          <p className="section-kicker mb-5">Option 1 · The progress path</p>
+          <div className="overflow-hidden rounded-[2rem] border border-primary/15 bg-white">
+            <div className="grid gap-8 border-b border-primary/12 px-7 py-10 sm:px-12 sm:py-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-end lg:px-16">
+              <h2 className="feature-title max-w-2xl">A ritual that keeps building.</h2>
+              <p className="body-copy max-w-2xl text-muted-foreground">Every wash is one more step towards softer, stronger, healthier-looking hair. Here’s what consistency can look like.</p>
+            </div>
+            <ol className="relative grid px-7 py-8 sm:px-12 sm:py-12 lg:grid-cols-4 lg:px-16">
+              <div className="absolute left-10 top-12 hidden h-px w-[calc(100%-5rem)] bg-primary/18 lg:block" aria-hidden="true" />
+              {resultMilestones.map((milestone, index) => (
+                <li key={milestone.timing} className={`relative grid grid-cols-[3rem_1fr] gap-4 py-6 lg:block lg:px-5 lg:py-0 ${index < resultMilestones.length - 1 ? 'border-b border-primary/12 lg:border-b-0' : ''}`}>
+                  <span className="relative z-10 flex size-10 items-center justify-center rounded-full bg-primary font-heading text-lg text-white ring-8 ring-white">{index + 1}</span>
+                  <div className="lg:mt-10">
+                    <p className="meta-label text-muted-foreground">{milestone.timing}</p>
+                    <h3 className="mt-3 font-heading text-[2rem] leading-[1] tracking-[-0.025em]">{milestone.result}</h3>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="result-option-2" className="scroll-mt-24 bg-primary px-5 py-24 text-white sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-[1380px]">
+          <p className="meta-label mb-5 text-white/55">Option 2 · Explore the journey</p>
+          <div className="overflow-hidden rounded-[2rem] border border-white/15 bg-[#214b43] lg:grid lg:grid-cols-[0.86fr_1.14fr]">
+            <div className="relative min-h-[430px] overflow-hidden sm:min-h-[560px] lg:min-h-[650px]">
+              <img src="/social-curly.webp" alt="Customer showing healthy, defined curls" className="absolute inset-0 h-full w-full object-cover object-center" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary via-primary/65 to-transparent px-7 pb-8 pt-28 sm:px-10">
+                <p className="meta-label text-white/70">Real wash-day momentum</p>
+                <p className="mt-3 max-w-md font-heading text-3xl leading-tight">Small changes you can feel. Consistent results you can see.</p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-between px-7 py-10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
+              <div>
+                <p className="section-kicker text-[#b9d5ce]">What you’ll notice</p>
+                <h2 className="feature-title mt-5 max-w-xl">{activeResult.result}</h2>
+                <p className="body-copy mt-6 max-w-xl text-white/70">{activeResult.note}</p>
+              </div>
+              <div className="mt-12 grid gap-2 sm:grid-cols-2" role="tablist" aria-label="Results by time">
+                {resultMilestones.map((milestone, index) => (
+                  <button
+                    key={milestone.timing}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeMilestone === index}
+                    onClick={() => setActiveMilestone(index)}
+                    className={`flex min-h-16 items-center justify-between rounded-full border px-5 text-left text-sm font-bold transition-colors ${activeMilestone === index ? 'border-[#d4ae67] bg-[#d4ae67] text-primary' : 'border-white/20 text-white hover:bg-white/10'}`}
+                  >
+                    <span>{milestone.timing}</span>
+                    <ArrowRight className="size-4" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="result-option-3" className="scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
+        <div className="mx-auto max-w-[1380px]">
+          <p className="section-kicker mb-5">Option 3 · Four chapters</p>
+          <div className="overflow-hidden rounded-[2rem] border border-primary/15">
+            <div className="bg-white px-7 py-10 sm:px-12 sm:py-14 lg:flex lg:items-end lg:justify-between lg:gap-10 lg:px-16">
+              <h2 className="feature-title max-w-2xl">Your hair story, wash by wash.</h2>
+              <p className="body-copy mt-6 max-w-xl text-muted-foreground lg:mt-0">From the first soft-hair moment to the confidence of a consistent routine.</p>
+            </div>
+            <div className="grid sm:grid-cols-2">
+              {resultMilestones.map((milestone, index) => (
+                <article key={milestone.timing} className={`flex min-h-[310px] flex-col justify-between p-7 sm:min-h-[360px] sm:p-10 lg:p-12 ${chapterColours[index]}`}>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-heading text-4xl opacity-55">0{index + 1}</span>
+                    <span className="meta-label opacity-65">{milestone.timing}</span>
+                  </div>
+                  <div className="mt-16">
+                    <h3 className="max-w-lg font-heading text-[clamp(2.5rem,4vw,4.35rem)] leading-[0.92] tracking-[-0.04em]">{milestone.result}</h3>
+                    <p className="mt-5 max-w-md text-sm leading-6 opacity-70 sm:text-base">{milestone.note}</p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
