@@ -1157,7 +1157,7 @@ export function HomeStorefront() {
           <div>
             <p className="section-kicker">Why Rice Water?</p>
             <p className="body-copy mt-6 max-w-2xl text-[#35544e]">Traditional shampoos are designed to clean. But shampoo is something you use again and again — so we thought, why waste the opportunity?</p>
-            <h2 className="section-title mt-7 max-w-2xl">We turned every shower into a haircare ritual.</h2>
+            <h2 className="mt-7 max-w-2xl font-heading text-[clamp(2.25rem,4.2vw,4.25rem)] font-normal leading-[0.98] tracking-[-0.035em]">We turned every shower into a haircare ritual.</h2>
             <p className="body-copy mt-7 max-w-2xl text-[#35544e]">Our Shampoo and Conditioner are packed with ingredients chosen to support healthy, strong hair and a balanced scalp.</p>
             <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8">Shop the Rice Water Shampoo &amp; Conditioner <ArrowRight /></a>
           </div>
