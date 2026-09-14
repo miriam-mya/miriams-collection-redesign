@@ -117,6 +117,10 @@
   .press-marquee { display: flex; width: max-content; animation: press-marquee 32s linear infinite; }
   .press-logo-set { display: flex; align-items: center; gap: clamp(2.5rem, 5vw, 6.5rem); padding-right: clamp(2.5rem, 5vw, 6.5rem); }
   .press-marquee:hover { animation-play-state: paused; }
+  .announcement-cube { position: relative; height: 2rem; overflow: hidden; perspective: 24rem; }
+  .announcement-cube span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transform-origin: 50% 50% -1rem; animation: announcement-cube 9s cubic-bezier(.55, 0, .25, 1) infinite; }
+  .announcement-cube span:nth-child(2) { animation-delay: 3s; }
+  .announcement-cube span:nth-child(3) { animation-delay: 6s; }
   .ingredient-panel { @apply min-h-64 bg-primary p-7 sm:p-9; }
   .ingredient-panel span { @apply font-heading text-4xl text-[#b9d5ce]; }
   .ingredient-panel h3 { @apply mt-14 font-heading text-3xl; }
@@ -127,8 +131,16 @@
   to { transform: translateX(-50%); }
 }
 
+@keyframes announcement-cube {
+  0%, 28% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+  33% { opacity: 0; transform: translateY(-85%) rotateX(82deg); }
+  34%, 100% { opacity: 0; transform: translateY(85%) rotateX(-82deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .press-marquee { animation: none; transform: none; }
+  .announcement-cube span { animation: none; transform: none; }
+  .announcement-cube span:first-child { opacity: 1; }
 }
 
 @media (max-width: 639px) and (max-height: 680px) {
