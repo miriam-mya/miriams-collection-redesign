@@ -675,7 +675,7 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
       <div className="mx-auto max-w-[1380px] overflow-hidden rounded-[1.5rem] border border-primary/10 bg-[#f8f5ef] lg:grid lg:min-h-[760px] lg:grid-cols-[1.1fr_0.9fr]">
         <div className="relative min-h-[480px] overflow-hidden bg-[#e9e0d6] lg:min-h-0">
           <img src="/complete-ritual.png" alt="The complete Hair and Skin Ritual" className="absolute inset-0 h-full w-full object-cover" />
-          <span className="absolute left-5 top-5 rounded-full bg-[#dbece7] px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary sm:left-8 sm:top-8">✦ Wash Day Set Offer</span>
+          <span className="absolute left-5 top-5 rounded-full bg-[#dbece7] px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary sm:left-8 sm:top-8">✦ September offer</span>
         </div>
 
         <div className="flex items-center px-5 py-8 sm:px-9 sm:py-10 lg:items-start lg:px-9 lg:py-9">
