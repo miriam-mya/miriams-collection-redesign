@@ -807,7 +807,7 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
                 <article className="overflow-hidden rounded-2xl border bg-white">
                   <div className="relative aspect-square overflow-hidden bg-[#e7e2da]">
                     <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="h-full w-full object-cover object-top" />
-                    <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white via-white/60 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(to_top,#fff_0%,#fff_60%,rgba(255,255,255,0.8)_78%,transparent_100%)]" />
                     <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
                   </div>
                   <div className="relative -mt-8 px-6 pb-7 sm:px-8 sm:pb-8">
