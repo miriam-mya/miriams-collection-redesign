@@ -1175,7 +1175,8 @@ export function HomeStorefront() {
         <div className="relative min-h-[520px] overflow-hidden lg:min-h-[760px]"><img src="/close-up.png" alt="Miriam's Rice Water Shampoo and Conditioner" className="absolute inset-0 h-full w-full object-cover" /></div>
         <div className="flex items-center px-7 py-16 sm:px-14 lg:px-[7vw]">
           <div>
-            <p className="body-copy max-w-2xl text-[#35544e]">Traditional shampoos are designed to clean. But shampoo is something you use again and again — so we thought, why waste the opportunity?</p>
+            <p className="section-kicker">Why Rice Water?</p>
+            <p className="body-copy mt-6 max-w-2xl text-[#35544e]">Traditional shampoos are designed to clean. But shampoo is something you use again and again — so we thought, why waste the opportunity?</p>
             <h2 className="mt-7 max-w-2xl font-heading text-[clamp(2.25rem,4.2vw,4.25rem)] font-normal leading-[0.98] tracking-[-0.035em]">We turned every shower into a haircare ritual.</h2>
             <p className="body-copy mt-7 max-w-2xl text-[#35544e]">Our Shampoo and Conditioner are packed with ingredients chosen to support healthy, strong hair and a balanced scalp.</p>
             <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8">Shop the Rice Water Shampoo &amp; Conditioner <ArrowRight /></a>
