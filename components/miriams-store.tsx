@@ -1708,7 +1708,7 @@ function CardResultsTimeline({ className = '' }: { className?: string }) {
           <div key={milestone.timing} className="relative text-center">
             <span className="mx-auto block size-[11px] rounded-full bg-primary" />
             <p className="mt-2 font-heading text-[15px] leading-tight text-primary">{milestone.timing}</p>
-            <p className="mt-1 text-[11px] leading-4 text-[#35544e]">{milestone.result}</p>
+            <p className="mt-1.5 text-[13px] leading-[1.35] text-[#35544e]">{milestone.result}</p>
           </div>
         ))}
       </div>
