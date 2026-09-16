@@ -2,6 +2,7 @@
 
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import {
+  ArrowDown,
   ArrowLeft,
   ArrowRight,
   Camera,
@@ -114,7 +115,7 @@ const productStoryVideos = [
   {
     number: '1',
     title: '65% real rice water',
-    copy: "Other brands use water as their main ingredient. We've flipped that on its head by using 65% real rice water instead - naturally rich in vitamins, minerals and antioxidants.",
+    copy: <>An ancient beauty secret used across Asia for centuries for better hair. Backed by science &amp; proven to make a difference, we&apos;ve bottled it up to <strong className="font-semibold text-primary">bring you results</strong>.</>,
     src: 'https://www.miriamscollection.co.uk/cdn/shop/videos/c/vp/d54e6cd579d947b4a23733d43e67ee62/d54e6cd579d947b4a23733d43e67ee62.HD-1080p-2.5Mbps-57455975.mp4?v=0',
     poster: 'https://www.miriamscollection.co.uk/cdn/shop/files/preview_images/d54e6cd579d947b4a23733d43e67ee62.thumbnail.0000000000_1600x.jpg?v=1757874234',
   },
@@ -630,46 +631,6 @@ function PressStrip() {
   );
 }
 
-function ProductResultsTimeline() {
-  return (
-    <section className="bg-[#fbfaf6] px-5 py-16 sm:px-8 sm:py-20">
-      <div className="mx-auto max-w-[1320px] overflow-hidden rounded-[1.75rem] border border-primary/20 bg-[#f8f4ec] px-6 py-10 sm:px-10 sm:py-12">
-        <p className="section-kicker text-center">What you&apos;ll notice</p>
-        <div className="mx-auto mt-5 h-px w-14 bg-primary/35" />
-        <div className="mt-9 grid gap-0 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-primary/15">
-          {resultMilestones.map((milestone, index) => (
-            <article key={milestone.timing} className={`px-2 py-6 text-center sm:px-6 ${index < resultMilestones.length - 1 ? 'border-b border-primary/15 lg:border-b-0' : ''}`}>
-              <h2 className="font-heading text-[2.25rem] leading-[0.95] tracking-[-0.035em] sm:text-[2.6rem]">{milestone.timing}</h2>
-              <p className="mt-5 text-base leading-6 text-[#35544e]">{milestone.result}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ProductHairCareInsight() {
-  return (
-    <section className="bg-white px-5 py-16 sm:px-8 sm:py-24">
-      <div className="mx-auto grid max-w-[1320px] overflow-hidden rounded-[2rem] border border-primary/15 bg-[#fbfaf6] lg:grid-cols-2">
-        <div className="relative min-h-[380px] overflow-hidden sm:min-h-[520px] lg:min-h-[620px]">
-          <img src={productStoryVideos[2].poster} alt="Woman caring for wet hair during wash day" className="absolute inset-0 h-full w-full object-cover object-center" />
-        </div>
-        <div className="flex items-center px-7 py-12 sm:px-12 sm:py-16 lg:px-16">
-          <div className="max-w-xl">
-            <h2 className="feature-title">Why does your hair still feel dry, frizzy and weak after washing?</h2>
-            <div className="body-copy mt-7 space-y-5 text-[#35544e]">
-              <p>Because most shampoos are designed to remove dirt and oil. Healthy hair needs <em>more than</em> cleansing.</p>
-              <p>It needs <strong>ingredients that care</strong> for your hair &amp; scalp <strong><em>every time you wash.</em></strong></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function OfferBundle({ addToCart }: { addToCart: () => void }) {
   const [choice, setChoice] = useState<'duo' | 'ritual'>('ritual');
   const ritual = choice === 'ritual';
@@ -735,7 +696,24 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
   );
 }
 
-function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
+function IngredientIconsPanel({ asterisk = false }: { asterisk?: boolean }) {
+  return (
+    <div className="mt-7 rounded-2xl border border-[#cfc8bd] bg-[#f8f4ec] px-6 py-10 sm:px-10">
+      <h3 className="text-center font-heading text-[1.6rem] leading-tight tracking-[-0.01em] sm:text-[1.9rem]">{asterisk ? '*' : ''}Our 16 active &amp; botanical ingredients</h3>
+      <div className="mt-9 grid grid-cols-2 gap-x-4 gap-y-9 sm:grid-cols-4 lg:grid-cols-8">
+        {ingredientIcons.map((ingredient) => (
+          <div key={ingredient.name} className="flex flex-col items-center text-center">
+            <img src={ingredient.image} alt="" className="size-14 object-contain" />
+            <p className="mt-4 text-sm tracking-[0.04em] text-[#3b3a33]">{ingredient.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Home, Hair and Men pages use the original section (home also shows the ingredient icons); ComparisonSection is the product page version.
+function CategoryComparisonSection({ showShopCta = true, showIngredientIcons = false }: { showShopCta?: boolean; showIngredientIcons?: boolean }) {
   const [selectedIngredient, setSelectedIngredient] = useState<(typeof ingredientCards)[number] | null>(null);
   const rows = [
     { label: 'Number of active & botanical ingredients', us: '16', them: 'Typically 1 or 2' },
@@ -771,6 +749,7 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
             ))}
           </div>
         </div>
+        {showIngredientIcons && <IngredientIconsPanel />}
         <SlideUp className="mt-12 scroll-mt-28" id="ingredients">
           <div className="overflow-hidden rounded-[2rem] border border-primary/20 bg-white">
             <div className="grid gap-8 border-b border-primary/15 px-7 py-10 sm:px-12 sm:py-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:px-14">
@@ -838,6 +817,114 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
   );
 }
 
+function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
+  const [selectedIngredient, setSelectedIngredient] = useState<(typeof ingredientCards)[number] | null>(null);
+  const rows = [
+    { label: 'Number of active & botanical ingredients', us: '16*', them: 'Typically 1 or 2' },
+    { label: 'Sulfates or bulk fillers', us: false, them: true },
+    { label: '100% natural fragrance', us: true, them: false },
+    { label: 'Suitable for all hair types', us: true, them: false },
+    { label: 'Suitable for sensitive scalps', us: true, them: false },
+  ];
+
+  return (
+    <>
+    <section className="bg-[#f1e9dc] px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-[1260px]">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="section-kicker">What makes us different</p>
+          <h2 className="section-title mt-4">What’s the difference between us and the other brands?</h2>
+        </div>
+        <div className="mt-14 grid gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+          <div>
+            <div className="aspect-[2014/1490] overflow-hidden rounded-2xl bg-[#ded7cc] lg:h-full lg:min-h-[470px] lg:aspect-auto"><img src="/terrarium.png" alt="Most shampoos compared with Miriam’s Collection" className="h-full w-full object-cover" /></div>
+            <div className="-mt-5 mb-4 grid grid-cols-2 gap-2 px-3 sm:-mt-7 sm:mb-0 sm:gap-3 sm:px-6">
+              <span className="relative whitespace-nowrap rounded-full bg-[#eadcc3] px-3 py-3.5 text-center text-xs font-bold uppercase leading-none tracking-[0.08em] sm:px-4 sm:py-3">Most shampoos</span>
+              <span className="relative whitespace-nowrap rounded-full bg-primary px-3 py-3.5 text-center text-xs font-bold uppercase leading-none tracking-[0.08em] text-white sm:px-4 sm:py-3">Miriam’s Collection</span>
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-[#cfc8bd] bg-[#f8f4ec]">
+            <div className="grid grid-cols-[1.5fr_0.75fr_0.75fr] border-b border-[#cfc8bd] text-center text-xs font-bold uppercase tracking-widest sm:text-sm"><span className="p-5" /><span className="bg-primary p-5 text-white">Us</span><span className="bg-[#ded3bf] p-5">Them</span></div>
+            {rows.map((row) => (
+              <div key={row.label} className="grid min-h-[82px] grid-cols-[1.5fr_0.75fr_0.75fr] items-stretch border-b border-[#cfc8bd] last:border-0">
+                <span className="flex items-center p-4 text-[15px] font-medium sm:p-5 sm:text-base">{row.label}</span>
+                {[row.us, row.them].map((value, index) => <span key={index} className="flex items-center justify-center border-l border-[#cfc8bd] p-3 text-center text-[15px] font-semibold sm:text-base">{typeof value === 'string' ? value : value ? <Check className="size-7 rounded-full border border-primary p-1" /> : <X className="size-7 rounded-full border border-primary p-1" />}</span>)}
+              </div>
+            ))}
+          </div>
+        </div>
+        <IngredientIconsPanel asterisk />
+        <SlideUp className="mt-12 scroll-mt-40" id="ingredients">
+          <div className="overflow-hidden rounded-[2rem] border border-primary/20 bg-white">
+            <div className="px-7 pt-10 sm:px-12 sm:pt-14 lg:px-14">
+              <p className="section-kicker">Inside the formula</p>
+              <h3 className="feature-title mt-4 max-w-5xl text-[clamp(2rem,3.4vw,3.5rem)] leading-[1.18]">Why does your current shampoo not make much difference?</h3>
+              <div className="body-copy mt-6 max-w-4xl space-y-3 text-[#35544e]">
+                <p>Because most shampoos are designed to remove dirt and oil. Healthy hair needs more than cleansing.</p>
+                <p>It needs <strong className="font-semibold text-primary">ingredients that care</strong> for your hair &amp; scalp every time you wash.</p>
+              </div>
+              <p className="mb-4 mt-10 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">Click an ingredient to find out what it does <ArrowDown className="size-3.5" /></p>
+            </div>
+            <div className="grid grid-cols-2 border-t border-primary/15 sm:grid-cols-4 lg:grid-cols-8">
+              {ingredientCards.map((ingredient) => (
+                <button
+                  key={ingredient.name}
+                  type="button"
+                  onClick={() => setSelectedIngredient(ingredient)}
+                  className="group flex flex-col border-b border-r border-primary/15 p-3 text-left transition-colors hover:bg-[#f8f4ec] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:p-4"
+                  aria-label={`Learn more about ${ingredient.name}`}
+                >
+                  <span className="block aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#f1f0ed]">
+                    <img src={ingredient.image} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                  </span>
+                  <span className="mt-3 flex w-full items-end justify-between gap-3">
+                    <span className="text-sm font-semibold leading-5">{ingredient.name}</span>
+                    <span aria-hidden="true" className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#edf3f0] transition-colors group-hover:bg-primary group-hover:text-white"><Plus className="size-3.5" /></span>
+                  </span>
+                </button>
+              ))}
+            </div>
+            {showShopCta && (
+              <div className="px-7 py-7 sm:px-12 lg:px-14">
+                <a href="/products/rice-water-revive-duo" className="inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-[0.14em]">Shop the Rice Water Revive Duo <ArrowRight className="size-4" /></a>
+              </div>
+            )}
+          </div>
+        </SlideUp>
+      </div>
+    </section>
+      <Sheet open={Boolean(selectedIngredient)} onOpenChange={(open) => { if (!open) setSelectedIngredient(null); }}>
+        <SheetContent className="w-[94vw] overflow-y-auto bg-[#fbfaf6] p-0 sm:max-w-[560px]">
+          {selectedIngredient && (
+            <>
+              <div className="aspect-square overflow-hidden bg-[#f0eee8] sm:aspect-[5/4]">
+                <img src={selectedIngredient.image} alt={selectedIngredient.name} className="h-full w-full object-cover" />
+              </div>
+              <div className="px-7 py-10 sm:px-10 sm:py-12">
+                <p className="section-kicker">Inside the formula</p>
+                <SheetHeader className="mt-4 p-0 text-left">
+                  <SheetTitle className="feature-title">{selectedIngredient.name}</SheetTitle>
+                  <SheetDescription className="body-copy mt-6 text-[#40534f]">{selectedIngredient.description}</SheetDescription>
+                </SheetHeader>
+                <div className="mt-10 border-y border-primary/15">
+                  <div className="py-6">
+                    <p className="meta-label text-muted-foreground">What it helps with</p>
+                    <p className="body-copy mt-3 font-semibold text-primary">{selectedIngredient.helps}</p>
+                  </div>
+                  <div className="border-t border-primary/15 py-6">
+                    <p className="meta-label text-muted-foreground">The Science</p>
+                    <p className="body-copy mt-3 text-[#40534f]">{selectedIngredient.science}</p>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </SheetContent>
+      </Sheet>
+    </>
+  );
+}
+
 function ReviewsSection({ id = 'results' }: { id?: string }) {
   return (
     <section id={id} className="bg-[#f7f4ee] px-5 py-24 sm:px-8 sm:py-32">
@@ -850,13 +937,12 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
           <CarouselContent className="-ml-5 items-stretch">
             {reviews.map((review) => (
               <CarouselItem key={review.tag} className="flex basis-[88%] pl-5 sm:basis-1/2 lg:basis-1/3">
-                <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border bg-white">
+                <article className="flex h-[580px] w-full flex-col overflow-hidden rounded-2xl border bg-white sm:h-[600px]">
                   <Dialog>
-                    <DialogTrigger className="group relative block h-[210px] w-full shrink-0 cursor-zoom-in overflow-hidden bg-[#e7e2da] text-left sm:h-[230px]" aria-label={`View ${review.name}'s result image full size`}>
-                      <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
-                      <div className="absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(to_top,#fff_0%,#fff_60%,rgba(255,255,255,0.8)_78%,transparent_100%)]" />
+                    <DialogTrigger className="group relative block h-[260px] w-full shrink-0 cursor-zoom-in overflow-hidden bg-[#e7e2da] text-left sm:h-[310px]" aria-label={`View ${review.name}'s result image full size`}>
+                      <img src={review.image} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-xl" />
+                      <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results`} className="absolute inset-0 h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
                       <div className="absolute right-5 top-5 rounded-full bg-white/90 px-3 py-2 text-primary shadow-sm backdrop-blur-sm"><Stars /></div>
-                      <span className="meta-label absolute bottom-7 left-6 rounded-full bg-white/90 px-3 py-1.5 text-primary opacity-90 shadow-sm transition-opacity group-hover:opacity-100">View image</span>
                     </DialogTrigger>
                     <DialogContent className="max-w-[calc(100%-2rem)] overflow-hidden bg-[#f7f4ee] p-2 sm:max-w-[760px] [&_[data-slot=dialog-close]]:right-4 [&_[data-slot=dialog-close]]:top-4 [&_[data-slot=dialog-close]]:rounded-full [&_[data-slot=dialog-close]]:bg-white [&_[data-slot=dialog-close]]:shadow-md" showCloseButton>
                       <DialogHeader className="sr-only">
@@ -866,9 +952,9 @@ function ReviewsSection({ id = 'results' }: { id?: string }) {
                       <img src={review.image} alt={`${review.name}'s ${review.tag.toLowerCase()} results, enlarged`} className="max-h-[82vh] w-full rounded-lg object-contain" />
                     </DialogContent>
                   </Dialog>
-                  <div className="relative -mt-7 flex flex-1 flex-col px-6 pb-7 sm:px-8 sm:pb-8">
+                  <div className="flex min-h-0 flex-1 flex-col justify-end px-6 pb-7 pt-6 sm:px-8 sm:pb-8">
                     <blockquote className="font-heading text-[1.55rem] leading-[1.1] tracking-[-0.02em] sm:text-[1.7rem]">“{review.quote}”</blockquote>
-                    <div className="mt-auto flex items-end justify-between gap-4 border-t pt-5">
+                    <div className="mt-5 flex items-end justify-between gap-4 border-t pt-5">
                       <div><p className="text-xs font-bold uppercase tracking-widest">{review.name}</p><p className="mt-1 text-sm text-muted-foreground">For {review.tag.toLowerCase()}</p></div>
                       <span className="meta-label shrink-0 rounded-full bg-[#edf3f0] px-3 py-1.5 text-muted-foreground">Verified</span>
                     </div>
@@ -900,14 +986,14 @@ function CameraRollSection() {
   );
 }
 
-function Newsletter() {
+function Newsletter({ showKicker = true }: { showKicker?: boolean }) {
   const [subscribed, setSubscribed] = useState(false);
   return (
     <section className="bg-[#dceae6] px-5 py-16 sm:py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[1fr_0.9fr]">
         <div>
-          <p className="section-kicker">Shop the collection</p>
-          <h2 className="section-title mt-3">Elevate your everyday.</h2>
+          {showKicker && <p className="section-kicker">Shop the collection</p>}
+          <h2 className={`section-title ${showKicker ? 'mt-3' : ''}`}>Elevate your everyday.</h2>
         </div>
         <div>
           <p className="body-copy max-w-xl text-[#33514b]">Join for haircare tips, exclusive offers and insider access to the world of Miriam's Collection.</p>
@@ -1140,7 +1226,7 @@ export function HomeStorefront() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <Header cartCount={cartCount} openCart={() => setCartOpen(true)} transparent />
+      <Header cartCount={cartCount} openCart={() => setCartOpen(true)} sticky />
       <CartPanel open={cartOpen} setOpen={setCartOpen} count={cartCount} />
 
       <section id="top" className="home-hero relative h-[calc(100svh-164px)] max-h-[744px] overflow-hidden bg-[#0d2f29] sm:h-[calc(100svh-208px)] sm:max-h-[720px]">
@@ -1148,8 +1234,7 @@ export function HomeStorefront() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#102c26]/78 via-[#102c26]/22 to-transparent" />
         <div className="home-hero-inner relative mx-auto flex h-full max-w-[1480px] items-end px-5 py-5 sm:items-center sm:px-8 sm:py-9 lg:px-14">
           <div className="home-hero-card max-w-[520px] rounded-[1.5rem] border border-white/30 bg-white/[0.16] p-4 text-white shadow-[0_28px_90px_rgb(0_0_0/28%)] backdrop-blur-[28px] sm:max-w-[420px] sm:p-6 lg:max-w-[520px] lg:p-9">
-            <p className="meta-label hidden text-white/75 sm:block">★ 4.79 from 3,300 reviews</p>
-            <h1 className="mt-3 font-heading text-[clamp(2.2rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em]">Your shampoo could be doing so much more.</h1>
+            <h1 className="font-heading text-[clamp(2.2rem,5vw,5rem)] leading-[0.9] tracking-[-0.045em]">Your shampoo could be doing so much more.</h1>
             <p className="hero-support mt-4 max-w-md text-base leading-7 text-white/[0.86] sm:text-[17px]">Meet the shampoo and conditioner that do more than clean.</p>
             <a href="/products/rice-water-revive-duo" className="cta mt-5 border-[#dbe7df] bg-[#dbe7df] text-primary hover:bg-white sm:mt-6">Shop Now <ArrowRight /></a>
           </div>
@@ -1176,15 +1261,14 @@ export function HomeStorefront() {
         <div className="flex items-center px-7 py-16 sm:px-14 lg:px-[7vw]">
           <div>
             <p className="section-kicker">Why Rice Water?</p>
-            <p className="body-copy mt-6 max-w-2xl text-[#35544e]">Traditional shampoos are designed to clean. But shampoo is something you use again and again — so we thought, why waste the opportunity?</p>
-            <h2 className="mt-7 max-w-2xl font-heading text-[clamp(2.25rem,4.2vw,4.25rem)] font-normal leading-[0.98] tracking-[-0.035em]">We turned every shower into a haircare ritual.</h2>
-            <p className="body-copy mt-7 max-w-2xl text-[#35544e]">Our Shampoo and Conditioner are packed with ingredients chosen to support healthy, strong hair and a balanced scalp.</p>
+            <h2 className="mt-7 max-w-2xl font-heading text-[clamp(2.25rem,4.2vw,4.25rem)] font-normal leading-[0.98] tracking-[-0.035em]">Naturally rich in amino acids, vitamins and minerals, rice water is a powerhouse for your hair.</h2>
+            <p className="body-copy mt-7 max-w-2xl text-[#35544e]">It’s been used for centuries across Asia for thicker, glossier, more beautiful hair. The kind of hair you can’t stop looking at. So we bottled it up.</p>
             <a href="/products/rice-water-revive-duo" className="cta cta-dark mt-8">Shop the Rice Water Shampoo &amp; Conditioner <ArrowRight /></a>
           </div>
         </div>
       </section>
 
-      <ComparisonSection />
+      <CategoryComparisonSection showIngredientIcons />
 
       <ReviewsSection />
 
@@ -1255,7 +1339,7 @@ export function CategoryStorefront({ category }: { category: CategoryKey }) {
       <PressStrip />
       {category === 'sets' && <OfferBundle addToCart={addToCart} />}
       <section id="collection" className="px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto max-w-[1380px]"><p className="section-kicker">Shop {category}</p><h2 className="section-title mt-4">The collection.</h2><div className="mt-12 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">{content.products.map((product) => <ProductCard key={product.name} product={product} addToCart={addToCart} />)}</div></div></section>
-      {(category === 'hair' || category === 'men') && <ComparisonSection />}
+      {(category === 'hair' || category === 'men') && <CategoryComparisonSection />}
       <Newsletter />
       <Footer />
     </main>
@@ -1614,6 +1698,24 @@ export function ResultsConcepts() {
   );
 }
 
+function CardResultsTimeline({ className = '' }: { className?: string }) {
+  return (
+    <div className={`rounded-2xl border border-primary/25 bg-white px-5 py-5 shadow-[0_10px_30px_rgb(22_63_56/8%)] ${className}`}>
+      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">What you&apos;ll notice</p>
+      <div className="relative mt-4 grid grid-cols-4 gap-2">
+        <div className="absolute left-[12.5%] right-[12.5%] top-[5px] h-px bg-primary/25" />
+        {resultMilestones.map((milestone) => (
+          <div key={milestone.timing} className="relative text-center">
+            <span className="mx-auto block size-[11px] rounded-full bg-primary" />
+            <p className="mt-2 font-heading text-[15px] leading-tight text-primary">{milestone.timing}</p>
+            <p className="mt-1 text-[11px] leading-4 text-[#35544e]">{milestone.result}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ProductDetail() {
   const [cartCount, setCartCount] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
@@ -1676,6 +1778,7 @@ export function ProductDetail() {
             ))}
           </div>
           <p className="mt-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground md:hidden">Swipe to view all images</p>
+          <CardResultsTimeline className="mt-6 hidden md:block" />
         </div>
 
         <div className="md:pt-1 lg:pt-3">
@@ -1684,7 +1787,7 @@ export function ProductDetail() {
             <h1 className="mt-7 max-w-3xl font-heading text-[clamp(2.4rem,3.7vw,4.1rem)] leading-[0.94] tracking-[-0.04em]">The Rice Water Revive Duo (Sulfate Free)</h1>
           </div>
           <p className="mt-6 text-lg font-semibold leading-7">Repairs Damage, Fights Frizz and Promotes Healthy Growth.</p>
-          <p className="body-copy mt-2 text-muted-foreground">Powered by 65%+ real Rice Water - rich in amino acids, vitamins and minerals.</p>
+          <p className="body-copy mt-2 text-muted-foreground">Other brands use water as their main ingredient. We've flipped that on its head by using 65% real rice water instead - naturally rich in vitamins, minerals and antioxidants that your hair will love.</p>
           <ul className="mt-6 space-y-3 text-sm">
             {['Sulfate Free', 'Suitable for All Hair Types', '16 Botanical and Active Ingredients'].map((item) => <li key={item} className="flex items-center gap-3"><span className="flex size-5 items-center justify-center rounded-full bg-primary text-white"><Check className="size-3" /></span>{item}</li>)}
           </ul>
@@ -1731,20 +1834,16 @@ export function ProductDetail() {
             <button onClick={add} className="flex min-h-12 flex-1 items-center justify-center rounded-full bg-primary px-6 text-xs font-bold uppercase tracking-widest text-white">Add to bag · {washDaySelected ? '£45.95' : '£39.95'}</button>
           </div>
           <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">Free UK tracked shipping · 30-day returns · Secure checkout</p>
+          <CardResultsTimeline className="mt-8 md:hidden" />
 
         </div>
       </section>
 
       <PressStrip />
-      <ProductResultsTimeline />
-      <ProductHairCareInsight />
 
       <section className="bg-[#f3ede4] px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1440px]">
-          <div className="max-w-5xl">
-            <p className="section-kicker">Inside the formula</p>
-            <h2 className="section-title mt-4">Here’s how the Rice Water Shampoo and Conditioner work</h2>
-          </div>
+          <h2 className="section-title">Here’s how the Rice Water Shampoo and Conditioner work</h2>
           <div className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
             {productStoryVideos.map((item) => (
               <article key={item.number} className="min-w-[82vw] snap-start sm:min-w-0">
@@ -1774,6 +1873,8 @@ export function ProductDetail() {
         </div>
       </section>
 
+
+
       <ComparisonSection showShopCta={false} />
       <ReviewsSection id="product-reviews" />
       <CameraRollSection />
@@ -1782,7 +1883,18 @@ export function ProductDetail() {
 
       <section className="bg-[#e8eee9] px-5 py-20 sm:px-8 sm:py-24"><div className="mx-auto max-w-[1180px]"><div className="flex items-end justify-between"><div><p className="section-kicker">Complete your shelf</p><h2 className="section-title mt-4">Keep the ritual going.</h2></div><a href="/#shop" className="hidden items-center gap-2 text-xs font-bold uppercase tracking-widest sm:flex">Shop all <ArrowRight className="size-4" /></a></div><div className="mt-10 grid gap-5 sm:grid-cols-3">{products.slice(1).map((product) => <ProductCard key={product.name} product={product} addToCart={add} />)}</div></div></section>
 
-      <Newsletter />
+      <section className="bg-primary px-5 py-20 text-white sm:px-8 sm:py-24">
+        <div className="mx-auto grid max-w-[1260px] gap-10 lg:grid-cols-2 lg:gap-20">
+          <h2 className="font-heading text-[clamp(2.2rem,4vw,3.6rem)] leading-[1.02] tracking-[-0.03em]">We challenge you to check the label.</h2>
+          <div className="space-y-5">
+            <p className="body-copy text-white/70">Pick up your current bottle… we bet it has 1 or 2 hero ingredients — Argan Oil, Keratin?</p>
+            <p className="body-copy text-white/70">Plastered across the front of the packaging, but often included in tiny quantities — with plain water making up the base.</p>
+            <p className="border-t border-white/20 pt-5 font-heading text-[1.5rem] leading-snug sm:text-[1.8rem]">We formulate differently. Rice water at the base, plus <a href="#ingredients" className="text-[#b9d8cf] underline decoration-[#b9d8cf]/50 underline-offset-[6px] transition-colors hover:text-white hover:decoration-white">16 botanical ingredients</a> packed into every bottle.</p>
+          </div>
+        </div>
+      </section>
+
+      <Newsletter showKicker={false} />
       <Footer />
 
       <div className="fixed inset-x-0 bottom-0 z-30 border-t bg-[#fbfaf6]/95 px-4 py-3 shadow-[0_-8px_30px_rgb(0_0_0/8%)] backdrop-blur md:hidden"><button onClick={add} className="flex min-h-12 w-full items-center justify-between rounded-full bg-primary px-6 text-xs font-bold uppercase tracking-widest text-white"><span>Add to bag</span><span>{washDaySelected ? '£45.95' : '£39.95'}</span></button></div>
