@@ -725,14 +725,46 @@ function OfferBundle({ addToCart }: { addToCart: () => void }) {
 }
 
 function IngredientIconsPanel({ asterisk = false }: { asterisk?: boolean }) {
+  const [page, setPage] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const pages = Array.from({ length: Math.ceil(ingredientIcons.length / 4) }, (_, index) => ingredientIcons.slice(index * 4, index * 4 + 4));
+  const goTo = (index: number) => {
+    const track = trackRef.current;
+    if (track) track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
+  };
+
   return (
-    <div className="mt-7 rounded-2xl border border-[#cfc8bd] bg-[#f8f4ec] px-6 py-10 sm:px-10">
+    <div className="mt-7 rounded-2xl border border-[#cfc8bd] bg-[#f8f4ec] px-6 py-10 sm:rounded-none sm:border-[#e3ddd3] sm:bg-[#faf6f0] sm:px-10 sm:py-12">
       <h3 className="text-center font-heading text-[1.6rem] leading-tight tracking-[-0.01em] sm:text-[1.9rem]">{asterisk ? '*' : ''}Our 16 active &amp; botanical ingredients</h3>
-      <div className="mt-9 grid grid-cols-2 gap-x-4 gap-y-9 sm:grid-cols-4 lg:grid-cols-8">
+      {/* Mobile: four icons per swipeable page, with dots */}
+      <div className="sm:hidden">
+        <div
+          ref={trackRef}
+          onScroll={(event) => setPage(Math.round(event.currentTarget.scrollLeft / event.currentTarget.clientWidth))}
+          className="-mx-6 mt-8 flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {pages.map((group, index) => (
+            <div key={index} className="grid w-full shrink-0 snap-start grid-cols-4 gap-2 px-4">
+              {group.map((ingredient) => (
+                <div key={ingredient.name} className="flex flex-col items-center text-center">
+                  <img src={ingredient.image} alt="" className="size-10 object-contain" />
+                  <p className="mt-3 text-[12px] leading-4 tracking-[0.03em] text-[#3b3a33]">{ingredient.name}</p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="mt-7 flex justify-center gap-2.5">
+          {pages.map((_, index) => (
+            <button key={index} type="button" onClick={() => goTo(index)} aria-label={`Show ingredients ${index * 4 + 1} to ${index * 4 + 4}`} aria-current={page === index ? 'true' : undefined} className={`size-2.5 rounded-full border border-[#3b3a33]/60 transition-colors ${page === index ? 'bg-[#2b3326]' : 'bg-transparent'}`} />
+          ))}
+        </div>
+      </div>
+      <div className="mt-10 hidden grid-cols-4 gap-x-4 gap-y-12 sm:grid lg:grid-cols-8">
         {ingredientIcons.map((ingredient) => (
           <div key={ingredient.name} className="flex flex-col items-center text-center">
-            <img src={ingredient.image} alt="" className="size-14 object-contain" />
-            <p className="mt-4 text-sm tracking-[0.04em] text-[#3b3a33]">{ingredient.name}</p>
+            <img src={ingredient.image} alt="" className="size-16 object-contain" />
+            <p className="mt-5 text-[15px] tracking-[0.05em] text-[#3b3a33]">{ingredient.name}</p>
           </div>
         ))}
       </div>
@@ -1735,8 +1767,7 @@ export function ProductDetail() {
           <div className="hidden md:block">
             <h1 className="mt-7 max-w-3xl font-heading text-[clamp(2.4rem,3.7vw,4.1rem)] leading-[0.94] tracking-[-0.04em]">The Rice Water Revive Duo (Sulfate Free)</h1>
           </div>
-          <p className="mt-6 text-lg font-semibold leading-7">Repairs Damage, Fights Frizz and Promotes Healthy Growth.</p>
-          <p className="body-copy mt-2 text-muted-foreground">Other brands use water as their main ingredient. We've flipped that on its head by using 65% real rice water instead - naturally rich in vitamins, minerals and antioxidants that your hair will love.</p>
+          <p className="body-copy mt-6 text-muted-foreground">Other brands use water as their main ingredient. We've flipped that on its head by using 65% real rice water instead - naturally rich in vitamins, minerals and antioxidants that your hair will love.</p>
           <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Helps with</p>
           <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3">
             {productBenefits.map(({ label, icon: Icon }) => (
