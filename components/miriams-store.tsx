@@ -740,110 +740,6 @@ function IngredientIconsPanel({ asterisk = false }: { asterisk?: boolean }) {
   );
 }
 
-// Hair and Men pages keep the original section; ComparisonSection is the home and product page version.
-function CategoryComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
-  const [selectedIngredient, setSelectedIngredient] = useState<(typeof ingredientCards)[number] | null>(null);
-  const rows = [
-    { label: 'Number of active & botanical ingredients', us: '16', them: 'Typically 1 or 2' },
-    { label: 'Sulfates or bulk fillers', us: false, them: true },
-    { label: '100% natural fragrance', us: true, them: false },
-    { label: 'Suitable for all hair types', us: true, them: false },
-    { label: 'Suitable for sensitive scalps', us: true, them: false },
-  ];
-
-  return (
-    <>
-    <section className="bg-[#f1e9dc] px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto max-w-[1260px]">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="section-kicker">What makes us different</p>
-          <h2 className="section-title mt-4">What’s the difference between us and the other brands?</h2>
-        </div>
-        <div className="mt-14 grid gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
-          <div>
-            <div className="aspect-[2014/1490] overflow-hidden rounded-2xl bg-[#ded7cc] lg:h-full lg:min-h-[470px] lg:aspect-auto"><img src="/terrarium.png" alt="Most shampoos compared with Miriam’s Collection" className="h-full w-full object-cover" /></div>
-            <div className="-mt-5 mb-4 grid grid-cols-2 gap-2 px-3 sm:-mt-7 sm:mb-0 sm:gap-3 sm:px-6">
-              <span className="relative whitespace-nowrap rounded-full bg-[#eadcc3] px-3 py-3.5 text-center text-xs font-bold uppercase leading-none tracking-[0.08em] sm:px-4 sm:py-3">Most shampoos</span>
-              <span className="relative whitespace-nowrap rounded-full bg-primary px-3 py-3.5 text-center text-xs font-bold uppercase leading-none tracking-[0.08em] text-white sm:px-4 sm:py-3">Miriam’s Collection</span>
-            </div>
-          </div>
-          <div className="overflow-hidden rounded-2xl border border-[#cfc8bd] bg-[#f8f4ec]">
-            <div className="grid grid-cols-[1.5fr_0.75fr_0.75fr] border-b border-[#cfc8bd] text-center text-xs font-bold uppercase tracking-widest sm:text-sm"><span className="p-5" /><span className="bg-primary p-5 text-white">Us</span><span className="bg-[#ded3bf] p-5">Them</span></div>
-            {rows.map((row) => (
-              <div key={row.label} className="grid min-h-[82px] grid-cols-[1.5fr_0.75fr_0.75fr] items-stretch border-b border-[#cfc8bd] last:border-0">
-                <span className="flex items-center p-4 text-[15px] font-medium sm:p-5 sm:text-base">{row.label}</span>
-                {[row.us, row.them].map((value, index) => <span key={index} className="flex items-center justify-center border-l border-[#cfc8bd] p-3 text-center text-[15px] font-semibold sm:text-base">{typeof value === 'string' ? value : value ? <Check className="size-7 rounded-full border border-primary p-1" /> : <X className="size-7 rounded-full border border-primary p-1" />}</span>)}
-              </div>
-            ))}
-          </div>
-        </div>
-        <SlideUp className="mt-12 scroll-mt-28" id="ingredients">
-          <div className="overflow-hidden rounded-[2rem] border border-primary/20 bg-white">
-            <div className="grid gap-8 border-b border-primary/15 px-7 py-10 sm:px-12 sm:py-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:px-14">
-              <h3 className="feature-title max-w-xl">We challenge you to check the label.</h3>
-              <div>
-                <p className="body-copy max-w-2xl text-muted-foreground">Check your current bottle: most shampoos promote just one or two headline ingredients. Miriam’s Collection combines 16 active and botanical ingredients in one complete formula.</p>
-                {showShopCta && (
-                  <a href="/products/rice-water-revive-duo" className="mt-6 inline-flex items-center gap-3 border-b border-primary pb-1 text-xs font-bold uppercase tracking-[0.14em]">Shop the Rice Water Revive Duo <ArrowRight className="size-4" /></a>
-                )}
-              </div>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8">
-              {ingredientCards.map((ingredient, index) => (
-                <button
-                  key={ingredient.name}
-                  type="button"
-                  onClick={() => setSelectedIngredient(ingredient)}
-                  className="group flex flex-col border-b border-r border-primary/15 p-3 text-left transition-colors hover:bg-[#f8f4ec] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:p-4"
-                  aria-label={`Learn more about ${ingredient.name}`}
-                >
-                  <span className="meta-label text-muted-foreground">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="mt-3 block aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#f1f0ed]">
-                    <img src={ingredient.image} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
-                  </span>
-                  <span className="mt-3 flex w-full items-end justify-between gap-3">
-                    <span className="text-sm font-semibold leading-5">{ingredient.name}</span>
-                    <span aria-hidden="true" className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#edf3f0] transition-colors group-hover:bg-primary group-hover:text-white"><Plus className="size-3.5" /></span>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </SlideUp>
-      </div>
-    </section>
-      <Sheet open={Boolean(selectedIngredient)} onOpenChange={(open) => { if (!open) setSelectedIngredient(null); }}>
-        <SheetContent className="w-[94vw] overflow-y-auto bg-[#fbfaf6] p-0 sm:max-w-[560px]">
-          {selectedIngredient && (
-            <>
-              <div className="aspect-square overflow-hidden bg-[#f0eee8] sm:aspect-[5/4]">
-                <img src={selectedIngredient.image} alt={selectedIngredient.name} className="h-full w-full object-cover" />
-              </div>
-              <div className="px-7 py-10 sm:px-10 sm:py-12">
-                <p className="section-kicker">Inside the formula</p>
-                <SheetHeader className="mt-4 p-0 text-left">
-                  <SheetTitle className="feature-title">{selectedIngredient.name}</SheetTitle>
-                  <SheetDescription className="body-copy mt-6 text-[#40534f]">{selectedIngredient.description}</SheetDescription>
-                </SheetHeader>
-                <div className="mt-10 border-y border-primary/15">
-                  <div className="py-6">
-                    <p className="meta-label text-muted-foreground">What it helps with</p>
-                    <p className="body-copy mt-3 font-semibold text-primary">{selectedIngredient.helps}</p>
-                  </div>
-                  <div className="border-t border-primary/15 py-6">
-                    <p className="meta-label text-muted-foreground">The Science</p>
-                    <p className="body-copy mt-3 text-[#40534f]">{selectedIngredient.science}</p>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-        </SheetContent>
-      </Sheet>
-    </>
-  );
-}
-
 function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
   const [selectedIngredient, setSelectedIngredient] = useState<(typeof ingredientCards)[number] | null>(null);
   const [concern, setConcern] = useState<string | null>(null);
@@ -1381,7 +1277,7 @@ export function CategoryStorefront({ category }: { category: CategoryKey }) {
       <PressStrip />
       {category === 'sets' && <OfferBundle addToCart={addToCart} />}
       <section id="collection" className="px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto max-w-[1380px]"><p className="section-kicker">Shop {category}</p><h2 className="section-title mt-4">The collection.</h2><div className="mt-12 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">{content.products.map((product) => <ProductCard key={product.name} product={product} addToCart={addToCart} />)}</div></div></section>
-      {(category === 'hair' || category === 'men') && <CategoryComparisonSection />}
+      {(category === 'hair' || category === 'men') && <ComparisonSection />}
       <Newsletter />
       <Footer />
     </main>
