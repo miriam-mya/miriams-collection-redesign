@@ -806,7 +806,10 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
             <div className="grid grid-cols-3 gap-x-3 gap-y-4 border-t border-primary/15 px-5 py-5 sm:hidden">
               {ingredientCards.filter((ingredient) => !concernIngredients || concernIngredients.includes(ingredient.name)).map((ingredient) => (
                 <button key={ingredient.name} type="button" onClick={() => setSelectedIngredient(ingredient)} className="text-center" aria-label={`Learn more about ${ingredient.name}`}>
-                  <span className="block aspect-square overflow-hidden rounded-xl bg-[#f1f0ed]"><img src={ingredient.image} alt="" className="h-full w-full object-cover" /></span>
+                  <span className="relative block aspect-square overflow-hidden rounded-xl bg-[#f1f0ed]">
+                    <img src={ingredient.image} alt="" className="h-full w-full object-cover" />
+                    <span aria-hidden="true" className="absolute bottom-1.5 right-1.5 flex size-6 items-center justify-center rounded-full bg-white/95 text-primary shadow-sm"><Plus className="size-3.5" /></span>
+                  </span>
                   <span className="mt-2 block text-[12px] font-semibold leading-4">{ingredient.name}</span>
                 </button>
               ))}
