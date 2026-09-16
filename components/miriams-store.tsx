@@ -588,13 +588,13 @@ function Header({
   );
 }
 
-function ProductCard({ product, addToCart }: { product: Product; addToCart: () => void }) {
+function ProductCard({ product, addToCart, showSubscribeBadge = true }: { product: Product; addToCart: () => void; showSubscribeBadge?: boolean }) {
   return (
     <article className="group flex h-full flex-col">
       <a href={product.href} className="relative block aspect-[4/5] overflow-hidden rounded-[1.25rem]" style={{ background: product.colour }}>
         {product.was && <span className="absolute left-4 top-4 z-10 rounded-full bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white">Save</span>}
         <img src={product.image} alt={product.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
-        <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-primary backdrop-blur">Subscribe & save 10%</span>
+        {showSubscribeBadge && <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-primary backdrop-blur">Subscribe & save 10%</span>}
       </a>
       <div className="flex flex-1 flex-col pt-5">
         <p className="meta-label text-muted-foreground">{product.eyebrow}</p>
@@ -1251,7 +1251,7 @@ export function HomeStorefront() {
             <a href="/sets" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest">Shop bundles <ChevronRight className="size-4" /></a>
           </div>
           <div className="mt-12 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {products.map((product) => <ProductCard key={product.name} product={product} addToCart={addToCart} />)}
+            {products.map((product) => <ProductCard key={product.name} product={product} addToCart={addToCart} showSubscribeBadge={false} />)}
           </div>
         </div>
       </section>
