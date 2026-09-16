@@ -740,8 +740,8 @@ function IngredientIconsPanel({ asterisk = false }: { asterisk?: boolean }) {
   );
 }
 
-// Home, Hair and Men pages use the original section (home also shows the ingredient icons); ComparisonSection is the product page version.
-function CategoryComparisonSection({ showShopCta = true, showIngredientIcons = false }: { showShopCta?: boolean; showIngredientIcons?: boolean }) {
+// Hair and Men pages keep the original section; ComparisonSection is the home and product page version.
+function CategoryComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
   const [selectedIngredient, setSelectedIngredient] = useState<(typeof ingredientCards)[number] | null>(null);
   const rows = [
     { label: 'Number of active & botanical ingredients', us: '16', them: 'Typically 1 or 2' },
@@ -777,7 +777,6 @@ function CategoryComparisonSection({ showShopCta = true, showIngredientIcons = f
             ))}
           </div>
         </div>
-        {showIngredientIcons && <IngredientIconsPanel />}
         <SlideUp className="mt-12 scroll-mt-28" id="ingredients">
           <div className="overflow-hidden rounded-[2rem] border border-primary/20 bg-white">
             <div className="grid gap-8 border-b border-primary/15 px-7 py-10 sm:px-12 sm:py-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:px-14">
@@ -1311,7 +1310,7 @@ export function HomeStorefront() {
         </div>
       </section>
 
-      <CategoryComparisonSection showIngredientIcons />
+      <ComparisonSection />
 
       <ReviewsSection />
 
