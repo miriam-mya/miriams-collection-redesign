@@ -122,7 +122,7 @@ const productStoryVideos = [
   {
     number: '2',
     title: '16 hero ingredients across the set',
-    copy: 'Most Shampoo and Conditioner sets contain just 1 or 2. Let that sink in.',
+    copy: <>Most Shampoo and Conditioner sets contain just 1 or 2. Let that sink in. Our ingredients are thoughtfully chosen and <em>actually make a difference.</em></>,
     src: 'https://www.miriamscollection.co.uk/cdn/shop/videos/c/vp/e027cc19f27f4becb0c3d8635bfdd3cc/e027cc19f27f4becb0c3d8635bfdd3cc.HD-1080p-7.2Mbps-91556265.mp4?v=0',
     poster: 'https://www.miriamscollection.co.uk/cdn/shop/files/preview_images/e027cc19f27f4becb0c3d8635bfdd3cc.thumbnail.0000000000_1600x.jpg?v=1786663045',
   },
