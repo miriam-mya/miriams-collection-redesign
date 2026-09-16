@@ -2,7 +2,6 @@
 
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 import {
-  ArrowDown,
   ArrowLeft,
   ArrowRight,
   Camera,
@@ -10,15 +9,23 @@ import {
   ChevronRight,
   CircleUserRound,
   Clock3,
+  Droplet,
+  Droplets,
+  Leaf,
   Menu,
   Minus,
   Music2,
   Play,
   Plus,
   Search,
+  ShieldCheck,
   ShoppingBag,
+  Sparkles,
+  Sprout,
   Star,
   Truck,
+  Waves,
+  Wind,
   X,
 } from 'lucide-react';
 import {
@@ -329,6 +336,27 @@ const categoryContent: Record<CategoryKey, { title: string; eyebrow: string; cop
     products: [completeRitual, products[0], products[1], products[2]],
   },
 };
+
+const productBenefits = [
+  { label: 'Frizz', icon: Waves },
+  { label: 'Breakage', icon: ShieldCheck },
+  { label: 'Thinning', icon: Sprout },
+  { label: 'Hydration', icon: Droplets },
+  { label: 'Shine', icon: Sparkles },
+  { label: 'Scalp Health', icon: Leaf },
+];
+
+// Which ingredients help with each concern, based on each ingredient's "What it helps with" copy.
+const ingredientConcerns = [
+  { label: 'Repair & Hydration', icon: ShieldCheck, ingredients: ['Rice Water', 'Orchid', 'Goji Berry', 'Biotin', 'Pro-Vitamin B5'] },
+  { label: 'Hair Fall & Thinning', icon: Sprout, ingredients: ['Caffeine', 'Rosemary Oil'] },
+  { label: 'Dryness', icon: Droplets, ingredients: ['Orchid', 'Gardenia Flower', 'Pro-Vitamin B5'] },
+  { label: 'Frizz', icon: Waves, ingredients: ['Keratin', 'Aloe'] },
+  { label: 'Dry, itchy scalp', icon: Leaf, ingredients: ['Ginger Root', 'Coneflower', 'Sophora Root'] },
+  { label: 'Oily Scalp', icon: Droplet, ingredients: ['Ginger Root', 'Sophora Root', 'Amino acid cleansers'] },
+  { label: 'Shine', icon: Sparkles, ingredients: ['Citrus Peel Extract', 'Coconut oil', 'Gardenia Flower'] },
+  { label: 'Definition', icon: Wind, ingredients: ['Aloe'] },
+];
 
 const reviews = [
   {
@@ -819,6 +847,8 @@ function CategoryComparisonSection({ showShopCta = true, showIngredientIcons = f
 
 function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
   const [selectedIngredient, setSelectedIngredient] = useState<(typeof ingredientCards)[number] | null>(null);
+  const [concern, setConcern] = useState<string | null>(null);
+  const concernIngredients = ingredientConcerns.find((item) => item.label === concern)?.ingredients;
   const rows = [
     { label: 'Number of active & botanical ingredients', us: '16*', them: 'Typically 1 or 2' },
     { label: 'Sulfates or bulk fillers', us: false, them: true },
@@ -856,14 +886,27 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
         <IngredientIconsPanel asterisk />
         <SlideUp className="mt-12 scroll-mt-40" id="ingredients">
           <div className="overflow-hidden rounded-[2rem] border border-primary/20 bg-white">
-            <div className="px-7 pt-10 sm:px-12 sm:pt-14 lg:px-14">
-              <p className="section-kicker">Inside the formula</p>
-              <h3 className="feature-title mt-4 max-w-5xl text-[clamp(2rem,3.4vw,3.5rem)] leading-[1.18]">Why does your current shampoo not make much difference?</h3>
-              <div className="body-copy mt-6 max-w-4xl space-y-3 text-[#35544e]">
-                <p>Because most shampoos are designed to remove dirt and oil. Healthy hair needs more than cleansing.</p>
-                <p>It needs <strong className="font-semibold text-primary">ingredients that care</strong> for your hair &amp; scalp every time you wash.</p>
+            <div className="grid gap-10 px-7 pb-10 pt-10 sm:px-12 sm:pt-14 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-14 lg:px-14">
+              <div>
+                <h3 className="feature-title text-[clamp(2rem,3vw,3rem)] leading-[1.15]">Why does your current shampoo not make much difference?</h3>
+                <div className="body-copy mt-6 max-w-4xl space-y-3 text-[#35544e]">
+                  <p>Because most shampoos are designed to remove dirt and oil. Healthy hair needs more than cleansing.</p>
+                  <p>It needs <strong className="font-semibold text-primary">ingredients that care</strong> for your hair &amp; scalp every time you wash.</p>
+                </div>
               </div>
-              <p className="mb-4 mt-10 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">Click an ingredient to find out what it does <ArrowDown className="size-3.5" /></p>
+              <div className="rounded-2xl bg-[#fbfaf6] p-5">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">What would you like help with?</p>
+                <div className="flex flex-wrap gap-2">
+                  {[{ label: 'All 16', icon: null }, ...ingredientConcerns].map(({ label, icon: Icon }) => {
+                    const active = label === 'All 16' ? concern === null : concern === label;
+                    return (
+                      <button key={label} type="button" onClick={() => setConcern(label === 'All 16' ? null : label)} aria-pressed={active} className={`flex items-center gap-2 rounded-full border px-3 py-1.5 text-[13px] font-semibold transition-colors ${active ? 'border-primary bg-primary text-white' : 'border-primary/20 bg-white text-primary hover:border-primary/50'}`}>
+                        {Icon && <Icon className="size-4" />}{label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
             <div className="grid grid-cols-2 border-t border-primary/15 sm:grid-cols-4 lg:grid-cols-8">
               {ingredientCards.map((ingredient) => (
@@ -871,7 +914,7 @@ function ComparisonSection({ showShopCta = true }: { showShopCta?: boolean }) {
                   key={ingredient.name}
                   type="button"
                   onClick={() => setSelectedIngredient(ingredient)}
-                  className="group flex flex-col border-b border-r border-primary/15 p-3 text-left transition-colors hover:bg-[#f8f4ec] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:p-4"
+                  className={`group flex flex-col border-b border-r border-primary/15 p-3 text-left transition-[background-color,opacity] duration-300 ${concernIngredients && !concernIngredients.includes(ingredient.name) ? 'opacity-25' : 'opacity-100'} hover:bg-[#f8f4ec] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:p-4`}
                   aria-label={`Learn more about ${ingredient.name}`}
                 >
                   <span className="block aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#f1f0ed]">
@@ -1788,9 +1831,15 @@ export function ProductDetail() {
           </div>
           <p className="mt-6 text-lg font-semibold leading-7">Repairs Damage, Fights Frizz and Promotes Healthy Growth.</p>
           <p className="body-copy mt-2 text-muted-foreground">Other brands use water as their main ingredient. We've flipped that on its head by using 65% real rice water instead - naturally rich in vitamins, minerals and antioxidants that your hair will love.</p>
-          <ul className="mt-6 space-y-3 text-sm">
-            {['Sulfate Free', 'Suitable for All Hair Types', '16 Botanical and Active Ingredients'].map((item) => <li key={item} className="flex items-center gap-3"><span className="flex size-5 items-center justify-center rounded-full bg-primary text-white"><Check className="size-3" /></span>{item}</li>)}
-          </ul>
+          <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Helps with</p>
+          <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3">
+            {productBenefits.map(({ label, icon: Icon }) => (
+              <div key={label} className="flex items-center gap-2.5 text-sm font-medium"><span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#dceae6] text-primary"><Icon className="size-4" /></span>{label}</div>
+            ))}
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {['Sulfate free', 'All hair types', '16 active ingredients'].map((tag) => <span key={tag} className="flex items-center gap-1.5 rounded-full border border-primary/15 px-3 py-1 text-xs text-[#35544e]"><Check className="size-3" />{tag}</span>)}
+          </div>
 
           <div className="mt-8 space-y-3">
             <button onClick={() => setPlan('duo')} className={`purchase-option border bg-white ${plan === 'duo' ? 'purchase-option-active' : 'border-primary/15'}`}>
